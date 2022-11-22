@@ -11,10 +11,12 @@
     <!-- Link til css -->
     <link rel="stylesheet" href="styles/navbar.css">
     <link rel="stylesheet" href="styles/sidebar.css">
+    <link rel="stylesheet" href="styles/createUser.css">
     <!-- Fonts -->
 
     <title>Magic</title>
 </head>
+
 
 <body>
     <nav id="navBar">
@@ -41,6 +43,25 @@
 
     <template></template>
 
+    
+    <div class="create-user-container">
+        <form action="">
+            <div class="create-user-container-form">
+                <h1>Register</h1>
+
+                <label for="username"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" required>
+
+                <label for="email">Email</label>
+                <input type="text" placeholder="Email (Optional)">
+
+                <label for="password">Enter Password</label>
+                <input type="password" placeholder="Enter Password" required>
+
+                <button type="submit" class="register-btn">Register</button>
+            </div>
+        </form>
+    </div>
 
 
     <script src="javascript/sidebar.js"></script>
