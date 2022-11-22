@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&family=Poppins&display=swap');
+
+body{
+    padding: 0;
+    margin: 0;
+}
+#navBar{
+    
+    background-color: #2d202f;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 20px black;
+    
+    
+}
+.navBar-open{
+    width: 82%;
+}
+.navBar-close{
+    width: 100%;
+}
+
+.rightNav{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 500px;
+    padding-right: 70px;
+}
+.rightNav li{
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    color: white;
+    padding: 0 30px 0 30px;
+}
+.leftNav{
+    width: 800px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+.leftNav-open{
+    padding-left: 18%;
+    transition: 0.7s;
+}
+.leftNav-close{
+    padding-left: 0;
+    transition: 0.7s;
+}
+.leftNav img{
+    padding-left: 5px;
+}
+.navBarImage{
+    width: 200px;
+}
