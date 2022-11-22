@@ -17,3 +17,7 @@
     width: 18%;
     overflow: visible;
 }
+.sidebar-close {
+    width: 0px;
+    overflow: hidden;
+}
