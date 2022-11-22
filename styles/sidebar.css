@@ -1,4 +1,4 @@
-.sidebar{
+.sidebar {
     position: fixed;
     height: 100%;
     background-color: #2d202f;
@@ -7,15 +7,13 @@
     z-index: 1;
     transition: 0.7s;
     box-shadow: 0 0 40px black;
-    
+
     width: 0px;
     overflow: hidden;
-    
+
 }
-.sidebar-open{
-    width: 270px;
+
+.sidebar-open {
+    width: 18%;
     overflow: visible;
-}
-.sidebar-open{
-    
 }
