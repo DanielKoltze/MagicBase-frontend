@@ -72,3 +72,38 @@ body {
 .navBarImage {
     width: 200px;
 }
+
+/*Dropdown menu*/
+
+.dropdown-logo{
+    
+
+}
+
+.dropdown {
+
+}
+
+.dropdown-btn span{
+    color: white;
+    
+}
+.dropdown-content{
+    background-color: #2d202f;
+    box-shadow: 0 0 20px black;
+    position: relative;
+    display: none;
+    height: 10vh;
+   
+    transform: translate(100, -50%);
+}
+
+.dropdown-content a{
+   color: white;
+  
+  
+}
+
+.show{
+    display: block !important;
+}
