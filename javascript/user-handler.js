@@ -22,7 +22,8 @@ function login(){
     })
 }
 
- function getUser(userName){
+
+  function getUser(userName){
     const settings = {
         method: 'GET',
        }
@@ -31,7 +32,7 @@ function login(){
    
     }
 
-    async function createUser(user){
+    async function postUser(user){
         const settings = {
             method: 'POST',
             headers: {
@@ -41,4 +42,50 @@ function login(){
         
            makeRequest(`${BASE_URL}/user`, settings)
            
+    }
+
+    let signUpEmail = null
+    let signUpPassword = null
+    let signUpRepeatPassword = null
+    let signUpUserName = null
+    let signUpSubmitButton = null
+    const signUpButton = document.getElementById("sign-up-button")
+
+    signUpButton.addEventListener("click", createUser)
+
+    async function createUser(){
+      signUpEmail = document.getElementById("sign-up-email");
+      signUpPassword = document.getElementById("sign-up-password");
+      signUpRepeatPassword = document.getElementById("sign-up-repeat-password");
+      signUpUserName = document.getElementById("sign-up-user-name");
+      signUpSubmitButton.addEventListener("submit", (e) => {
+        e.preventDefault()
+
+        if(await checkIfUserExsist(userName)){
+          //besked om brugeren allered exister
+        } 
+        else if(signUpPassword === signUpRepeatPassword){
+          const user = {
+            email: signUpEmail.value,
+            password: signUpPassword.value,
+            userName: signUpUserName.value
+            
+          }
+          postUser(user);
+        }else{
+          //password og repeat password passer ikke sammen besked
+        }
+
+        
+      } );
+    }
+
+    async function checkIfUserExsist(userName){
+    getUser(userName).then ((user) => {
+      if(user != null){
+        return true;
+      }
+      return false;
+    } )
+
     }

@@ -45,7 +45,7 @@
                 </div>
                 <div id="dropdown-menu" class="dropdown-content">
                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#LogInModal">Log In</button>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#SignUpModal">Sign Up</button>
+                    <button type="button" id="sign-up-button" class="btn btn-primary" data-toggle="modal" data-target="#SignUpModal">Sign Up</button>
                 </div>
 
         </ul>
@@ -110,28 +110,28 @@
             <form style="color:white;">
 
                 <div class="form-outline mb-4">
-                    <input type="text" id="form3Example1cg" class="form-control form-control-lg"
+                    <input type="text" id="sign-up-user-name" class="form-control form-control-lg"
                         placeholder="Enter Username" />
-                    <label class="form-label" for="form3Example1cg">Username</label>
+                    <label class="form-label" for="sign-up-user-name">Username</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                    <input type="email" id="form3Example3cg" class="form-control form-control-lg"
+                    <input type="email" id="sign-up-email" class="form-control form-control-lg"
                         placeholder="Enter Email" />
-                    <label class="form-label" for="form3Example3cg">Email (Optional)</label>
+                    <label class="form-label" for="sign-up-email">Email (Optional)</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                    <input type="password" id="form3Example4cg" class="form-control form-control-lg"
+                    <input type="password" id="sign-up-password" class="form-control form-control-lg"
                         placeholder="Enter Password" />
-                    <label class="form-label" for="form3Example4cg">Password</label>
+                    <label class="form-label" for="sign-up-password">Password</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                    <input type="password" id="form3Example4cdg"
+                    <input type="password" id="sign-up-repeat-password"
                         class="form-control form-control-lg"
                         placeholder="Måske slette den her? Det er Bootstrap" />
-                    <label class="form-label" for="form3Example4cdg">Repeat your password</label>
+                    <label class="form-label" for="sign-up-repeat-password">Repeat your password</label>
                 </div>
 
             
@@ -142,7 +142,7 @@
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Create account</button>
+          <button type="button"  id= "sign-up-submit-button" class="btn btn-primary">Create account</button>
         </div>
       </div>
     </div>
