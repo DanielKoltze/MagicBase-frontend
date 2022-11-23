@@ -37,8 +37,10 @@ function login(){
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-           }, body: user
+           }, 
+           body: JSON.stringify(user) 
         }
+        console.log(settings.body);
         
            makeRequest(`${BASE_URL}/user`, settings)
            
@@ -54,21 +56,26 @@ function login(){
     signUpButton.addEventListener("click", createUser)
 
     async function createUser(){
+        console.log("sign-up-knap aktiveret")
       signUpEmail = document.getElementById("sign-up-email");
       signUpPassword = document.getElementById("sign-up-password");
       signUpRepeatPassword = document.getElementById("sign-up-repeat-password");
       signUpUserName = document.getElementById("sign-up-user-name");
-      signUpSubmitButton.addEventListener("submit", (e) => {
-        e.preventDefault()
+      signUpSubmitButton = document.getElementById("sign-up-submit-button");
+      console.log(signUpSubmitButton);
 
-        if(await checkIfUserExsist(userName)){
+      signUpSubmitButton.addEventListener("click", async (e) => {
+        console.log("hello");
+    
+
+        if(await checkIfUserExsist(signUpUserName.value)){
           //besked om brugeren allered exister
         } 
         else if(signUpPassword === signUpRepeatPassword){
           const user = {
             email: signUpEmail.value,
             password: signUpPassword.value,
-            userName: signUpUserName.value
+            username: signUpUserName.value
             
           }
           postUser(user);
