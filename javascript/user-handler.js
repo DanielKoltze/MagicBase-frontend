@@ -4,7 +4,7 @@
     const settings = {
         method: 'GET',
        }
-    fechData(`${BASE_URL}/user/${userName}`, settings)
+    makeRequest(`${BASE_URL}/user/${userName}`, settings)
     .then(
         (user) => {
             return user;
@@ -20,6 +20,6 @@
            }, body: user
         }
         
-           fechData(`${BASE_URL}/user`, settings)
+           makeRequest(`${BASE_URL}/user`, settings)
            
     }
