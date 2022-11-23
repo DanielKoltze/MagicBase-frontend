@@ -58,7 +58,7 @@ async function getUser(userName){
       console.log(signUpSubmitButton);
 
       signUpSubmitButton.addEventListener("click", async (e) => {
-        console.log("hello");
+        
     
         userExists = await checkIfUserExsist(signUpUserName.value)
 
@@ -76,6 +76,7 @@ async function getUser(userName){
           postUser(user);
         }else{
           //password og repeat password passer ikke sammen besked
+          console.log("du har ikke indtastet samme password")
         }
 
         
@@ -83,12 +84,13 @@ async function getUser(userName){
     }
 
     async function checkIfUserExsist(userName){
-    user = await getUser(userName);
-    console.log("in checkIfUserExists " + user)
-      if(user === null){
+    let response = await getUser(userName);
+
+    if(response.status === 500){
         return false;
       }
-      return true;
+    
+    return true;
      
 
     }
