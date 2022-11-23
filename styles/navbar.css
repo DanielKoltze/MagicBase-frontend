@@ -73,6 +73,13 @@ body {
     width: 200px;
 }
 
+
+.sidebarButton{
+    font-size: 34px;
+    color: white;
+    padding: 0px 10px;
+}
+
 /*Dropdown menu*/
 
 .dropdown-logo{
