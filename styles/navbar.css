@@ -73,40 +73,80 @@ body {
   color: white;
   padding: 0px 10px;
 }
+
 .sidebarButton {
   cursor: pointer;
 }
 
 
-/*Dropdown menu*/
+/*----- Dropdown Menu -----*/
 
-.dropdown{
- 
-}
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-
-
 .dropdown-btn span {
   color: white;
-  font-size: 50px; /*Størrelse på ikonet*/
+  font-size: 50px;
+  /*Størrelse på ikonet*/
+
 }
-.dropdown-content {
-  box-shadow: 0 0 20px black;
+
+.dropdown-menu-class {
+  box-shadow: 0 0 50px black;
   position: absolute;
-  display: none;
   z-index: 1;
-
+  width: 200px;
+  height: auto;
+  right: 0;
 }
 
-.dropdown-content a {
+.dropdown-content {
+  width: 100%;
+  height: 18vh;
+  background: #1e1e1e;
+  position: relative;
+  display: none;
+}
+
+.dropdown-content-btn{
   color: white;
+  font-size: 21px;
+  font-weight: 700;
+  width: 80%;
+  height: 40%;
+  border: none;
 }
+.dropdown-content-btn-login {
+  background-color: #2d202f;
+  position: absolute;
+  top: 27%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.dropdown-content-btn-signUp {
+  background-color: #2d202f;
+  position: absolute;
+  top: 73%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+.dropdown-content-btn:hover {
+  background-color: #271c29;
+  cursor: pointer;
+}
+
+.dropdown-content-btn:active{
+  background-color: #161117;
+}
+
+/*----- Dropdown Menu -----*/
 
 .show {
+  /*Slet hvis js ikke bruges*/
   display: block !important;
 }
 
