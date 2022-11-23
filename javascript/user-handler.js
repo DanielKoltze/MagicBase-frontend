@@ -3,36 +3,29 @@
 let loggedInUser = null
 login()
 function login(){
-    document.querySelector('.loginBtn').addEventListener('click', e => {
+    document.querySelector('.loginBtn').addEventListener('click', async (e) => {
         const username = document.querySelector('.logInUsernameInput').value
         const password = document.querySelector('.logInPasswordInput').value
-        const user = getUser(username)
-        user.then(userData => {
-          console.log(userData)
-          if(userData.password === password){
-            //hvis brugernavn og password er korrekt
-            loggedInUser = userData
-          }else{
-            //password ikke er korrekt
-          }
-        }).catch(error => {
-            //brugeren fandtes ikke gør noget
-        })
+        const user = await getUser(username)
+        console.log(user);
         
     })
 }
 
 
-  function getUser(userName){
+async function getUser(userName){
     const settings = {
         method: 'GET',
        }
        
-       return makeRequest(`${BASE_URL}/user/${userName}`, settings)
+       const user = await makeRequest(`${BASE_URL}/user/${userName}`, settings)
+       return user;
+       
    
     }
 
     async function postUser(user){
+        console.log("postUser bliver akt")
         const settings = {
             method: 'POST',
             headers: {
@@ -67,11 +60,13 @@ function login(){
       signUpSubmitButton.addEventListener("click", async (e) => {
         console.log("hello");
     
+        userExists = await checkIfUserExsist(signUpUserName.value)
 
-        if(await checkIfUserExsist(signUpUserName.value)){
+        if(userExists){
+            return
           //besked om brugeren allered exister
         } 
-        else if(signUpPassword === signUpRepeatPassword){
+        else if(signUpPassword.value === signUpRepeatPassword.value){
           const user = {
             email: signUpEmail.value,
             password: signUpPassword.value,
@@ -88,11 +83,15 @@ function login(){
     }
 
     async function checkIfUserExsist(userName){
-    getUser(userName).then ((user) => {
-      if(user != null){
-        return true;
+    user = await getUser(userName);
+    console.log("in checkIfUserExists " + user)
+      if(user === null){
+        return false;
       }
-      return false;
-    } )
+      return true;
+     
 
     }
+
+    
+    
