@@ -16,31 +16,15 @@ function login() {
 
 
     const user = await getUser(username);
-    console.log(user)
-    console.log(password)
-    console.log(user.password)
     const loginMessage = document.querySelector('.login-message')
     if (user.password === password) {
       //bruger eksisterer og kode korrekt
       loggedInUser = user
       const LogInModal = document.getElementById('LogInModal')
-      console.log(LogInModal)
-
-
-      /*
-      LogInModal.classList.remove('show')
-      LogInModal.style.paddingRight = '0px'
-      LogInModal.style.paddingRight = ('')
-      LogInModal.setAttribute('aria-hidden',"true")
-      LogInModal.removeAttribute('aria-modal')
-      LogInModal.style.display = 'none' 
-
-      const loginBtn = document.getElementById('loginBtn')
-  */
-      console.log("korrekt")
+      
+      //window.location.href = 'ikke defineret'; 
     } else {
-      //bruger findes allerede i databasen
-      console.log("brugeren findes ikke")
+      //bruger findes allerede i database
       loginMessage.innerHTML = "Username or password is incorrect"
       loginMessage.style.display = "block"
     }
@@ -92,7 +76,7 @@ async function createUser() {
     userExists = await checkIfUserExsist(signUpUserName.value);
     if (userExists) {
       // besked om, at brugeren allerede ekstisterer
-      errorMessage.textContent= "The user allredy exist. please try another username."
+      errorMessage.textContent= "The user already exist. Please try another username."
       console.log("brugeren eksisterer allerede");
       return;
     } else if (signUpPassword.value === signUpRepeatPassword.value) {
@@ -102,8 +86,9 @@ async function createUser() {
         username: signUpUserName.value,
       };
 
-      postUser(user);
-
+      await postUser(user);
+      loggedInUser = user
+      //window.location.href = 'ikke defineret'; 
     }
   });
 }
