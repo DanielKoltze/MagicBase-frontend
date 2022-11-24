@@ -66,18 +66,16 @@ async function createUser() {
         password: signUpPassword.value,
         username: signUpUserName.value,
       };
+
     postUser(user);
     
     }
   });
 }
 
+
 async function checkIfUserExsist(userName) {
   let response = await getUser(userName);
-  
-  console.log(response);
-  
-    
 
   if (response.httpStatus === "NOT_FOUND") {
     return false;
