@@ -53,8 +53,8 @@ async function postUser(user) {
     body: JSON.stringify(user),
   };
 
-   const addedUser = await makeRequest(`${BASE_URL}/user`, settings);
-   console.log(addedUser + "check123")
+   return addedUser = await makeRequest(`${BASE_URL}/user`, settings);
+   
 }
 
 
@@ -93,9 +93,10 @@ async function createUser() {
 
 
 
-       const addedUser= await postUser(user);
+       const addedUser = await postUser(user);
 
       loggedInUser = addedUser
+      console.log(addedUser)
       initLogin()
       //window.location.href = 'ikke defineret';
     }

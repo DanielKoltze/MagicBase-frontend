@@ -21,7 +21,7 @@ function template(name, templateFunction) {
 
 
 template("home", () => {
-  home();
+  //home();
 });
 template("my collection", () => {
   collection();

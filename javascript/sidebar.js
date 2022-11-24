@@ -15,8 +15,8 @@ sidebarButton.addEventListener('click', e => {
         leftNav.classList.remove('leftNav-close')
         isClosed = false
 
-        
-    }else{
+
+    } else {
         sideBar.classList.remove('sidebar-open')
         navBar.classList.remove('navBar-open')
         leftNav.classList.remove('leftNav-open')
@@ -24,8 +24,27 @@ sidebarButton.addEventListener('click', e => {
         navBar.classList.add('navBar-close')
         leftNav.classList.add('leftNav-close')
         isClosed = true
-        
+
     }
 
 })
-
+let toolSymbolCollection = true
+let toolSymbolDeck = true
+document.getElementById('tool-symbol-collection').addEventListener('click', e => {
+    if (toolSymbolCollection) {
+        $("#my-collection-input-container").show()
+        toolSymbolCollection = false
+    } else {
+        $("#my-collection-input-container").hide()
+        toolSymbolCollection = true
+    }
+})
+document.getElementById('tool-symbol-deck').addEventListener('click', e => {
+    if (toolSymbolDeck) {
+        $("#my-deck-input-container").show()
+        toolSymbolDeck = false
+    } else {
+        $("#my-deck-input-container").hide()
+        toolSymbolDeck = true
+    }
+})

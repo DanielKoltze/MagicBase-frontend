@@ -6,7 +6,7 @@ function collection(){
     const clone = template.content.cloneNode(true)
 
 
-
+    showDecks(container, displayInSidebar)
 
     appDiv.replaceChildren(clone)
 }

@@ -25,6 +25,9 @@
     overflow: hidden;
 }
 
+
+
+
 .sidebar-elements{
     display: flex;
     flex-direction: column;
@@ -33,12 +36,16 @@
 }
 .sidebar h1{
     text-align: center;
-    padding: 30px 0px 50px 0px;
+    padding: 30px 0px 30px 0px;
 }
 .sidebar-my-collection div{
     padding: 6px 0px;
-    border-top-style: 1px solid;
-    border-bottom-style: solid;
+}
+.sidebar-my-collection h2{
+    
+}
+.sidebar-my-collection{
+    width: 70%;
 }
 .deck-name-container, .deck-collection-container{
     display: flex;
@@ -49,4 +56,66 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+    align-items: center;
+    
+}
+.my-collection-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.tool-symbol{
+    font-size: 30px;
+}
+.deck-name-element-container p{
+    max-width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  
+}
+.delete-collection-symbol:hover{
+    cursor: pointer;
+}
+.deck-collection-element-container:hover, .deck-name-element-container:hover{
+    background-color: #512f57;
+    cursor: pointer;
+}
+.lock-symbol{
+    cursor:auto;
+}
+
+.deck-collection-element-container p, .deck-name-element-container p{
+    margin-bottom: 0px !important;
+}
+
+
+/*
+.deck-collection-element-container:nth-child(2n+1), .deck-name-element-container:nth-child(2n+1){
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+}*/
+.deck-collection-element-container, .deck-name-element-container{
+    border-top: 1px solid;
+}
+
+.deck-collection-element-container:last-child, .deck-name-element-container:last-child{
+    border-bottom: 1px solid;
+}
+
+.my-collection-input{
+    width: 85%;
+}
+.my-collection-input-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid;
+}
+.my-collection-input-container{
+    margin-bottom: 0rem !important;
+}
+.my-collection-input-container:hover, #tool-symbol-deck:hover, #tool-symbol-collection:hover{
+    cursor: pointer;
 }

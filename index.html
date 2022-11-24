@@ -51,8 +51,9 @@
                         <button type="button" id="sign-up-button"
                             class="dropdown-content-btn dropdown-content-btn-signUp" data-toggle="modal"
                             data-target="#SignUpModal">Sign Up</button>
-                            <button type="button" id="logout-button"
-                            class="dropdown-content-btn dropdown-content-btn-logout" style="display: none">Log Out</button>
+                        <button type="button" id="logout-button"
+                            class="dropdown-content-btn dropdown-content-btn-logout" style="display: none">Log
+                            Out</button>
                     </div>
                 </div>
             </div>
@@ -65,42 +66,74 @@
 
     <!--SIDEBAR-->
     <div class="sidebar">
-        <h1>COLLECTION</h1> 
-       <div class="sidebar-elements">
-        <div class="sidebar-my-collection"><!--FLEX -->
-            <div> <!--FLEX -->
-                <h2>My decks</h2>
-                <div class="deck-name-container">
-                    <div class="deck-name-element-container">
-                        <p>Fire</p>
-                        <p>❌</p>
+        <h1>COLLECTION</h1>
+        <div class="sidebar-elements">
+            <div class="sidebar-my-collection">
+                <!--FLEX -->
+                <div>
+                    <!--FLEX -->
+                    <div class="my-collection-header">
+                        <h3>My decks</h2>
+                            <h2 class="tool-symbol" id="tool-symbol-deck">🔧</h2>
                     </div>
-                    <div class="deck-name-element-container">
-                        <p>tempo warrior</p>
-                        <p>❌</p>
-                    </div>
-                    <div class="deck-name-element-container">
-                        <p>tempo warrior</p>
-                        <p>❌</p>
-                    </div>
+                    <div class="deck-name-container">
+                        <div class="deck-collection-container my-collection-input-container" id="my-deck-input-container" style="display: none;">
+                            <input type="text" class="my-collection-input" placeholder="Enter name">
+                            <span>✔️</span>
+                        </div>
+                        <div class="deck-name-element-container">
+                            <p>Beast Hunter</p>
+                            <p><span class="lock-symbol">🔓</span><span class="delete-collection-symbol">❌</span></p>
+                        </div>
+                        <div class="deck-name-element-container">
+                            <p>tempo warrior</p>
+                            <p><span class="lock-symbol">🔒</span><span class="delete-collection-symbol">❌</span></p>
+                        </div>
+                        <div class="deck-name-element-container">
+                            <p>tempo warrior dragon fire high dmg mega cool </p>
+                            <div>
+                                <p><span class="lock-symbol">🔒</span><span class="delete-collection-symbol">❌</span>
+                                </p>
+                            </div>
+                        </div>
 
+                    </div>
+                </div>
+                <div>
+                    <!--FLEX -->
+                    <div class="my-collection-header">
+                        <h3>My collection</h2>
+                            <h2 class="tool-symbol" id="tool-symbol-collection">🔧</h2>
+                    </div>
+                    <div class="deck-collection-container my-collection-input-container" id="my-collection-input-container" style="display: none;">
+                        <input type="text" class="my-collection-input" placeholder="Enter name">
+                        <span>✔️</span>
+                    </div>
+                    <div class="deck-collection-container">
+                        <div class="deck-collection-element-container">
+                            <p>Curse Imp Warlock</p>
+                            <p><span class="lock-symbol">🔒</span><span class="delete-collection-symbol">❌</span></p>
+                        </div>
+                        <div class="deck-collection-element-container">
+                            <p>Skeleton Mage</p>
+                            <p><span class="lock-symbol">🔒</span><span class="delete-collection-symbol">❌</span></p>
+                        </div>
+                        <div class="deck-collection-element-container">
+                            <p>Imp Warlock</p>
+                            <p><span class="lock-symbol">🔓</span><span class="delete-collection-symbol">❌</span></p>
+                        </div>
+                        <div class="deck-collection-element-container">
+                            <p>Aggro Druid</p>
+                            <p><span class="lock-symbol">🔒</span><span class="delete-collection-symbol">❌</span></p>
+                        </div>
+                        <div class="deck-collection-element-container">
+                            <p>Naga Priest</p>
+                            <p><span class="lock-symbol">🔒</span><span class="delete-collection-symbol">❌</span></p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div>   <!--FLEX -->
-                <h2>My collections</h2>
-                <div class="deck-collection-container">
-                    <div class="deck-collection-element-container">
-                    <p>Fire</p>
-                    <p>❌</p>
-                </div>
-                <div class="deck-collection-element-container">
-                    <p>Fire</p>
-                    <p>❌</p>
-                </div>
-                </div>
-            </div> 
         </div>
-       </div>
     </div>
     <!--SIDEBAR-->
 
@@ -181,9 +214,9 @@
                         </div>
                         <div class="error-message-container">
                             <p id="error-message" style="color: red; position: absolute; bottom: -30px; left: 10px;">
-                                
+
                             </p>
-                            
+
                         </div>
 
 
@@ -232,7 +265,7 @@
                             <label class="form-label" for="form3Example4cg">Password</label>
                         </div>
                         <p class="login-message" style="color: red; position: absolute; bottom: -30px; left: 10px;">
-                            </p>
+                        </p>
 
                     </form>
 
@@ -304,7 +337,6 @@
     <script src="javascript/handlers/user-handler.js"></script>
     <script src="javascript/sidebar.js"></script>
     <script src="javascript/navbar.js"></script>
-    <script src="javascript/collectionHandler.js"></script>
     <script src="javascript/handlers/deck-handler.js"></script>
     <script src="javascript/handlers/collectionHandler.js"></script>
     <script src="javascript/collection.js"></script>

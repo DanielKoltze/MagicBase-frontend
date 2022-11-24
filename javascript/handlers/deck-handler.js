@@ -1,4 +1,4 @@
-let myDeckLink= document.getElementById("my-decks")
+
 let container = document.getElementById("decks-item")
 
 async function getDecks(userId) {
@@ -10,13 +10,13 @@ async function getDecks(userId) {
     return decks;
 }
 
-
+    /*
     myDeckLink.addEventListener("click", () => {
         console.log("show deck to danni")
     });
-
+*/
     async function showDecks(container, displayMode){
-        const decks = await getDecks(loggedInUser.userId)
+        const decks = await getDecks(loggedInUser.id)
         displayMode(container, decks)
 
     }
@@ -31,4 +31,3 @@ async function getDecks(userId) {
        
 
     }
-    showDecks(container, displayInSidebar)
