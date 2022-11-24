@@ -51,8 +51,11 @@ async function postUser(user) {
     body: JSON.stringify(user),
   };
 
-  makeRequest(`${BASE_URL}/user`, settings);
+   const addedUser = await makeRequest(`${BASE_URL}/user`, settings);
+   console.log(addedUser + "check123")
 }
+
+
 async function createUser() {
   signUpEmail = document.getElementById("sign-up-email");
   signUpPassword = document.getElementById("sign-up-password");
@@ -86,8 +89,9 @@ async function createUser() {
         username: signUpUserName.value,
       };
 
-      await postUser(user);
-      loggedInUser = user
+       const addedUser= await postUser(user);
+      
+      loggedInUser = addedUser
       //window.location.href = 'ikke defineret'; 
     }
   });

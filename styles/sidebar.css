@@ -20,3 +20,9 @@
     width: 0px;
     overflow: hidden;
 }
+
+.sidebar-open{
+    color: white;
+    display: flex;
+    justify-content: center;
+}

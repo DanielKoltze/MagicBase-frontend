@@ -63,15 +63,20 @@
 
     <!--SIDEBAR-->
     <div class="sidebar">
-       <div>
-        <h1>COLLECTION</h1> 
+       <div class="sidebar-option">
+        <h1>MY COLLECTION</h1> 
         <div><!--FLEX -->
-            <div> <!--FLEX -->
-                MY DECK
-                FIRE DECK
+            <div class="sidebar-items"> <!--FLEX -->
+                <container>
+                    <h3 id="my-decks">My Decks</h3>
+                    <div id="decks-item">
+                    </div>
+                </container>
+                
+            
             </div>
             <div>   <!--FLEX -->
-                MY COLLECTIONS
+               * MY COLLECTIONS*
             </div> 
         </div>
        </div>
@@ -279,6 +284,7 @@
     <script src="javascript/sidebar.js"></script>
     <script src="javascript/navbar.js"></script>
     <script src="javascript/collectionHandler.js"></script>
+    <script src="javascript/deck-handler.js"></script>
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
