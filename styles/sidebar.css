@@ -24,3 +24,29 @@
     width: 0px;
     overflow: hidden;
 }
+
+.sidebar-elements{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.sidebar h1{
+    text-align: center;
+    padding: 30px 0px 50px 0px;
+}
+.sidebar-my-collection div{
+    padding: 6px 0px;
+    border-top-style: 1px solid;
+    border-bottom-style: solid;
+}
+.deck-name-container, .deck-collection-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.deck-collection-element-container, .deck-name-element-container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}

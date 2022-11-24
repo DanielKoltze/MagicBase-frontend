@@ -117,6 +117,7 @@ function initLogin(){
     loginButton.style.display = "none"
     signUpButton.style.display = "none"
     logOutButton.style.display = "block"
+    window.location.href = DEFAULT_ROUTE + COLLECTION_ROUTE
     
 }
 logOutButton.addEventListener('click', logOut)
@@ -139,4 +140,5 @@ function logOut(){
     leftNav.classList.add('leftNav-close')
     isClosed = true
   }
+  window.location.href = DEFAULT_ROUTE
 }
