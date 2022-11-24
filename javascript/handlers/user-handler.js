@@ -17,11 +17,12 @@ function login() {
 
     const user = await getUser(username);
     const loginMessage = document.querySelector('.login-message')
-    initLogin()
+
     if (user.password === password) {
       //bruger eksisterer og kode korrekt
       loggedInUser = user
       const LogInModal = document.getElementById('LogInModal')
+      initLogin()
       
       //window.location.href = 'ikke defineret'; 
     } else {
