@@ -65,15 +65,20 @@
 
     <!--SIDEBAR-->
     <div class="sidebar">
-       <div>
-        <h1>COLLECTION</h1> 
+       <div class="sidebar-option">
+        <h1>MY COLLECTION</h1>
         <div><!--FLEX -->
-            <div> <!--FLEX -->
-                MY DECK
-                FIRE DECK
+            <div class="sidebar-items"> <!--FLEX -->
+                <container>
+                    <h3 id="my-decks">My Decks</h3>
+                    <div id="decks-item">
+                    </div>
+                </container>
+
+
             </div>
             <div>   <!--FLEX -->
-                MY COLLECTIONS
+               * MY COLLECTIONS*
             </div> 
         </div>
        </div>
@@ -81,12 +86,12 @@
     <!--SIDEBAR-->
 
     <div id="container">
-        
+
     </div>
 
     <template id="my-collection">
 
-     
+
     </template>
 
     <!-- create-user-container
@@ -280,6 +285,8 @@
     <script src="javascript/handlers/user-handler.js"></script>
     <script src="javascript/sidebar.js"></script>
     <script src="javascript/navbar.js"></script>
+    <script src="javascript/collectionHandler.js"></script>
+    <script src="javascript/deck-handler.js"></script>
     <script src="javascript/handlers/collectionHandler.js"></script>
     <script src="javascript/collection.js"></script>
 

@@ -23,7 +23,7 @@ function login() {
       loggedInUser = user
       const LogInModal = document.getElementById('LogInModal')
       initLogin()
-      
+
       //window.location.href = 'ikke defineret'; 
     } else {
       //bruger findes allerede i database
@@ -53,8 +53,11 @@ async function postUser(user) {
     body: JSON.stringify(user),
   };
 
-  makeRequest(`${BASE_URL}/user`, settings);
+   const addedUser = await makeRequest(`${BASE_URL}/user`, settings);
+   console.log(addedUser + "check123")
 }
+
+
 async function createUser() {
   signUpEmail = document.getElementById("sign-up-email");
   signUpPassword = document.getElementById("sign-up-password");
@@ -88,10 +91,13 @@ async function createUser() {
         username: signUpUserName.value,
       };
 
-      await postUser(user);
-      loggedInUser = user
+
+
+       const addedUser= await postUser(user);
+
+      loggedInUser = addedUser
       initLogin()
-      //window.location.href = 'ikke defineret'; 
+      //window.location.href = 'ikke defineret';
     }
   });
 }
@@ -112,12 +118,12 @@ const logOutButton = document.querySelector('.dropdown-content-btn-logout')
 const loginButton = document.querySelector('.dropdown-content-btn-login')
 
 function initLogin(){
-  
+
     sidebarButton.style.display = "block"
     loginButton.style.display = "none"
     signUpButton.style.display = "none"
     logOutButton.style.display = "block"
-    
+
 }
 logOutButton.addEventListener('click', logOut)
 
