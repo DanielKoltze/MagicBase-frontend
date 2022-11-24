@@ -13,8 +13,39 @@ function login() {
   document.querySelector(".loginBtn").addEventListener("click", async (e) => {
     const username = document.querySelector(".logInUsernameInput").value;
     const password = document.querySelector(".logInPasswordInput").value;
+
+
     const user = await getUser(username);
-    console.log(user);
+    console.log(user)
+    console.log(password)
+    console.log(user.password)
+    const loginMessage = document.querySelector('.login-message')
+    if (user.password === password) {
+      //bruger eksisterer og kode korrekt
+      loggedInUser = user
+      const LogInModal = document.getElementById('LogInModal')
+      console.log(LogInModal)
+
+
+      /*
+      LogInModal.classList.remove('show')
+      LogInModal.style.paddingRight = '0px'
+      LogInModal.style.paddingRight = ('')
+      LogInModal.setAttribute('aria-hidden',"true")
+      LogInModal.removeAttribute('aria-modal')
+      LogInModal.style.display = 'none' 
+
+      const loginBtn = document.getElementById('loginBtn')
+  */
+      console.log("korrekt")
+    } else {
+      //bruger findes allerede i databasen
+      console.log("brugeren findes ikke")
+      loginMessage.innerHTML = "Username or password is incorrect"
+      loginMessage.style.display = "block"
+    }
+
+
   });
 }
 
@@ -27,7 +58,7 @@ async function getUser(userName) {
   return user;
 }
 async function postUser(user) {
-  
+
   const settings = {
     method: "POST",
     headers: {
@@ -67,8 +98,8 @@ async function createUser() {
         username: signUpUserName.value,
       };
 
-    postUser(user);
-    
+      postUser(user);
+
     }
   });
 }

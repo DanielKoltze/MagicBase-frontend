@@ -150,4 +150,15 @@ body {
   display: block !important;
 }
 
-/*Dropdown Menu*/
+/*Dropdown Login Modal*/
+.login-message{
+  display: none;
+
+}
+
+.form-outline{
+  margin-top: auto !important;
+}
+
+
+/*Dropdown Login Modal*/

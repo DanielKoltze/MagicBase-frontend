@@ -36,7 +36,7 @@
             <li>Collection</li>
 
             <div class="dropdown">
-                <div onclick="dropdownFunction()" class="dropdown-btn">
+                <div class="dropdown-btn">
                     <span class="material-symbols-outlined">
                         account_circle
                     </span>
@@ -44,10 +44,12 @@
                 </div>
                 <div id="dropdown-menu" class="dropdown-menu-class">
                     <div class="dropdown-content">
-                    <button type="button" class="dropdown-content-btn dropdown-content-btn-login" data-toggle="modal" data-target="#LogInModal">Log
-                        In</button>
-                    <button type="button" id="sign-up-button" class="dropdown-content-btn dropdown-content-btn-signUp" data-toggle="modal"
-                        data-target="#SignUpModal">Sign Up</button>
+                        <button type="button" class="dropdown-content-btn dropdown-content-btn-login"
+                            data-toggle="modal" data-target="#LogInModal">Log
+                            In</button>
+                        <button type="button" id="sign-up-button"
+                            class="dropdown-content-btn dropdown-content-btn-signUp" data-toggle="modal"
+                            data-target="#SignUpModal">Sign Up</button>
                     </div>
                 </div>
             </div>
@@ -160,7 +162,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Login in</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Log in</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -168,7 +170,7 @@
                 <div class="modal-body">
 
 
-                    <form style="color:white;">
+                    <form style="color:white; position: relative;" class="login-form">
 
                         <div class="form-outline mb-4">
                             <input type="text" id="form3Example1cg"
@@ -183,7 +185,8 @@
                                 class="form-control form-control-lg logInPasswordInput" placeholder="Enter Password" />
                             <label class="form-label" for="form3Example4cg">Password</label>
                         </div>
-
+                        <p class="login-message" style="color: red; position: absolute; bottom: -30px; left: 10px;">
+                            sjkahdgkhasdg</p>
 
                     </form>
 
