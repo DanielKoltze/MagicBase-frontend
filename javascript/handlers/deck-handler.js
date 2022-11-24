@@ -1,5 +1,5 @@
 let myDeckLink= document.getElementById("my-decks")
-
+let container = document.getElementById("decks-item")
 
 async function getDecks(userId) {
     const settings = {
@@ -15,8 +15,20 @@ async function getDecks(userId) {
         console.log("show deck to danni")
     });
 
-    async function showDecks(){
+    async function showDecks(container, displayMode){
         const decks = await getDecks(loggedInUser.userId)
+        displayMode(container, decks)
 
     }
 
+    function displayInSidebar(container, items){
+        items.forEach(deck => {
+            container.innerHTML += 
+            `<div class= "deck-sidebar-item">
+            <p>${deck.name}</p>
+            </div>`
+        });
+       
+
+    }
+    showDecks(container, displayInSidebar)
