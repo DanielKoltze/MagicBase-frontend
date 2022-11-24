@@ -26,7 +26,7 @@
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  max-height: max-content;
+  max-height: inherit;
   overflow-y: auto;
   border: 7px solid black;
 }
@@ -46,55 +46,57 @@
 }
 /*SIDEBAR SUBMIT BUTTON*/
 .createCard-sideBar-btn {
-    font-size: 18px;
-    border: 2px solid #333;
-    transition: all .35s;
-    background-color: #3e2a41;
-    color: white;
+  font-size: 18px;
+  border: 2px solid #333;
+  transition: all 0.35s;
+  background-color: #3e2a41;
+  color: white;
 }
 
 .createCard-sideBar-btn:hover {
-    background: #271c29;
-
+  background: #271c29;
 }
 .createCard-sideBar-btn:active {
-    background: #1b131c;
+  background: #1b131c;
 }
 /*-----SIDEBAR-----*/
 
 /*-----CARDPAGE-----*/
 .createCard-page {
   border: 3px solid rgb(27, 1, 223);
-  max-height: inherit;
-}
-.createCard-page-nested {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 0.2fr 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  max-height: inherit;
 }
+
+/*-----CARDPAGE SEARCHBAR-----*/
 .createCard-page-searchbar {
-}
+    width: 80%;
+    height: 50%;
+    margin: 0 auto;
+  }
+
+/*-----CARDPAGE-----*/
 .createCard-page-cardpage {
-}
-.createCard-page-cardpage-nested {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    max-height: inherit;
+    border: 4px solid yellow;
+    overflow-Y: auto;
+   
 }
 
 /*MAGIC CARDS*/
 .createCard-page-cardpage-card {
+   
 }
-/*-----CARDPAGE-----*/
-
-
-/*-----CARDPAGE SEARCHBAR-----*/
-.createCard-page-searchbar {
-border: 3px blue;
-width: 100%;
+.cardElements {
+    
 }
-/*-----CARDPAGE SEARCHBAR-----*/
+
