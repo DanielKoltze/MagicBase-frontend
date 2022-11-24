@@ -63,16 +63,29 @@
 
     <!--SIDEBAR-->
     <div class="sidebar">
-        <ul>
-            <li>Collection</li>
-            <li>My decks</li>
-        </ul>
+       <div>
+        <h1>COLLECTION</h1> 
+        <div><!--FLEX -->
+            <div> <!--FLEX -->
+                MY DECK
+                FIRE DECK
+            </div>
+            <div>   <!--FLEX -->
+                MY COLLECTIONS
+            </div> 
+        </div>
+       </div>
     </div>
     <!--SIDEBAR-->
 
+    <div id="container">
+        hej
+    </div>
 
+    <template id="my-collection">
 
-    <template></template>
+        <p>123</p>
+    </template>
 
     <!-- create-user-container
     <div class="create-user-container">
@@ -115,7 +128,7 @@
                 <div class="modal-body">
 
 
-                    <form style="color:white;">
+                    <form style="color:white;  position: relative;">
 
                         <div class="form-outline mb-4">
                             <input type="text" id="sign-up-user-name" class="form-control form-control-lg"
@@ -141,7 +154,7 @@
                             <label class="form-label" for="sign-up-repeat-password">Repeat your password</label>
                         </div>
                         <div class="error-message-container">
-                            <p id="error-message" >
+                            <p id="error-message" style="color: red; position: absolute; bottom: -30px; left: 10px;">
                                 
                             </p>
                             
@@ -193,7 +206,7 @@
                             <label class="form-label" for="form3Example4cg">Password</label>
                         </div>
                         <p class="login-message" style="color: red; position: absolute; bottom: -30px; left: 10px;">
-                            sjkahdgkhasdg</p>
+                            </p>
 
                     </form>
 
@@ -209,7 +222,9 @@
     </div>
 
 
-    <!-- Placeholder-->
+
+
+    <!-- Placeholder
     <div class="cardContainer" style="width: 100%; height: 100vh;">
         <div class="cardElements">
             <img class="cardImg"
@@ -256,13 +271,14 @@
             </div>
         </div>
     </div>
-
-    <!--BOOTSTRAP FORM-->
-
+-->
+    <!-- Js -->
+    <script src="javascript/router.js"></script>
     <script src="javascript/fetch.js"></script>
     <script src="javascript/user-handler.js"></script>
     <script src="javascript/sidebar.js"></script>
     <script src="javascript/navbar.js"></script>
+    <script src="javascript/collectionHandler.js"></script>
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

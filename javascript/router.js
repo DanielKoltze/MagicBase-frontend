@@ -1,6 +1,9 @@
 let routes = {};
 let templates = {};
 
+const DEFAULT_ROUTE = "http://127.0.0.1:5501/index.html"
+const COLLECTION_ROUTE = "/collection"
+
 const appDiv = document.getElementById("container");
 
 function route(path, template) {
@@ -20,7 +23,7 @@ template("home", () => {
   home();
 });
 template("my collection", () => {
-  about();
+  collection();
 });
 template("inspiration", () => {
   admin();
@@ -28,7 +31,7 @@ template("inspiration", () => {
 
 route("/admin", "admin");
 route("/", "home");
-route("/about", "about");
+route(COLLECTION_ROUTE, "my collection");
 
 function resolveRoute(route) {
   try {
