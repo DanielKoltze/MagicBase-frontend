@@ -1,0 +1,58 @@
+.createCard-container {
+  display: grid;
+  grid-template-columns: 0.3fr 1fr;
+  grid-template-rows: ;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+/*SIDEBAR*/
+.createCard-sideBar {
+  grid-area: 1 / 1 / 2 / 2;
+}
+.createCard-sideBar-nested {
+  display: grid;
+  grid-template-columns: 1fr 0.1fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.createCard-sideBar-card {
+  grid-area: 1 / 1 / 2 / 2;
+}
+.createCard-sideBar-card-remove {
+  grid-area: 1 / 2 / 2 / 3;
+}
+.createCard-sideBar-btn {
+  grid-area: 2 / 1 / 3 / 3;
+}
+/*SIDEBAR*/
+
+/*CARDPAGE*/
+.createCard-page {
+  grid-area: 1 / 2 / 2 / 3;
+}
+.createCard-page-nested {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.2fr 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.createCard-page-searchbar {
+  grid-area: 1 / 1 / 2 / 2;
+}
+.createCard-page-cardpage {
+  grid-area: 2 / 1 / 3 / 2;
+}
+.createCard-page-cardpage-nested {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.createCard-page-cardpage-card {
+    grid-area: 1 / 1 / 2 / 2;
+}
+/*CARDPAGE*/
