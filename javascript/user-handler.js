@@ -17,6 +17,7 @@ function login() {
 
     const user = await getUser(username);
     const loginMessage = document.querySelector('.login-message')
+    initLogin()
     if (user.password === password) {
       //bruger eksisterer og kode korrekt
       loggedInUser = user
@@ -88,6 +89,7 @@ async function createUser() {
 
       await postUser(user);
       loggedInUser = user
+      initLogin()
       //window.location.href = 'ikke defineret'; 
     }
   });
@@ -102,4 +104,38 @@ async function checkIfUserExsist(userName) {
     return false;
   }
   return true;
+}
+
+
+const logOutButton = document.querySelector('.dropdown-content-btn-logout')
+const loginButton = document.querySelector('.dropdown-content-btn-login')
+
+function initLogin(){
+  
+    sidebarButton.style.display = "block"
+    loginButton.style.display = "none"
+    signUpButton.style.display = "none"
+    logOutButton.style.display = "block"
+    
+}
+logOutButton.addEventListener('click', logOut)
+
+function logOut(){
+  loggedInUser = null
+
+  sidebarButton.style.display = "none"
+  loginButton.style.display = "block"
+  signUpButton.style.display = "block"
+  logOutButton.style.display = "none"
+
+
+  if(isClosed === false){
+    sideBar.classList.remove('sidebar-open')
+    navBar.classList.remove('navBar-open')
+    leftNav.classList.remove('leftNav-open')
+    sideBar.classList.add('sidebar-close')
+    navBar.classList.add('navBar-close')
+    leftNav.classList.add('leftNav-close')
+    isClosed = true
+  }
 }

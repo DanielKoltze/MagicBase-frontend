@@ -10,12 +10,26 @@
 
     width: 0px;
     overflow: hidden;
+    white-space: nowrap;
 }
+/*
+@keyframes leftToRight {
+    0%{
+        left: 0;
+        
+    }
+    100%{
+        left: 18%;
+    }
+}*/
 
 .sidebar-open {
     width: 18%;
+    transition: width 0.7s;
     overflow: visible;
+    animation: leftToRight 0.7s;
 }
+
 .sidebar-close {
     width: 0px;
     overflow: hidden;
