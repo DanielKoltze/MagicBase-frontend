@@ -79,16 +79,20 @@ async function createUser() {
   signUpSubmitButton.addEventListener("click", async (e) => {
     const passwordInput = signUpPassword.value;
     const repeatedPasswordInput = signUpRepeatPassword.value;
+    const errorMessage = document.getElementById("error-message")
 
     if (passwordInput != repeatedPasswordInput) {
-      // mangler besked om at passwords ikke matcher
+      // besked om at passwords ikke matcher
+      errorMessage.textContent= "Your passwords do not match!"
+      
       console.log("passwords matcher ikke");
       return;
     }
 
     userExists = await checkIfUserExsist(signUpUserName.value);
     if (userExists) {
-      //mangler besked om, at brugeren allerede ekstisterer
+      // besked om, at brugeren allerede ekstisterer
+      errorMessage.textContent= "The user allredy exist. please try another username."
       console.log("brugeren eksisterer allerede");
       return;
     } else if (signUpPassword.value === signUpRepeatPassword.value) {
@@ -103,6 +107,7 @@ async function createUser() {
     }
   });
 }
+
 
 
 async function checkIfUserExsist(userName) {
