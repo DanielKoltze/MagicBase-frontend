@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&family=Poppins&display=swap");
+
 .sidebar {
     position: fixed;
     height: 100%;
@@ -118,4 +120,8 @@
 }
 .my-collection-input-container:hover, #tool-symbol-deck:hover, #tool-symbol-collection:hover{
     cursor: pointer;
+}
+
+.sidebar h1, .my-collection-header h3, .deck-name-element-container p, .deck-collection-element-container p{
+    font-family: "Poppins", sans-serif;
 }
