@@ -1,4 +1,5 @@
 function collection(){
+    console.log('hhhh')
     if(loggedInUser == null){
         window.location.href = DEFAULT_ROUTE; 
     }

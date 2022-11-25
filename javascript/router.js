@@ -7,6 +7,7 @@ const COLLECTION_ROUTE = "#/collection"
 const appDiv = document.getElementById("container");
 
 function route(path, template) {
+  
   if (typeof template === "function") {
     return (routes[path] = template);
   } else if (typeof template === "string") {
@@ -20,19 +21,13 @@ function template(name, templateFunction) {
 }
 
 
-template("home", () => {
-  //home();
-});
+
 template("my collection", () => {
   collection();
 });
-template("inspiration", () => {
-  admin();
-});
 
-route("/admin", "admin");
-route("/", "home");
-route(COLLECTION_ROUTE, "my collection");
+
+route("/collection", "my collection");
 
 function resolveRoute(route) {
   try {

@@ -76,14 +76,6 @@
   height: inherit;
 }
 
-/*-----CARDPAGE SEARCHBAR-----*/
-.createCard-page-searchbar {
-  width: 80%;
-  height: 100%;
-  margin: 0 auto;
-}
-
-/*-----CARDPAGE-----*/
 .createCard-page-cardpage {
   padding: 2%;
   display: grid;
@@ -95,6 +87,14 @@
   border: 4px solid yellow;
   overflow-y: auto;
 }
+
+/*-----CARDPAGE SEARCHBAR-----*/
+.createCard-page-searchbar {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+}
+
 
 /*MAGIC CARDS*/
 .createCard-page-cardpage-card{
