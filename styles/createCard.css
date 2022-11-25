@@ -5,20 +5,20 @@
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 
-  max-height: 85vh;
   background-color: rgb(82, 15, 15);
   border: 7px solid black;
+  height: 85vh;
 }
 
 /*-----SIDEBAR-----*/
 .createCard-sideBar {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 0.105fr;
+  grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   border: 3px solid rgb(231, 15, 15);
-  max-height: inherit;
+  height: inherit;
 }
 .createCard-sideBar-nested {
   display: grid;
@@ -26,23 +26,27 @@
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  max-height: inherit;
+  height: inherit;
   overflow-y: auto;
   border: 7px solid black;
 }
 .createCard-sideBar-card-nested {
   display: grid;
-  grid-template-columns: 1fr 0.1fr;
-  grid-template-rows: 1fr 0.2fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-template-rows: 1fr;
+  height: 60px; /*SIDEBAR */
 }
+.createCard-sideBar-card-nested-text{
+
+}
+
 /*Sidebar*/
 .createCard-sideBar-card {
   border: 3px solid orange;
+  flex: 1;
 }
 .createCard-sideBar-card-btn-remove {
-  border: 3px solid red;
+  width: 10%;
+  border: 3px solid rgb(233, 224, 224);
 }
 /*SIDEBAR SUBMIT BUTTON*/
 .createCard-sideBar-btn {
@@ -66,37 +70,45 @@
   border: 3px solid rgb(27, 1, 223);
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 0.2fr 1fr;
+  grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  max-height: inherit;
+  height: inherit;
 }
 
 /*-----CARDPAGE SEARCHBAR-----*/
 .createCard-page-searchbar {
-    width: 80%;
-    height: 50%;
-    margin: 0 auto;
-  }
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+}
 
 /*-----CARDPAGE-----*/
 .createCard-page-cardpage {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    max-height: inherit;
-    border: 4px solid yellow;
-    overflow-Y: auto;
-   
+  padding: 2%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  height: inherit;
+  border: 4px solid yellow;
+  overflow-y: auto;
 }
 
 /*MAGIC CARDS*/
-.createCard-page-cardpage-card {
-   
+.createCard-page-cardpage-card{
+  border-radius: 5%; /*Til shadow omkring kort*/
+}
+.createCard-page-cardpage-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px gold;
+  cursor: pointer;
+}
+.createCard-page-cardpage-card:active {
+  transform: scale(1);
+  box-shadow: 0 0 30px black;
+  cursor: wait;
 }
 .cardElements {
-    
 }
-
