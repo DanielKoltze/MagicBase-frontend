@@ -17,7 +17,7 @@
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  border: 3px solid rgb(231, 15, 15);
+  border: 3px solid rgb(9, 156, 82);
   height: inherit;
 }
 .createCard-sideBar-nested {
@@ -27,26 +27,68 @@
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   height: inherit;
-  overflow-y: auto;
   border: 7px solid black;
+  width: 100%;
 }
 .createCard-sideBar-card-nested {
-  display: grid;
-  grid-template-rows: 1fr;
-  height: 60px; /*SIDEBAR */
+  width: 100%;
+  border: 5px solid red;
+  overflow-y: auto;
 }
-.createCard-sideBar-card-nested-text {
+.createCard-sideBar-card-container {
+  border: 1px solid yellow;
+  width: 100%;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  background: transparent;
+  position:relative;
+  margin-bottom: 2%;
 }
 
-/*Sidebar*/
-.createCard-sideBar-card {
-  border: 3px solid orange;
-  flex: 1;
+.createCard-sideBar-card-background-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: 80% 15%;
 }
+.createCard-sideBar-card-image-shadow {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(31,30,30,1) 10%, rgba(143,0,0,0) 50%, rgba(31,30,30,1) 90%);
+}
+
+
+.createCard-sideBar-card-nested-text {
+  height: 100%;
+  width: 80%;
+  position: absolute;
+  right: 10%;
+  top: 15%;
+  
+  font-family: 'cooperplate, sans-serif';
+  font-weight: 900;
+  color: white;
+  font-size: 20px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+ 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .createCard-sideBar-card-btn-remove {
+  border: none;
+  height: 100%;
   width: 10%;
-  border: 3px solid rgb(233, 224, 224);
+  position: absolute;
+  right: 1%;
+
 }
+/*SIDEBAR */
+
 /*SIDEBAR SUBMIT BUTTON*/
 .createCard-sideBar-btn {
   font-size: 18px;
@@ -124,15 +166,17 @@
 .createCard-page-cardpage-card {
   border-radius: 5%; /*Til shadow omkring kort*/
 }
-.createCard-page-cardpage-card:hover {
+
+.cardElements {
+  border-radius: 5%; /*Til shadow omkring kort*/
+}
+.cardElements:hover {
   transform: scale(1.05);
   box-shadow: 0 0 30px gold;
   cursor: pointer;
 }
-.createCard-page-cardpage-card:active {
+.cardElements:active {
   transform: scale(1);
   box-shadow: 0 0 30px black;
   cursor: wait;
-}
-.cardElements {
 }
