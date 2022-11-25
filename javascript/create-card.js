@@ -11,6 +11,8 @@ function searchbarInput() {
 }
 const addCardList = []
 
+
+
 /*
 const cardtest = {
     apiId: "",
@@ -51,7 +53,7 @@ async function displayCardsInCreateCard(searchWord) {
             const sideBarBtn = document.createElement('button')
             sideBarBtn.classList.add('createCard-sideBar-card-btn-remove')
             sideBarBtn.innerHTML = '❌'
-            sideBarDiv.classList.add('createCard-sideBar-card-nested')
+            sideBarDiv.classList.add('createCard-sideBar-card-nested-text')
             sideBarDiv.innerHTML = cardObject.name;
             sideBarBtn.addEventListener('click', e => {
                 sideBarDiv.remove()
