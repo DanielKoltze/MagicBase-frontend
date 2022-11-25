@@ -45,21 +45,30 @@ async function displayCardsInCreateCard(searchWord) {
         </div>`;
     cardImageDiv.addEventListener("click", (e) => {
       //lav færdig med de elementer vi skal bruge
-      const cardObject = {
-        apiId: card.id,
-        name: card.name,
-        oracleText: card.oracle_text,
-        rarity: card.rarity,
-        typeline: card.type_line,
-        //power: card.,
-        //toughness: "",
-        convertedManaCost: card.cmc,
-        setName: card.set_name,
-        euroPrice: card.prices.eur,
-        imageUrl: card.image_uris.png,
-        quantity: 1, //1 indtil videre da den funktionalitet ikke er lavet endnnu
-        collectionId: 1, //senere lave en dropdown hvor mna kan adde kort til en specifik
+        let cardObject
+    
+         cardObject = {
+          apiId: card.id,
+          name: card.name,
+          oracleText: card.oracle_text,
+          rarity: card.rarity,
+          typeLine: card.type_line,
+          power: null,
+          toughness: null,
+          convertedManaCost: card.cmc,
+          setName: card.set_name,
+          euroPrice: card.prices.eur,
+          imageUrl: card.image_uris.png,
+          quantity: 1, //1 indtil videre da den funktionalitet ikke er lavet endnnu
+          collectionId: 1, //senere lave en dropdown hvor mna kan adde kort til en specifik
       };
+
+      if(cardObject.typeLine.includes("Creature")){
+        cardObject.power = card.power
+        cardObject.toughness = card.toughness
+      }
+
+
       addCardList.push(cardObject);
 
       const sideBarCardsContainer = document.createElement("div");
@@ -120,6 +129,7 @@ const submitCreateCardsBtn = document.querySelector(".createCard-sideBar-btn");
 
 submitCreateCardsBtn.addEventListener("click", (e) => {
   addCardList.forEach(async (card) => {
+        console.log(card)
     const settings = {
       method: "POST",
       headers: {
