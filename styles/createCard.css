@@ -1,0 +1,102 @@
+.createCard-container {
+  display: grid;
+  grid-template-columns: 0.3fr 1fr;
+  grid-template-rows: ;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+  max-height: 85vh;
+  background-color: rgb(82, 15, 15);
+  border: 7px solid black;
+}
+
+/*-----SIDEBAR-----*/
+.createCard-sideBar {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 0.105fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  border: 3px solid rgb(231, 15, 15);
+  max-height: inherit;
+}
+.createCard-sideBar-nested {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  max-height: inherit;
+  overflow-y: auto;
+  border: 7px solid black;
+}
+.createCard-sideBar-card-nested {
+  display: grid;
+  grid-template-columns: 1fr 0.1fr;
+  grid-template-rows: 1fr 0.2fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+/*Sidebar*/
+.createCard-sideBar-card {
+  border: 3px solid orange;
+}
+.createCard-sideBar-card-btn-remove {
+  border: 3px solid red;
+}
+/*SIDEBAR SUBMIT BUTTON*/
+.createCard-sideBar-btn {
+  font-size: 18px;
+  border: 2px solid #333;
+  transition: all 0.35s;
+  background-color: #3e2a41;
+  color: white;
+}
+
+.createCard-sideBar-btn:hover {
+  background: #271c29;
+}
+.createCard-sideBar-btn:active {
+  background: #1b131c;
+}
+/*-----SIDEBAR-----*/
+
+/*-----CARDPAGE-----*/
+.createCard-page {
+  border: 3px solid rgb(27, 1, 223);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.2fr 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  max-height: inherit;
+}
+
+/*-----CARDPAGE SEARCHBAR-----*/
+.createCard-page-searchbar {
+    width: 80%;
+    height: 50%;
+    margin: 0 auto;
+  }
+
+/*-----CARDPAGE-----*/
+.createCard-page-cardpage {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    max-height: inherit;
+    border: 4px solid yellow;
+    overflow-Y: auto;
+   
+}
+
+/*MAGIC CARDS*/
+.createCard-page-cardpage-card {
+   
+}
+.cardElements {
+    
+}
+
