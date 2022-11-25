@@ -82,6 +82,14 @@ async function displayCardsInCreateCard(searchWord) {
   });
 }
 
+//ENTER KEY klikker på søge knappen
+const searchbarEnterBtn = document.getElementById("searchbar-input");
+searchbarEnterBtn.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        searchbarInput()
+    }
+});
+
 const submitCreateCardsBtn = document.querySelector('.createCard-sideBar-btn')
 
 submitCreateCardsBtn.addEventListener('click', e => {
