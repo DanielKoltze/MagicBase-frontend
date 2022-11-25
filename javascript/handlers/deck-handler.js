@@ -17,6 +17,7 @@ async function getDecks(userId) {
 */
     async function showDecks(container, displayMode){
         const decks = await getDecks(loggedInUser.id)
+        console.log(decks);
         displayMode(container, decks)
 
     }

@@ -124,7 +124,7 @@ function initLogin(){
     loginButton.style.display = "none"
     signUpButton.style.display = "none"
     logOutButton.style.display = "block"
-    window.location.href = DEFAULT_ROUTE + COLLECTION_ROUTE
+    window.location.href = COLLECTION_ROUTE
     
 }
 logOutButton.addEventListener('click', logOut)
