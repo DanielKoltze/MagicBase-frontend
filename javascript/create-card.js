@@ -74,8 +74,10 @@ async function displayCardsInCreateCard(searchWord) {
       const sideBarCardsContainer = document.createElement("div");
       const sideBarDiv = document.createElement("div");
       const sideBarBtn = document.createElement("button");
-      sideBarBtn.classList.add("createCard-sideBar-card-btn-remove");
-      sideBarBtn.innerHTML = "❌";
+      const sideBarBtnIcon = document.createElement("span");
+      sideBarBtn.classList.add("createCard-sideBar-card-btn-remove", "material-symbols-outlined");
+      sideBarBtn.classList.add("createCard-sideBar-card-btn-remove")
+      sideBarBtn.innerHTML = "delete";
       sideBarBtn.style.display = "none";
       sideBarDiv.classList.add("createCard-sideBar-card-nested-text");
       sideBarCardsContainer.classList.add("createCard-sideBar-card-container");
@@ -86,9 +88,6 @@ async function displayCardsInCreateCard(searchWord) {
       imageElementShadow.classList.add("createCard-sideBar-card-image-shadow");
       imageElement.src = cardObject.imageUrl;
       imageElement.classList.add("createCard-sideBar-card-background-image");
-     
-
-
       //-------------------------Test----------------
 
 
@@ -112,6 +111,7 @@ async function displayCardsInCreateCard(searchWord) {
       sideBarCardsContainer.appendChild(imageElementShadow);
       sideBarCardsContainer.appendChild(sideBarDiv);
       sideBarCardsContainer.appendChild(sideBarBtn);
+  
     });
     cardpageContainer.appendChild(cardImageDiv);
   });

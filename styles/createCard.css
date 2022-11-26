@@ -5,8 +5,7 @@
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 
-  background-color: rgb(82, 15, 15);
-  border: 7px solid black;
+  background-color: rgb(45, 32, 47);
   height: 85vh;
 }
 
@@ -17,7 +16,6 @@
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  border: 3px solid rgb(9, 156, 82);
   height: inherit;
 }
 .createCard-sideBar-nested {
@@ -32,18 +30,23 @@
 }
 .createCard-sideBar-card-nested {
   width: 100%;
-  border: 5px solid red;
   overflow-y: auto;
 }
 .createCard-sideBar-card-container {
-  border: 1px solid yellow;
+  border-radius: 5px;
+  border: solid 5px;
+  border-color: #303030;
   width: 100%;
   height: 42px;
   display: flex;
   justify-content: center;
   background: transparent;
   position:relative;
-  margin-bottom: 2%;
+  margin-bottom: 1%;
+}
+.createCard-sideBar-card-container:hover {
+  border-color: #fff;
+  cursor: pointer;
 }
 
 .createCard-sideBar-card-background-image {
@@ -51,6 +54,7 @@
   height: auto;
   object-fit: cover;
   object-position: 80% 15%;
+  pointer-events: none;
 }
 .createCard-sideBar-card-image-shadow {
   width: 100%;
@@ -58,6 +62,7 @@
   position: absolute;
   pointer-events: none;
   background: linear-gradient(90deg, rgba(31,30,30,1) 10%, rgba(143,0,0,0) 50%, rgba(31,30,30,1) 90%);
+
 }
 
 
@@ -66,7 +71,7 @@
   width: 80%;
   position: absolute;
   right: 10%;
-  top: 15%;
+  top: 10%;
   
   font-family: 'cooperplate, sans-serif';
   font-weight: 900;
@@ -80,11 +85,13 @@
 }
 
 .createCard-sideBar-card-btn-remove {
+  color: white;
   border: none;
   height: 100%;
   width: 10%;
   position: absolute;
-  right: 1%;
+  right: 0;
+  background: transparent;
 
 }
 /*SIDEBAR */
