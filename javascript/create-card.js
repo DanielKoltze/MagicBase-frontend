@@ -34,7 +34,9 @@ const cardtest = {
 async function displayCardsInCreateCard(searchWord) {
   const object = await getDataFromExternalApi(searchWord);
   const cardpageContainer = document.querySelector(".createCard-page-cardpage");
-  const sidebarContainer = document.querySelector(".createCard-sideBar-card-nested");
+  const sidebarContainer = document.querySelector(
+    ".createCard-sideBar-card-nested"
+  );
   //clear container
   object.data.forEach((card) => {
     const cardImageDiv = document.createElement("div");
@@ -45,29 +47,28 @@ async function displayCardsInCreateCard(searchWord) {
         </div>`;
     cardImageDiv.addEventListener("click", (e) => {
       //lav færdig med de elementer vi skal bruge
-        let cardObject
-    
-         cardObject = {
-          apiId: card.id,
-          name: card.name,
-          oracleText: card.oracle_text,
-          rarity: card.rarity,
-          typeLine: card.type_line,
-          power: null,
-          toughness: null,
-          convertedManaCost: card.cmc,
-          setName: card.set_name,
-          euroPrice: card.prices.eur,
-          imageUrl: card.image_uris.png,
-          quantity: 1, //1 indtil videre da den funktionalitet ikke er lavet endnnu
-          collectionId: 1, //senere lave en dropdown hvor mna kan adde kort til en specifik
+      let cardObject;
+
+      cardObject = {
+        apiId: card.id,
+        name: card.name,
+        oracleText: card.oracle_text,
+        rarity: card.rarity,
+        typeLine: card.type_line,
+        power: null,
+        toughness: null,
+        convertedManaCost: card.cmc,
+        setName: card.set_name,
+        euroPrice: card.prices.eur,
+        imageUrl: card.image_uris.png,
+        quantity: 1, //1 indtil videre da den funktionalitet ikke er lavet endnnu
+        collectionId: 1, //senere lave en dropdown hvor mna kan adde kort til en specifik
       };
 
-      if(cardObject.typeLine.includes("Creature")){
-        cardObject.power = card.power
-        cardObject.toughness = card.toughness
+      if (cardObject.typeLine.includes("Creature")) {
+        cardObject.power = card.power;
+        cardObject.toughness = card.toughness;
       }
-
 
       addCardList.push(cardObject);
 
@@ -75,8 +76,11 @@ async function displayCardsInCreateCard(searchWord) {
       const sideBarDiv = document.createElement("div");
       const sideBarBtn = document.createElement("button");
       const sideBarBtnIcon = document.createElement("span");
-      sideBarBtn.classList.add("createCard-sideBar-card-btn-remove", "material-symbols-outlined");
-      sideBarBtn.classList.add("createCard-sideBar-card-btn-remove")
+      sideBarBtn.classList.add(
+        "createCard-sideBar-card-btn-remove",
+        "material-symbols-outlined"
+      );
+      sideBarBtn.classList.add("createCard-sideBar-card-btn-remove");
       sideBarBtn.innerHTML = "delete";
       sideBarBtn.style.display = "none";
       sideBarDiv.classList.add("createCard-sideBar-card-nested-text");
@@ -89,7 +93,6 @@ async function displayCardsInCreateCard(searchWord) {
       imageElement.src = cardObject.imageUrl;
       imageElement.classList.add("createCard-sideBar-card-background-image");
       //-------------------------Test----------------
-
 
       sideBarDiv.innerHTML = cardObject.name;
 
@@ -111,7 +114,6 @@ async function displayCardsInCreateCard(searchWord) {
       sideBarCardsContainer.appendChild(imageElementShadow);
       sideBarCardsContainer.appendChild(sideBarDiv);
       sideBarCardsContainer.appendChild(sideBarBtn);
-  
     });
     cardpageContainer.appendChild(cardImageDiv);
   });
@@ -129,7 +131,7 @@ const submitCreateCardsBtn = document.querySelector(".createCard-sideBar-btn");
 
 submitCreateCardsBtn.addEventListener("click", (e) => {
   addCardList.forEach(async (card) => {
-        console.log(card)
+    console.log(card);
     const settings = {
       method: "POST",
       headers: {
@@ -147,6 +149,19 @@ submitCreateCardsBtn.addEventListener("click", (e) => {
   );
   clearContainer.innerHTML = "";
 });
+
+//Lukker Modal når der klikkes udenfor
+const createCardModal = document.querySelector(".createCard-modal");
+document.onclick = function (e) {
+  if (e.target == createCardModal) {
+    createCardModal.style.display = "none";
+    cardpageContainer.style.display = "none";
+  }
+  //Hvis der bliver klikket i modalen, så forbliver den åben
+  if (e.target == cardpageContainer) {
+    cardpageContainer.style.display = "block";
+  }
+};
 
 async function getDataFromExternalApi(searchWord) {
   const setting = {
