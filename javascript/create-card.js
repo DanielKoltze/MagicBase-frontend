@@ -43,77 +43,127 @@ async function displayCardsInCreateCard(searchWord) {
     cardImageDiv.classList.add("createCard-page-cardpage-card");
     cardImageDiv.innerHTML += `
         <div class="cardElements">
-          <img class="cardImg" src="${card.image_uris.png}"alt="">
+          <img class="cardImg" src="${card.image_uris.png}" alt="does not load picture">
         </div>`;
+
+    let cardObject;
+
+    cardObject = {
+      apiId: card.id,
+      name: card.name,
+      oracleText: card.oracle_text,
+      rarity: card.rarity,
+      typeLine: card.type_line,
+      power: null,
+      toughness: null,
+      convertedManaCost: card.cmc,
+      setName: card.set_name,
+      euroPrice: card.prices.eur,
+      imageUrl: card.image_uris.png,
+      quantity: 1, //1 indtil videre da den funktionalitet ikke er lavet endnnu
+      collectionId: 1, //senere lave en dropdown hvor mna kan adde kort til en specifik
+
+    };
+
+    if (cardObject.typeLine.includes("Creature")) {
+      cardObject.power = card.power;
+      cardObject.toughness = card.toughness;
+    }
+
     cardImageDiv.addEventListener("click", (e) => {
       //lav færdig med de elementer vi skal bruge
-      let cardObject;
 
-      cardObject = {
-        apiId: card.id,
-        name: card.name,
-        oracleText: card.oracle_text,
-        rarity: card.rarity,
-        typeLine: card.type_line,
-        power: null,
-        toughness: null,
-        convertedManaCost: card.cmc,
-        setName: card.set_name,
-        euroPrice: card.prices.eur,
-        imageUrl: card.image_uris.png,
-        quantity: 1, //1 indtil videre da den funktionalitet ikke er lavet endnnu
-        collectionId: 1, //senere lave en dropdown hvor mna kan adde kort til en specifik
-      };
-
-      if (cardObject.typeLine.includes("Creature")) {
-        cardObject.power = card.power;
-        cardObject.toughness = card.toughness;
+      function checkIfCardAlreadyExist(cardList, card) {
+        for (let i = 0; i < cardList.length; i++) {
+          if (cardList[i].apiId === card.apiId) {
+            return true
+          }
+        }
       }
 
-      addCardList.push(cardObject);
+      if (checkIfCardAlreadyExist(addCardList, cardObject) === true) {
 
-      const sideBarCardsContainer = document.createElement("div");
-      const sideBarDiv = document.createElement("div");
-      const sideBarBtn = document.createElement("button");
-      const sideBarBtnIcon = document.createElement("span");
-      sideBarBtn.classList.add(
-        "createCard-sideBar-card-btn-remove",
-        "material-symbols-outlined"
-      );
-      sideBarBtn.classList.add("createCard-sideBar-card-btn-remove");
-      sideBarBtn.innerHTML = "delete";
-      sideBarBtn.style.display = "none";
-      sideBarDiv.classList.add("createCard-sideBar-card-nested-text");
-      sideBarCardsContainer.classList.add("createCard-sideBar-card-container");
 
-      //-------------------Test, men slettes muligvis ikke-------------------
-      const imageElement = document.createElement("img");
-      const imageElementShadow = document.createElement("div");
-      imageElementShadow.classList.add("createCard-sideBar-card-image-shadow");
-      imageElement.src = cardObject.imageUrl;
-      imageElement.classList.add("createCard-sideBar-card-background-image");
-      //-------------------------Test----------------
+        let value = cardObject.quantity += 1
+        const pTag = document.getElementById(cardObject.apiId + "_quantity")
+        pTag.innerHTML = value
+      } else {
 
-      sideBarDiv.innerHTML = cardObject.name;
 
-      //Viser og fjerner sletknap
-      sideBarCardsContainer.onmouseover = function () {
-        sideBarBtn.style.display = "block";
-      };
-      sideBarCardsContainer.onmouseout = function () {
+
+
+
+        const sideBarCardsContainer = document.createElement("div");
+        const sideBarDiv = document.createElement("div");
+        const sideBarBtn = document.createElement("button");
+        const sideBarBtnIcon = document.createElement("span");
+        sideBarBtn.classList.add(
+          "createCard-sideBar-card-btn-remove",
+          "material-symbols-outlined"
+        );
+        sideBarBtn.classList.add("createCard-sideBar-card-btn-remove");
+        sideBarBtn.innerHTML = "delete";
         sideBarBtn.style.display = "none";
-      };
+        sideBarDiv.classList.add("createCard-sideBar-card-nested-text");
+        sideBarCardsContainer.classList.add("createCard-sideBar-card-container");
 
-      //Sletter "gemte" kort fra sidebar
-      sideBarBtn.addEventListener("click", (e) => {
-        sideBarCardsContainer.remove();
-        addCardList.splice(cardObject, 1);
-      });
-      sidebarContainer.appendChild(sideBarCardsContainer);
-      sideBarCardsContainer.appendChild(imageElement);
-      sideBarCardsContainer.appendChild(imageElementShadow);
-      sideBarCardsContainer.appendChild(sideBarDiv);
-      sideBarCardsContainer.appendChild(sideBarBtn);
+        //-------------------Test, men slettes muligvis ikke-------------------
+        const imageElement = document.createElement("img");
+        const imageElementShadow = document.createElement("div");
+
+
+        //sæt dem til
+        //imageElementShadow.classList.add("createCard-sideBar-card-image-shadow");
+        imageElement.src = cardObject.imageUrl;
+
+
+        //sæt dem til
+        imageElement.classList.add("createCard-sideBar-card-background-image");
+
+        //antal
+        const quantityTag = document.createElement("p");
+        quantityTag.setAttribute("id", cardObject.apiId + "_quantity")
+        quantityTag.innerHTML = cardObject.quantity
+
+        sideBarCardsContainer.appendChild(quantityTag)
+        //-------------------------Test----------------
+
+        sideBarDiv.innerHTML = cardObject.name;
+
+        //Viser og fjerner sletknap
+        sideBarCardsContainer.onmouseover = function () {
+          sideBarBtn.style.display = "block";
+        };
+        sideBarCardsContainer.onmouseout = function () {
+          sideBarBtn.style.display = "none";
+        };
+
+        //Sletter "gemte" kort fra sidebar
+        sideBarBtn.addEventListener("click", (e) => {
+          if (cardObject.quantity > 1) {
+            const value = cardObject.quantity -= 1
+            const pTag = document.getElementById(cardObject.apiId + "_quantity")
+
+            pTag.innerHTML = value
+
+          } else {
+            sideBarCardsContainer.remove();
+            addCardList.splice(cardObject, 1);
+          }
+        });
+        sidebarContainer.appendChild(sideBarCardsContainer);
+        sideBarCardsContainer.appendChild(imageElement);
+        sideBarCardsContainer.appendChild(imageElementShadow);
+        sideBarCardsContainer.appendChild(sideBarDiv);
+        sideBarCardsContainer.appendChild(sideBarBtn);
+
+
+        addCardList.push(cardObject);
+
+      }
+
+
+
     });
     cardpageContainer.appendChild(cardImageDiv);
   });
@@ -151,6 +201,7 @@ submitCreateCardsBtn.addEventListener("click", (e) => {
 });
 
 //Lukker Modal når der klikkes udenfor
+/*
 const createCardModal = document.querySelector(".createCard-modal");
 document.onclick = function (e) {
   if (e.target == createCardModal) {
@@ -162,7 +213,7 @@ document.onclick = function (e) {
     cardpageContainer.style.display = "block";
   }
 };
-
+*/
 async function getDataFromExternalApi(searchWord) {
   const setting = {
     method: "GET",
