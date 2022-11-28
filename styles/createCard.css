@@ -59,6 +59,94 @@
   scrollbar-gutter: stable both-edges; /*Giver plads til scrollbar*/
   scrollbar-width: wide;
 }
+
+/*------Sidebar saved cards---------------------------------------------------------------------------------------*/
+
+.createCard-sideBar-card-container {
+  border-radius: 5px;
+  border: solid 5px;
+  border-color: #303030;
+  width: 100%;
+  height: 50px;
+  justify-content: center;
+  background: transparent;
+  margin-bottom: 1.2%;
+  position: relative;
+  z-index: 3;
+}
+.createCard-sideBar-card-container:hover {
+  border-color: gold;
+  cursor: pointer;
+  box-shadow: 0 0 10px gold;
+}
+
+.createCard-sideBar-card-background-image {
+  width: 100%;
+  height: 99%;
+  object-fit: cover;
+  object-position: 80% 15%;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+.createCard-sideBar-card-image-shadow {
+  width: inherit;
+  height: 99%;
+
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(31, 30, 30, 1) 10%,
+    rgba(143, 0, 0, 0) 50%,
+    rgba(31, 30, 30, 1) 90%
+  );
+  position: absolute;
+  z-index: 2;
+}
+
+.createCard-sideBar-card-container-info {
+  width: inherit;
+  height: 99%;
+  position: absolute;
+  z-index: 6;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 0.2fr 1fr 0.3fr;
+  align-items: center;
+  justify-items: center;
+}
+
+.createCard-sideBar-card-quantity {
+  color: gold;
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  height: 20%;
+}
+
+.createCard-sideBar-card-nested-text {
+  font-family: "cooperplate, sans-serif";
+  font-weight: 900;
+  color: white;
+  font-size: 12px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.createCard-sideBar-card-btn-remove {
+  color: white;
+  border: none;
+  background: transparent;
+}
+
+/*----------------------------------------------------------------------------------------------------*/
+
+/*-----CARD-----
 .createCard-sideBar-card-container {
   border-radius: 5px;
   border: solid 5px;
@@ -98,6 +186,20 @@
   );
 }
 
+.createCard-sideBar-card-container-info {
+}
+
+.createCard-sideBar-card-quantity {
+  color: white;
+  border: none;
+  height: 100%;
+  max-width: 10%;
+  position: absolute;
+  left: 0;
+  top: 15%;
+  background: red;
+}
+
 .createCard-sideBar-card-nested-text {
   height: 100%;
   width: 80%;
@@ -126,6 +228,8 @@
   right: 0;
   background: transparent;
 }
+
+*/
 
 .createCard-sideBar-card-btn-remove:hover {
   scale: 1.1;

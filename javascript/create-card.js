@@ -97,6 +97,7 @@ async function displayCardsInCreateCard(searchWord) {
         const sideBarDiv = document.createElement("div");
         const sideBarBtn = document.createElement("button");
         const sideBarBtnIcon = document.createElement("span");
+        const sideBarCardsContainerInfo = document.createElement("div");
         sideBarBtn.classList.add(
           "createCard-sideBar-card-btn-remove",
           "material-symbols-outlined"
@@ -106,26 +107,28 @@ async function displayCardsInCreateCard(searchWord) {
         sideBarBtn.style.display = "none";
         sideBarDiv.classList.add("createCard-sideBar-card-nested-text");
         sideBarCardsContainer.classList.add("createCard-sideBar-card-container");
+        sideBarCardsContainerInfo.classList.add("createCard-sideBar-card-container-info");
+
 
         //-------------------Test, men slettes muligvis ikke-------------------
         const imageElement = document.createElement("img");
         const imageElementShadow = document.createElement("div");
 
 
-        //sæt dem til
-        //imageElementShadow.classList.add("createCard-sideBar-card-image-shadow");
+
+        imageElementShadow.classList.add("createCard-sideBar-card-image-shadow");
         imageElement.src = cardObject.imageUrl;
 
 
-        //sæt dem til
+
         imageElement.classList.add("createCard-sideBar-card-background-image");
 
         //antal
         const quantityTag = document.createElement("p");
         quantityTag.setAttribute("id", cardObject.apiId + "_quantity")
+        quantityTag.className = "createCard-sideBar-card-quantity";
         quantityTag.innerHTML = cardObject.quantity
 
-        sideBarCardsContainer.appendChild(quantityTag)
         //-------------------------Test----------------
 
         sideBarDiv.innerHTML = cardObject.name;
@@ -154,8 +157,14 @@ async function displayCardsInCreateCard(searchWord) {
         sidebarContainer.appendChild(sideBarCardsContainer);
         sideBarCardsContainer.appendChild(imageElement);
         sideBarCardsContainer.appendChild(imageElementShadow);
-        sideBarCardsContainer.appendChild(sideBarDiv);
-        sideBarCardsContainer.appendChild(sideBarBtn);
+
+        //Info om kortet
+        sideBarCardsContainer.appendChild(sideBarCardsContainerInfo);
+        //Flyttet den her ned for at den sidder foran shadow
+        sideBarCardsContainerInfo.appendChild(quantityTag)
+        sideBarCardsContainerInfo.appendChild(sideBarDiv);
+        sideBarCardsContainerInfo.appendChild(sideBarBtn);
+
 
 
         addCardList.push(cardObject);
