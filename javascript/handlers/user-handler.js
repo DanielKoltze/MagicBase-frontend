@@ -125,6 +125,7 @@ function initLogin(){
     signUpButton.style.display = "none"
     logOutButton.style.display = "block"
     window.location.href = COLLECTION_ROUTE
+    $('#LogInModal').modal('hide');
     
 }
 logOutButton.addEventListener('click', logOut)
