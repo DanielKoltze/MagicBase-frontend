@@ -17,17 +17,28 @@ myDeckLink.addEventListener("click", () => {
 */
 async function showDecks(container, displayMode) {
     const decks = await getDecks(loggedInUser.id)
-    console.log(decks);
     displayMode(container, decks)
 
 }
 
-function displayInSidebar(container, items) {
+function displayDecksInSidebar2(container, items) {
+    container.innerHTML = ""
     items.forEach(deck => {
-        container.innerHTML +=
-            `<div class= "deck-sidebar-item">
-            <p>${deck.name}</p>
-            </div>`
+        console.log(deck)
+        container.innerHTML += `<div class="deck-name-element-container">
+        <p>${deck.name}</p>
+        <p id="removeCollectionBtn${deck.id + "_" + deck.name}">
+          <span class="lock-symbol">🔒</span
+          >
+      </div>`
+
+        const removeCollectionBtn = document.getElementById('removeCollectionBtn' + deck.id + "_" + deck.name)
+        const closeSymbol = document.createElement('span')
+        closeSymbol.innerHTML = "❌"
+        removeCollectionBtn.append(closeSymbol)
+        //closeSymbol.addEventListener('click',)
+
+
     });
 
 
