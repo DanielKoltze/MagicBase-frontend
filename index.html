@@ -25,13 +25,13 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-      crossorigin="anonymous"/>
+      crossorigin="anonymous"
+    />
 
-    <!-- JQuery -->  
+    <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-         
-    <!-- Fonts -->
 
+    <!-- Fonts -->
     <title>Magic</title>
   </head>
 
@@ -144,9 +144,10 @@
               <h3>My collection</h3>
               <h2 class="tool-symbol" id="tool-symbol-collection">➕</h2>
             </div>
-            <div class="deck-collection-container" id="deck-collection-container">
-
-
+            <div
+              class="deck-collection-container"
+              id="deck-collection-container"
+            >
               <div class="deck-collection-element-container">
                 <p>Curse Imp Warlock</p>
                 <p>
@@ -154,8 +155,6 @@
                   ><span class="delete-collection-symbol">❌</span>
                 </p>
               </div>
-
-
 
               <div class="deck-collection-element-container">
                 <p>Skeleton Mage</p>
@@ -413,8 +412,71 @@
         </div>
       </div>
     </div>
-
     <!-- Modal Create Card-->
+
+    <!-- Modal Create Collection-->
+    <div
+      id="LogInModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Log in</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form style="color: white; position: relative" class="login-form">
+              <div class="form-outline mb-4">
+                <input
+                  type="text"
+                  id="form3Example1cg"
+                  class="form-control form-control-lg logInUsernameInput"
+                  placeholder="Enter Collection Name"
+                />
+                <label class="form-label" for="form3Example1cg">Username</label>
+              </div>
+
+              <div class="form-outline mb-4">
+                <input
+                  type="password"
+                  id="form3Example4cg"
+                  class="form-control form-control-lg logInPasswordInput"
+                  placeholder="Enter Password"
+                />
+
+                <label class="form-label" for="form3Example4cg">Password</label>
+              </div>
+              <p
+                class="login-message"
+                style="
+                  color: red;
+                  position: absolute;
+                  bottom: -30px;
+                  left: 10px;
+                "
+              ></p>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary createCollectionBtn">
+              Create Collection
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Create Collection-->
 
     <!-- Placeholder
     <div class="cardContainer" style="width: 100%; height: 100vh;">
