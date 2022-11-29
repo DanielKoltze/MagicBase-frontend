@@ -51,3 +51,31 @@ async function deleteCollectionOrDeck(type, id) {
 
 }
 
+async function createCollection(collection) {
+
+  const settings = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(collection),
+  };
+
+  return addedCollection = await makeRequest(`${BASE_URL}/collection`, settings);
+
+}
+
+const createCollectionBtn = document.querySelector('#create-collection-btn')
+
+createCollectionBtn.addEventListener('click', async (e) => {
+  const createCollectionNameInput = document.querySelector('#createCollectionNameInput').value
+  const createCollectionDescriptionInput = document.querySelector('#createCollectionDescriptionInput').value
+  const createCollectionTypeInput = document.querySelector('#createCollectionTypeInput').value
+  const collection = {
+    userId: loggedInUser.id,
+    name: createCollectionNameInput,
+    description: createCollectionDescriptionInput,
+    type: createCollectionTypeInput,
+  };
+  await createCollection(collection)
+})
