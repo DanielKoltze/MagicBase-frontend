@@ -3,11 +3,7 @@ function collection(){
     if(loggedInUser == null){
         window.location.href = DEFAULT_ROUTE; 
     }
-    
-    const template = document.getElementById('my-collection')
-    const clone = template.content.cloneNode(true)
-    
-    sidebarDeckContainer = document.getElementById('container');
-    showDecks(sidebarDeckContainer, displayInSidebar)
+    const container = document.getElementById('deck-collection-container')
+    showCollections(container,displayCollectionsInSidebar)
 
 }

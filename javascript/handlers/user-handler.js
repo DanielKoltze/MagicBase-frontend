@@ -53,8 +53,8 @@ async function postUser(user) {
     body: JSON.stringify(user),
   };
 
-   return addedUser = await makeRequest(`${BASE_URL}/user`, settings);
-   
+  return addedUser = await makeRequest(`${BASE_URL}/user`, settings);
+
 }
 
 
@@ -72,8 +72,8 @@ async function createUser() {
 
     if (passwordInput != repeatedPasswordInput) {
       // besked om at passwords ikke matcher
-      errorMessage.textContent= "Your passwords do not match!"
-      
+      errorMessage.textContent = "Your passwords do not match!"
+
       console.log("passwords matcher ikke");
       return;
     }
@@ -81,7 +81,7 @@ async function createUser() {
     userExists = await checkIfUserExsist(signUpUserName.value);
     if (userExists) {
       // besked om, at brugeren allerede ekstisterer
-      errorMessage.textContent= "The user already exist. Please try another username."
+      errorMessage.textContent = "The user already exist. Please try another username."
       console.log("brugeren eksisterer allerede");
       return;
     } else if (signUpPassword.value === signUpRepeatPassword.value) {
@@ -93,7 +93,7 @@ async function createUser() {
 
 
 
-       const addedUser = await postUser(user);
+      const addedUser = await postUser(user);
 
       loggedInUser = addedUser
       console.log(addedUser)
@@ -118,18 +118,21 @@ async function checkIfUserExsist(userName) {
 const logOutButton = document.querySelector('.dropdown-content-btn-logout')
 const loginButton = document.querySelector('.dropdown-content-btn-login')
 
-function initLogin(){
+async function initLogin() {
+  
+  sidebarButton.style.display = "block"
+  loginButton.style.display = "none"
+  signUpButton.style.display = "none"
+  logOutButton.style.display = "block"
+  window.location.href = COLLECTION_ROUTE
 
-    sidebarButton.style.display = "block"
-    loginButton.style.display = "none"
-    signUpButton.style.display = "none"
-    logOutButton.style.display = "block"
-    window.location.href = COLLECTION_ROUTE
-    
+
+ 
+
 }
 logOutButton.addEventListener('click', logOut)
 
-function logOut(){
+function logOut() {
   loggedInUser = null
 
   sidebarButton.style.display = "none"
@@ -138,7 +141,7 @@ function logOut(){
   logOutButton.style.display = "none"
 
 
-  if(isClosed === false){
+  if (isClosed === false) {
     sideBar.classList.remove('sidebar-open')
     navBar.classList.remove('navBar-open')
     leftNav.classList.remove('leftNav-open')
