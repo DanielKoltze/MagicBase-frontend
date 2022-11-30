@@ -9,4 +9,14 @@ function collection() {
     const deckContainer = document.getElementById('deck-container')
     showDecks(deckContainer, displayDecksInSidebar2)
 
+    displayMyCollection();
+}
+
+
+function displayMyCollection() {
+    const myCollection = document.getElementById("display-my-collection")
+    myCollection.addEventListener('click', e => {
+        const showAllCollectionsModal = document.querySelector('.showAllCollections-modal')
+        showCollections(showAllCollectionsModal, displayAllCollectionsInModal)
+    })
 }

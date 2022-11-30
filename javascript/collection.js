@@ -1,3 +1,5 @@
+let collectionId = null;
+
 async function getCollectionsByUserId(userId) {
   const settings = {
     method: "GET",
@@ -5,6 +7,14 @@ async function getCollectionsByUserId(userId) {
   const collections = await makeRequest(BASE_URL + '/collection/user/' + userId, settings);
   return collections;
 }
+
+async function getCollectionById(collectionId) {
+  const settings = {
+    method: "GET",
+  };
+  return await makeRequest(BASE_URL + '/collection/' + collectionId, settings);
+}
+
 
 
 
@@ -87,12 +97,78 @@ function displayCollectionsInSidebar(container, items) {
         $('#delete-deck-collection-modal').modal('toggle')
        
       })
-
     })
-    */
+
+
 
   });
 }
+
+function displayAllCollectionsInModal(container, items) {
+  container.innerHTML = ""
+
+  items.forEach(collection => {
+
+    container.innerHTML += `<div class="showAllCollections-displayCollections-elements">
+      <p>${collection.name}</p>
+      <p id="removeCollectionBtn${collection.id + "_" + collection.name}">
+      <p id="goToCollectionBtn">GOTOMYCOLLECTIONBUTTON</p>
+      
+        <span class="lock-symbol">🔒</span
+        >
+    </div>`
+    //
+
+    const goToCollection = document.getElementById('goToCollectionBtn')
+
+    goToCollection.addEventListener('click', e => {
+      const showAllCollectionsModal = document.querySelector('.showAllCollections-modal')
+      const showCollectionByIdModal = document.querySelector('.showCollectionById-modal')
+      showAllCollectionsModal.style.display = "none"
+      showCollectionByIdModal.style.display = "block"
+      collectionId = collection.id;
+      showCollectionById(showCollectionByIdModal, displayCollectionById)
+    })
+    */
+
+    /*Remove Button til serere
+    const removeCollectionBtn = document.getElementById('removeCollectionBtn' + collection.id + "_" + collection.name)
+    const closeSymbol = document.createElement('span')
+    closeSymbol.innerHTML = "❌"
+    removeCollectionBtn.append(closeSymbol)
+    closeSymbol.addEventListener('click', e => {
+      $('#delete-deck-collection-modal').modal('show')
+      document.getElementById('delete-deck-collection-btn').addEventListener('click', e => {
+        deleteCollectionOrDeck("collection", collection.id)
+      })
+
+    })
+    Remove Button til serere*/
+
+  });
+
+}
+
+
+
+/*Show Collection by ID*/
+async function showCollectionById(container, displayMode) {
+  const data = await getCollectionById(collectionId)
+  displayMode(container, data)
+}
+
+function displayCollectionById(container, collection) {
+  container.innerHTML = ""
+  collection.collectionLineCards.forEach(clc => {
+    container.innerHTML += ` 
+      <div class="showCollectionById-displayCollections-elements">
+    <p>${clc.quantity}</p>
+      </div> `
+  }
+  )
+}
+/*Show Collection by ID*/
+
 async function deleteCollectionOrDeck(type, id) {
   const settings = {
     method: "DELETE",
