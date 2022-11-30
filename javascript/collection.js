@@ -82,27 +82,21 @@ function displayCollectionsInSidebar(container, items) {
       })
       function deleteModal() {
         document.body.removeChild(document.getElementById('delete-deck-collection-modal'))
-
       }
-
-
-
     }
-
-
-    /*
-    closeSymbol.addEventListener('click', e => {
-      $('#delete-deck-collection-modal').modal('show')
-      document.getElementById('delete-deck-collection-btn').addEventListener('click', async e => {
-        $('#delete-deck-collection-modal').modal('toggle')
-       
-      })
-    })
-
-
-
   });
 }
+
+/*
+closeSymbol.addEventListener('click', e => {
+  $('#delete-deck-collection-modal').modal('show')
+  document.getElementById('delete-deck-collection-btn').addEventListener('click', async e => {
+    $('#delete-deck-collection-modal').modal('toggle')
+   
+  })
+})
+*/
+
 
 function displayAllCollectionsInModal(container, items) {
   container.innerHTML = ""
@@ -129,7 +123,7 @@ function displayAllCollectionsInModal(container, items) {
       collectionId = collection.id;
       showCollectionById(showCollectionByIdModal, displayCollectionById)
     })
-    */
+
 
     /*Remove Button til serere
     const removeCollectionBtn = document.getElementById('removeCollectionBtn' + collection.id + "_" + collection.name)
@@ -141,7 +135,7 @@ function displayAllCollectionsInModal(container, items) {
       document.getElementById('delete-deck-collection-btn').addEventListener('click', e => {
         deleteCollectionOrDeck("collection", collection.id)
       })
-
+ 
     })
     Remove Button til serere*/
 
