@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="styles/card.css" />
     <link rel="stylesheet" href="styles/form.css" />
     <link rel="stylesheet" href="styles/createCard.css" />
+    <link rel="stylesheet" href="styles/collection.css" />
     <!-- BOOTSTRAP -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
@@ -142,27 +143,13 @@
             <!--FLEX -->
             <div class="my-collection-header">
               <h3>My collection</h3>
+              <h2 id="display-my-collection">🤡</h2>
               <h2 class="tool-symbol" id="tool-symbol-collection">➕</h2>
             </div>
-<<<<<<< HEAD
             <div
               class="deck-collection-container"
               id="deck-collection-container"
             >
-              <div class="deck-collection-element-container">
-                <p>Curse Imp Warlock</p>
-                <p>
-                  <span class="lock-symbol">🔒</span
-                  ><span class="delete-collection-symbol">❌</span>
-                </p>
-              </div>
-=======
-            <div class="deck-collection-container" id="deck-collection-container">
-
-
-
->>>>>>> 3ff3406a2a6b4eea2f4ba526714e1e9ca722d434
-
               <div class="deck-collection-element-container">
                 <p>Skeleton Mage</p>
                 <p>
@@ -198,18 +185,32 @@
     </div>
     <!--SIDEBAR-->
 
-
-
-    <div class="modal" tabindex="-1" role="dialog" id="delete-deck-collection-modal">
+    <div
+      class="modal"
+      tabindex="-1"
+      role="dialog"
+      id="delete-deck-collection-modal"
+    >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-           
           <div class="modal-body">
-            <p style="color: black;">Do you want to delete this deck?</p>
+            <p style="color: black">Do you want to delete this deck?</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary"  id="delete-deck-collection-btn">Delete</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="delete-deck-collection-btn"
+            >
+              Delete
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
           </div>
         </div>
       </div>
@@ -467,7 +468,9 @@
                   class="form-control form-control-lg logInUsernameInput"
                   placeholder="Enter Collection Name"
                 />
-                <label class="form-label" for="createCollectionNameInput">Name</label>
+                <label class="form-label" for="createCollectionNameInput"
+                  >Name</label
+                >
               </div>
 
               <div class="form-outline mb-4">
@@ -477,14 +480,15 @@
                   class="form-control form-control-lg logInPasswordInput"
                   placeholder="Enter Password"
                 />
-                <label class="form-label" for="createCollectionNameInput">Description</label>
+                <label class="form-label" for="createCollectionNameInput"
+                  >Description</label
+                >
               </div>
               <div class="">
                 <select id="createCollectionTypeInput">
                   <option value="WISH">Wishlist</option>
                   <option value="TRADE">Tradelist</option>
                 </select>
-                
               </div>
 
               <p
@@ -507,6 +511,34 @@
       </div>
     </div>
     <!-- Modal Create Collection-->
+
+    <!--Modal Show All Collections-->
+    <div class="showAllCollections-parent">
+      <div class="showAllCollections-title">TITLE</div>
+      <div class="showAllCollections-searchbar">SEARCHBAR</div>
+      <div class="showAllCollections-modal">
+        Modal
+        <div class="showAllCollections-displayCollections">
+          Collections
+          <div class="showAllCollections-displayCollections-elements">
+            Elements
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Modal Show All Collections-->
+
+    <!--Modal Show -->
+    <div class="showCollectionById-modal">
+      Collection Modal
+      <div class="showCollectionById-displayCollections">
+        Collection Collections
+        <div class="showCollectionById-displayCollections-elements">
+          Collection Elements
+        </div>
+      </div>
+    </div>
+    <!--Modal Show -->
 
     <!-- Placeholder
     <div class="cardContainer" style="width: 100%; height: 100vh;">
