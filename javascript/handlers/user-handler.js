@@ -118,15 +118,15 @@ async function checkIfUserExsist(userName) {
 const logOutButton = document.querySelector('.dropdown-content-btn-logout')
 const loginButton = document.querySelector('.dropdown-content-btn-login')
 
-function initLogin(){
+function initLogin() {
 
-    sidebarButton.style.display = "block"
-    loginButton.style.display = "none"
-    signUpButton.style.display = "none"
-    logOutButton.style.display = "block"
-    window.location.href = COLLECTION_ROUTE
-    $('#LogInModal').modal('hide');
-    
+  sidebarButton.style.display = "block"
+  loginButton.style.display = "none"
+  signUpButton.style.display = "none"
+  logOutButton.style.display = "block"
+  window.location.href = COLLECTION_ROUTE
+  $('#LogInModal').modal('hide');
+
 }
 logOutButton.addEventListener('click', logOut)
 

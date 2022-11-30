@@ -31,14 +31,65 @@ function displayCollectionsInSidebar(container, items) {
     const closeSymbol = document.createElement('span')
     closeSymbol.innerHTML = "❌"
     removeCollectionBtn.append(closeSymbol)
+
+    closeSymbol.addEventListener('click', openModal)
+
+    function openModal(type) {
+
+      document.body.innerHTML += `
+      <div class="modal" tabindex="-1" role="dialog" id="delete-deck-collection-modal" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+           
+          <div class="modal-body">
+            <p style="color: black;">Do you want to delete this collection?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" id="delete-deck-collection-btn">Delete</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="delete-deck-collection-close-btn">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+      `
+      const modal = $('#delete-deck-collection-modal')
+      modal.modal('show')
+      const btn = document.getElementById("delete-deck-collection-btn")
+      const closeBtn = document.getElementById('delete-deck-collection-close-btn')
+      closeBtn.addEventListener('click', e => {
+        deleteModal()
+
+        const collectionContainer = document.getElementById('deck-collection-container')
+        showCollections(collectionContainer, displayCollectionsInSidebar)
+      })
+      btn.addEventListener('click', async e => {
+        deleteModal()
+
+        await deleteCollectionOrDeck("collection", collection.id)
+        const collectionContainer = document.getElementById('deck-collection-container')
+        showCollections(collectionContainer, displayCollectionsInSidebar)
+
+      })
+      function deleteModal() {
+        document.body.removeChild(document.getElementById('delete-deck-collection-modal'))
+
+      }
+
+
+
+    }
+
+
+    /*
     closeSymbol.addEventListener('click', e => {
       $('#delete-deck-collection-modal').modal('show')
-      document.getElementById('delete-deck-collection-btn').addEventListener('click', e => {
-        console.log("asdfasd")
-        deleteCollectionOrDeck("collection", collection.id)
+      document.getElementById('delete-deck-collection-btn').addEventListener('click', async e => {
+        $('#delete-deck-collection-modal').modal('toggle')
+       
       })
 
     })
+    */
 
   });
 }
@@ -47,7 +98,7 @@ async function deleteCollectionOrDeck(type, id) {
     method: "DELETE",
   }
 
-  await makeRequest(BASE_URL + "/" + type + "/delete/" + id, settings)
+  await makeRequest(BASE_URL + "/" + type + "/" + id + "/user/" + loggedInUser.id, settings)
 
 }
 
@@ -64,7 +115,7 @@ async function createCollection(collection) {
   return addedCollection = await makeRequest(`${BASE_URL}/collection`, settings);
 
 }
-
+/*
 const createCollectionBtn = document.querySelector('#create-collection-btn')
 
 createCollectionBtn.addEventListener('click', async (e) => {
@@ -79,3 +130,5 @@ createCollectionBtn.addEventListener('click', async (e) => {
   };
   await createCollection(collection)
 })
+*/
+
