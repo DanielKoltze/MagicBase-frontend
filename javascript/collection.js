@@ -29,26 +29,18 @@ function displayCollectionsInSidebar(container, items) {
   container.innerHTML = ""
 
   items.forEach(collection => {
-
-    container.innerHTML += `<div class="deck-collection-element-container">
-      <p>${collection.name}</p>
-      <p id="removeCollectionBtn${collection.id + "_" + collection.name}">
-        <span class="lock-symbol">🔒</span
-        >
-    </div>`
-
-    const removeCollectionBtn = document.getElementById('removeCollectionBtn' + collection.id + "_" + collection.name)
-    const closeSymbol = document.createElement('span')
-    closeSymbol.classList.add('delete-collection')
-    closeSymbol.setAttribute('collection-id', collection.id)
-    closeSymbol.setAttribute('collection-name', collection.name)
-    closeSymbol.innerHTML = "❌"
-    removeCollectionBtn.append(closeSymbol)
-    
-    
+      container.innerHTML += `
+      <div class="deck-collection-element-container">
+          <p>${collection.name}</p>
+          <p id="removeCollectionBtn${collection.id + "_" + collection.name}">
+          <span class="lock-symbol">🔒</span>
+          <span class="delete-collection-button" collection-id="${collection.id}" collection-name="${collection.name}">❌</span>
+      </div>
+      `
   });
 
-  const deleteBtnElements = document.getElementsByClassName('delete-collection');
+  const deleteBtnElements = document.getElementsByClassName('delete-collection-button');
+  console.log(deleteBtnElements);
   
 
   for (let i = 0; i < deleteBtnElements.length ; i++) {
