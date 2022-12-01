@@ -1,16 +1,35 @@
-.showAllCollections-parent {
+.showAll-parent {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  border: 3px solid red;
 }
 
-.showAllCollections-title {
+.showAll-title-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+
+  border: 3px solid purple;
 }
 
-.showAllCollections-searchbar {
+.showAll-title {
+  border: 3px solid green;
 }
 
-.showAllCollections-modal {
+.showAll-searchbar {
+  border: 3px solid yellow;
+}
+
+.showAll-modal {
+  border: 3px solid blue;
+
+  max-width: inherit;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+.showAll-display {
+  border: 3px solid orange;
 }

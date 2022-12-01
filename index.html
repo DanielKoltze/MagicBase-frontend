@@ -99,11 +99,10 @@
             <!--FLEX -->
             <div class="my-collection-header">
               <h3>My decks</h3>
+              <h2 id="display-my-decks">💩</h2>
               <h2 class="tool-symbol" id="tool-symbol-deck">➕</h2>
             </div>
-            <div class="deck-name-container" id="deck-container">
-          
-            </div>
+            <div class="deck-name-container" id="deck-container"></div>
           </div>
           <div>
             <!--FLEX -->
@@ -112,19 +111,14 @@
               <h2 id="display-my-collection">🤡</h2>
               <h2 class="tool-symbol" id="tool-symbol-collection">➕</h2>
             </div>
-            <div class="deck-collection-container" id="deck-collection-container">
-
-
-
-
-             
-            </div>
+            <div
+              class="deck-collection-container"
+              id="deck-collection-container"
+            ></div>
           </div>
         </div>
       </div>
     </div>
-
-   
 
     <div id="container"></div>
 
@@ -424,22 +418,21 @@
     <!-- Modal Create Collection-->
 
     <!--Modal Show All Collections-->
-    <div class="showAllCollections-parent">
-      <div class="showAllCollections-title">TITLE</div>
-      <div class="showAllCollections-searchbar">SEARCHBAR</div>
-      <div class="showAllCollections-modal">
+    <div class="showAll-parent">
+      <div class="showAll-title-grid">
+        <div id="showAllCollections-title" class="showAll-title">TITLE</div>
+        <div class="showAll-searchbar">SEARCHBAR</div>
+      </div>
+      <div id="showAllCollections-modal" class="showAll-modal">
         Modal
-        <div class="showAllCollections-displayCollections">
-          Collections
-          <div class="showAllCollections-displayCollections-elements">
-            Elements
-          </div>
+        <div class="showAll-display">
+          <div class="showAllCollections-displayCollections-elements"></div>
         </div>
       </div>
     </div>
     <!--Modal Show All Collections-->
 
-    <!--Modal Show -->
+    <!--Modal Show Collection by ID-->
     <div class="showCollectionById-modal">
       Collection Modal
       <div class="showCollectionById-displayCollections">
@@ -449,7 +442,22 @@
         </div>
       </div>
     </div>
-    <!--Modal Show -->
+    <!--Modal Show Collection by ID-->
+
+    <!--Modal Show All Decks-->
+    <div class="showAll-parent">
+      <div class="showAll-title-grid">
+        <div id="showAllDecks-title" class="showAll-title">Deck TITLE</div>
+        <div class="showAll-searchbar">Deck SEARCHBAR</div>
+      </div>
+      <div id="showAllDecks-modal" class="showAll-modal">
+        Deck Modal
+        <div class="showAll-display">
+          <div class="showAllDecks-displayDecks-elements"></div>
+        </div>
+      </div>
+    </div>
+    <!--Modal Show All Decks-->
 
     <!-- Placeholder
     <div class="cardContainer" style="width: 100%; height: 100vh;">
@@ -506,6 +514,7 @@
     <script src="javascript/sidebar.js"></script>
     <script src="javascript/navbar.js"></script>
     <script src="javascript/handlers/deck-handler.js"></script>
+    <script src="javascript/deck.js"></script>
     <script src="javascript/collection.js"></script>
     <script src="javascript/handlers/collectionHandler.js"></script>
     <script src="javascript/create-card.js"></script>

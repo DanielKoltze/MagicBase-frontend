@@ -102,8 +102,7 @@ function displayAllCollectionsInModal(container, items) {
   container.innerHTML = ""
 
   items.forEach(collection => {
-
-    container.innerHTML += `<div class="showAllCollections-displayCollections-elements">
+    container.innerHTML += `<div class="showAll-display-elements">
       <p>${collection.name}</p>
       <p id="removeCollectionBtn${collection.id + "_" + collection.name}">
       <p id="goToCollectionBtn">GOTOMYCOLLECTIONBUTTON</p>
@@ -113,10 +112,11 @@ function displayAllCollectionsInModal(container, items) {
     </div>`
     //
 
+    console.log(collection)
     const goToCollection = document.getElementById('goToCollectionBtn')
 
     goToCollection.addEventListener('click', e => {
-      const showAllCollectionsModal = document.querySelector('.showAllCollections-modal')
+      const showAllCollectionsModal = document.getElementById('showAllCollections-modal')
       const showCollectionByIdModal = document.querySelector('.showCollectionById-modal')
       showAllCollectionsModal.style.display = "none"
       showCollectionByIdModal.style.display = "block"

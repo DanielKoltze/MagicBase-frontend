@@ -10,13 +10,14 @@ function collection() {
     showDecks(deckContainer, displayDecksInSidebar2)
 
     displayMyCollection();
+    displayMyDeck();
 }
 
 
 function displayMyCollection() {
     const myCollection = document.getElementById("display-my-collection")
     myCollection.addEventListener('click', e => {
-        const showAllCollectionsModal = document.querySelector('.showAllCollections-modal')
+        const showAllCollectionsModal = document.getElementById('showAllCollections-modal')
         showCollections(showAllCollectionsModal, displayAllCollectionsInModal)
     })
 }
