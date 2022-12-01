@@ -46,12 +46,16 @@ function displayDecksInSidebar2(container, items) {
   });
 }
 
-function displayMyDeck() {
+function displayMyDecks() {
   const myDecks = document.getElementById('display-my-decks')
   myDecks.addEventListener('click', e => {
     const showAllDecksModal = document.getElementById('showAllDecks-modal')
     showDecks(showAllDecksModal, displayAllDecksInModal)
-    console.log("Button clicked")
+    const decks_showAll_parent = document.getElementById('decks-showAll-parent')
+    decks_showAll_parent.style.display = "grid"
+
+    const collections_showAll_parent = document.getElementById('collections-showAll-parent')
+    collections_showAll_parent.style.display = "none"
   })
 }
 

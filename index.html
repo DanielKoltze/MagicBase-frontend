@@ -108,7 +108,7 @@
             <!--FLEX -->
             <div class="my-collection-header">
               <h3>My collection</h3>
-              <h2 id="display-my-collection">🤡</h2>
+              <h2 id="display-my-collections">🤡</h2>
               <h2 class="tool-symbol" id="tool-symbol-collection">➕</h2>
             </div>
             <div
@@ -350,6 +350,7 @@
       role="dialog"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
+      style="display: none"
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -418,10 +419,28 @@
     <!-- Modal Create Collection-->
 
     <!--Modal Show All Collections-->
-    <div class="showAll-parent">
+    <div
+      id="collections-showAll-parent"
+      class="showAll-parent"
+      style="display: none"
+    >
       <div class="showAll-title-grid">
-        <div id="showAllCollections-title" class="showAll-title">TITLE</div>
-        <div class="showAll-searchbar">SEARCHBAR</div>
+        <div id="showAllCollections-title" class="showAll-title">
+          MY COLLECTIONS
+        </div>
+        <!--Searchbar - Bruger css fra createCard.css-->
+        <div class="showAll-searchbar">
+          <input
+            type="text"
+            id="myCollections-searchbar-input"
+            class="myCollections-searchbar"
+            placeholder=" Search for any collections"
+          />
+          <button type="button" class="searchbar-btn">
+            <span class="material-symbols-outlined"> search </span>
+          </button>
+        </div>
+        <!--Searchbar-->
       </div>
       <div id="showAllCollections-modal" class="showAll-modal">
         Modal
@@ -429,26 +448,37 @@
           <div class="showAllCollections-displayCollections-elements"></div>
         </div>
       </div>
-    </div>
-    <!--Modal Show All Collections-->
-
-    <!--Modal Show Collection by ID-->
-    <div class="showCollectionById-modal">
-      Collection Modal
-      <div class="showCollectionById-displayCollections">
-        Collection Collections
-        <div class="showCollectionById-displayCollections-elements">
-          Collection Elements
+      <!--Modal Show All Collections-->
+      <!--Modal Show Collection by ID-->
+      <div
+        id="showCollectionById-modal"
+        class="showAll-modal"
+        style="display: block"
+      >
+        <div class="showCollectionById-displayCollections">
+          <div class="showCollectionById-displayCollections-elements"></div>
         </div>
       </div>
+      <!--Modal Show Collection by ID-->
     </div>
-    <!--Modal Show Collection by ID-->
 
     <!--Modal Show All Decks-->
-    <div class="showAll-parent">
+    <div id="decks-showAll-parent" class="showAll-parent" style="display: none">
       <div class="showAll-title-grid">
-        <div id="showAllDecks-title" class="showAll-title">Deck TITLE</div>
-        <div class="showAll-searchbar">Deck SEARCHBAR</div>
+        <div id="showAllDecks-title" class="showAll-title">MY DECKS</div>
+        <!--Searchbar - Bruger css fra createCard.css-->
+        <div class="showAll-searchbar">
+          <input
+            type="text"
+            id="myDecks-searchbar-input"
+            class="myCollections-searchbar"
+            placeholder=" Search for any decks"
+          />
+          <button type="button" class="searchbar-btn">
+            <span class="material-symbols-outlined"> search </span>
+          </button>
+        </div>
+        <!--Searchbar - Bruger css fra createCard.css-->
       </div>
       <div id="showAllDecks-modal" class="showAll-modal">
         Deck Modal
@@ -456,6 +486,17 @@
           <div class="showAllDecks-displayDecks-elements"></div>
         </div>
       </div>
+      <!--Modal Show Collection by ID-->
+      <div
+        id="showCollectionById-modal"
+        class="showAll-modal"
+        style="display: block"
+      >
+        <div class="showCollectionById-displayCollections">
+          <div class="showCollectionById-displayCollections-elements"></div>
+        </div>
+      </div>
+      <!--Modal Show Collection by ID-->
     </div>
     <!--Modal Show All Decks-->
 

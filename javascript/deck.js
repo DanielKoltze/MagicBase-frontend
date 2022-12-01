@@ -27,25 +27,24 @@ function displayAllDecksInModal(container, items) {
     container.innerHTML = ""
 
     items.forEach(deck => {
-
-        container.innerHTML += `<div class="showAll-display-elements">
-        <p>${deck.name}</p>
-        <p id="removeDeckBtn${deck.id + "_" + deck.name}">
-        <p id="goToDeckBtn">-------------GO_TO_DECK_BUTTON-------------</p>
-        
-          <span class="lock-symbol">🔒</span
-          >
+        container.innerHTML += `
+        <div class="showAll-display-elements" id="${deck.id}">
+        <h1 class="showAll-display-elements-name">${deck.name}</h1>
+        <h5 class="showAll-display-elements-description">${deck.description}</h5>
       </div>`
-        //
-
-        const goToDeck = document.getElementById('goToDeckBtn')
+        console.log(deck)
+        console.log("Deck id: " + deck.id)
+        const goToDeck = document.querySelector('.showAll-display-elements')
 
         goToDeck.addEventListener('click', e => {
+            deckId = document.querySelector('.showAll-display-elements').id;
+            console.log("ID på hvad jeg trykker på: " + deckId)
             const showAllDecksModal = document.getElementById('showAllDecks-modal')
-            const showDeckByIdModal = document.querySelector('.showDeckById-modal')
+            const showDeckByIdModal = document.getElementById('showDeckById-modal')
             showAllDecksModal.style.display = "none"
             showDeckByIdModal.style.display = "block"
-            deckId = deck.id;
+            console.log("Showing Deck id: " + deckId)
+            console.log(goToDeck);
             showDeckById(showDeckByIdModal, displayDeckById)
         })
     });
@@ -63,7 +62,6 @@ async function showDeckById(container, displayMode) {
 
 function displayDeckById(container, deck) {
     container.innerHTML = ""
-    // dlc: deckLineCards
     deck.deckLineCards.forEach(dlc => {
         container.innerHTML += ` 
         <div class="showdeckById-displayDecks-elements">
@@ -71,5 +69,6 @@ function displayDeckById(container, deck) {
         </div> `
     }
     )
+    console.log("displayDeckById kører")
 }
   /*Show Deck by ID*/

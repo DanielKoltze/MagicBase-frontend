@@ -29,7 +29,6 @@ function displayCollectionsInSidebar(container, items) {
   container.innerHTML = ""
 
   items.forEach(collection => {
-
     container.innerHTML += `<div class="deck-collection-element-container">
       <p>${collection.name}</p>
       <p id="removeCollectionBtn${collection.id + "_" + collection.name}">
@@ -57,52 +56,70 @@ function displayCollectionsInSidebar(container, items) {
 }
 
 
+/*
+function displayAllCollectionsInModal(container, items) {
+  container.innerHTML = ""
+  items.forEach(collection => {
+    container.innerHTML += `
+    <div class="showAll-display-elements" id="goToCollectionBtn${collection.id + "_" + collection.name}">
+      <p>${collection.name}</p>
+      <p>Id: ${collection.id}</p>
+      </div>`
+    console.log(collection)
+    console.log(collection.id)
+
+    const goToCollection = document.getElementById('goToCollectionBtn' + collection.id + "_" + collection.name)
+
+
+    goToCollection.addEventListener('click', e => {
+      collectionId = collection.id;
+      const showAllCollectionsModal = document.getElementById('showAllCollections-modal')
+      const showCollectionByIdModal = document.getElementById('showCollectionById-modal')
+      showAllCollectionsModal.style.display = "none"
+      showCollectionByIdModal.style.display = "block"
+
+      console.log("Showing collected id " + collectionId)
+      console.log(goToCollection)
+      showCollectionById(showCollectionByIdModal, displayCollectionById)
+    })
+  }
+
+  );
+}
+
+*/
+
 
 function displayAllCollectionsInModal(container, items) {
   container.innerHTML = ""
-
   items.forEach(collection => {
-    container.innerHTML += `<div class="showAll-display-elements">
-      <p>${collection.name}</p>
-      <p id="removeCollectionBtn${collection.id + "_" + collection.name}">
-      <p id="goToCollectionBtn">GOTOMYCOLLECTIONBUTTON</p>
-      
-        <span class="lock-symbol">🔒</span
-        >
-    </div>`
-    //
-
+    container.innerHTML += `
+    <div class="showAll-display-elements" id="${collection.id}">
+      <h1 class="showAll-display-elements-name">${collection.name}</h1>
+      <h5 class="showAll-display-elements-description">${collection.description}</h5>
+      </div>`
     console.log(collection)
-    const goToCollection = document.getElementById('goToCollectionBtn')
+    console.log(collection.id)
+
+    const goToCollection = document.querySelector('.showAll-display-elements')
+
 
     goToCollection.addEventListener('click', e => {
+      collectionId = document.querySelector('.showAll-display-elements').id;
+      console.log("ID på hvad jeg trykker på: " + collectionId)
       const showAllCollectionsModal = document.getElementById('showAllCollections-modal')
-      const showCollectionByIdModal = document.querySelector('.showCollectionById-modal')
+      const showCollectionByIdModal = document.getElementById('showCollectionById-modal')
       showAllCollectionsModal.style.display = "none"
       showCollectionByIdModal.style.display = "block"
-      collectionId = collection.id;
+
+      console.log("Showing collected id " + collectionId)
+      console.log(goToCollection)
       showCollectionById(showCollectionByIdModal, displayCollectionById)
     })
+  }
 
-
-    /*Remove Button til serere
-    const removeCollectionBtn = document.getElementById('removeCollectionBtn' + collection.id + "_" + collection.name)
-    const closeSymbol = document.createElement('span')
-    closeSymbol.innerHTML = "❌"
-    removeCollectionBtn.append(closeSymbol)
-    closeSymbol.addEventListener('click', e => {
-      $('#delete-deck-collection-modal').modal('show')
-      document.getElementById('delete-deck-collection-btn').addEventListener('click', e => {
-        deleteCollectionOrDeck("collection", collection.id)
-      })
- 
-    })
-    Remove Button til serere*/
-
-  });
-
+  );
 }
-
 
 
 /*Show Collection by ID*/
@@ -116,13 +133,14 @@ function displayCollectionById(container, collection) {
   collection.collectionLineCards.forEach(clc => {
     container.innerHTML += ` 
       <div class="showCollectionById-displayCollections-elements">
-    <p>${clc.quantity}</p>
+    <p>There are: ${clc.quantity} of this card</p>
       </div> `
   }
   )
+  console.log("displayCollectionById kører")
 }
-/*Show Collection by ID*/
 
+/*Show Collection by ID*/
 async function deleteCollectionOrDeck(type, id) {
   const settings = {
     method: "DELETE",
