@@ -41,8 +41,8 @@ function displayCollectionsInSidebar(container, items) {
     const closeSymbol = document.createElement('span')
     closeSymbol.innerHTML = "❌"
     removeCollectionBtn.append(closeSymbol)
-
     closeSymbol.addEventListener('click', async e => {
+
       if (window.confirm(`Are you sure want to delete this collection: ${collection.name}?`)) {
         await deleteCollectionOrDeck("collection", collection.id)
         const collectionContainer = document.getElementById('deck-collection-container')

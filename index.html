@@ -99,32 +99,39 @@
             <!--FLEX -->
             <div class="my-collection-header">
               <h3>My decks</h3>
-              <h2 class="tool-symbol" id="tool-symbol-deck">➕</h2>
+              <h2
+                class="tool-symbol"
+                id="tool-symbol-deck"
+                data-toggle="modal"
+                data-target="#createDeck"
+              >
+                ➕
+              </h2>
             </div>
-            <div class="deck-name-container" id="deck-container">
-          
-            </div>
+            <div class="deck-name-container" id="deck-container"></div>
           </div>
           <div>
             <!--FLEX -->
             <div class="my-collection-header">
               <h3>My collection</h3>
               <h2 id="display-my-collection">🤡</h2>
-              <h2 class="tool-symbol" id="tool-symbol-collection">➕</h2>
+              <h2
+                class="tool-symbol"
+                id="tool-symbol-collection"
+                data-toggle="modal"
+                data-target="#createCollection"
+              >
+                ➕
+              </h2>
             </div>
-            <div class="deck-collection-container" id="deck-collection-container">
-
-
-
-
-             
-            </div>
+            <div
+              class="deck-collection-container"
+              id="deck-collection-container"
+            ></div>
           </div>
         </div>
       </div>
     </div>
-
-   
 
     <div id="container"></div>
 
@@ -349,9 +356,10 @@
     </div>
     <!-- Modal Create Card-->
 
-    <!-- Modal Create Collection-->
+    <!-- Modal Create Deck -->
     <div
-      id="LogInModal"
+      class="modal fade"
+      id="createDeck"
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
@@ -360,7 +368,83 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Log in</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Create deck</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form style="color: white; position: relative" class="login-form">
+              <div class="form-outline mb-4">
+                <input
+                  type="text"
+                  id="createDeckNameInput"
+                  class="form-control form-control-lg logInUsernameInput"
+                  placeholder="Enter Deck Name"
+                />
+                <label class="form-label" for="createDeckNameInput">Name</label>
+              </div>
+
+              <div class="form-group">
+                <label for="createDeckDescriptionInput">Description</label>
+                <textarea
+                  class="form-control"
+                  id="createDeckDescriptionInput"
+                  rows="7"
+                ></textarea>
+              </div>
+              <div class="">
+                <select id="createDeckTypeInput">
+                  <option value="STANDARD">Standard</option>
+                  <option value="MODERN">Modern</option>
+                  <option value="COMMANDER">Commander</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-dismiss="modal"
+              id="create-deck-btn"
+            >
+              Create deck
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Create Deck-->
+
+    <!-- Modal Create Collection-->
+    <div
+      class="modal fade"
+      id="createCollection"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Create collection
+            </h5>
             <button
               type="button"
               class="close"
@@ -384,38 +468,39 @@
                 >
               </div>
 
-              <div class="form-outline mb-4">
-                <input
-                  type="password"
-                  id="createCollectionDescriptionInput"
-                  class="form-control form-control-lg logInPasswordInput"
-                  placeholder="Enter Password"
-                />
-                <label class="form-label" for="createCollectionNameInput"
+              <div class="form-group">
+                <label for="createCollectionDescriptionInput"
                   >Description</label
                 >
+                <textarea
+                  class="form-control"
+                  id="createCollectionDescriptionInput"
+                  rows="7"
+                ></textarea>
               </div>
               <div class="">
                 <select id="createCollectionTypeInput">
-                  <option value="WISH">Wishlist</option>
-                  <option value="TRADE">Tradelist</option>
+                  <option value="TRADE">Trade</option>
+                  <option value="WISH">Wish</option>
                 </select>
               </div>
-
-              <p
-                class="login-message"
-                style="
-                  color: red;
-                  position: absolute;
-                  bottom: -30px;
-                  left: 10px;
-                "
-              ></p>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary createCollectionBtn">
-              Create Collection
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-dismiss="modal"
+              id="create-collection-btn"
+            >
+              Create
             </button>
           </div>
         </div>
@@ -509,6 +594,8 @@
     <script src="javascript/collection.js"></script>
     <script src="javascript/handlers/collectionHandler.js"></script>
     <script src="javascript/create-card.js"></script>
+    <script src="javascript/create-deck.js"></script>
+    <script src="javascript/create-collection.js"></script>
 
     <!-- JavaScript Bundle with Popper -->
     <script

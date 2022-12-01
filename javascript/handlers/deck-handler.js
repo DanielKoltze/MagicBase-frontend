@@ -6,7 +6,7 @@ async function getDecks(userId) {
     method: "GET",
   };
 
-  const decks = await makeRequest(`${BASE_URL}/deck/${userId}`, settings);
+  const decks = await makeRequest(`${BASE_URL}/deck/user/${userId}`, settings);
   return decks;
 }
 
