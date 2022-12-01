@@ -39,11 +39,12 @@ function displayDecksInSidebar2(container, items) {
 
 
     closeSymbol.addEventListener('click', async e => {
-      if (window.confirm(`Are you sure want to delete this deck: ${deck.name}?`)) {
+      alert('hello')
+      /* if (window.confirm(`Are you sure want to delete this deck: ${deck.name}?`)) {
         await deleteCollectionOrDeck("deck", deck.id)
         const deckContainer = document.getElementById('deck-container')
         showDecks(deckContainer, displayDecksInSidebar2)
-      }
+      } */
     })
 
 
