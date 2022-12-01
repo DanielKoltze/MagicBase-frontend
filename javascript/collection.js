@@ -42,9 +42,18 @@ function displayCollectionsInSidebar(container, items) {
     closeSymbol.innerHTML = "❌"
     removeCollectionBtn.append(closeSymbol)
 
-    closeSymbol.addEventListener('click', openModal)
+    closeSymbol.addEventListener('click', async e => {
+      if (window.confirm(`Are you sure want to delete this collection: ${collection.name}?`)) {
+        await deleteCollectionOrDeck("collection", collection.id)
+        const collectionContainer = document.getElementById('deck-collection-container')
+        showCollections(collectionContainer, displayCollectionsInSidebar)
 
-    function openModal(type) {
+      }
+
+
+    })
+    /*
+    function openModal() {
 
       document.body.innerHTML += `
       <div class="modal" tabindex="-1" role="dialog" id="delete-deck-collection-modal" data-keyboard="false" data-backdrop="static">
@@ -84,8 +93,10 @@ function displayCollectionsInSidebar(container, items) {
         document.body.removeChild(document.getElementById('delete-deck-collection-modal'))
       }
     }
+    */
   });
 }
+
 
 /*
 closeSymbol.addEventListener('click', e => {
@@ -94,6 +105,7 @@ closeSymbol.addEventListener('click', e => {
     $('#delete-deck-collection-modal').modal('toggle')
    
   })
+
 })
 */
 
