@@ -20,6 +20,7 @@ async function showDecks(container, displayMode) {
 }
 
 function displayDecksInSidebar2(container, items) {
+  
   container.innerHTML = ""
   items.forEach(deck => {
     container.innerHTML += `<div class="deck-name-element-container">
@@ -46,7 +47,7 @@ function displayDecksInSidebar2(container, items) {
     })
   });
 }
-
+/*
 function displayMyDecks() {
   const myDecks = document.getElementById('display-my-decks')
   myDecks.addEventListener('click', e => {
@@ -56,7 +57,8 @@ function displayMyDecks() {
     decks_showAll_parent.style.display = "grid"
 
     const collections_showAll_parent = document.getElementById('collections-showAll-parent')
-    collections_showAll_parent.style.display = "none" */
+    collections_showAll_parent.style.display = "none" 
   })
 }
+*/
 

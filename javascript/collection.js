@@ -19,8 +19,8 @@ async function getCollectionById(collectionId) {
 
 
 async function showCollections(container, displayMode) {
-  const data = await getCollectionsByUserId(loggedInUser.id)
-  displayMode(container, data)
+  const collections = await getCollectionsByUserId(loggedInUser.id)
+  displayMode(container, collections)
 
 }
 
@@ -86,14 +86,10 @@ const addEventListener_goToCollectionBtn = (element, collectionId) => {
     await getCollectionById(collectionId)
 
     console.log("ID på hvad jeg trykker på: " + collectionId)
-    const showAllCollectionsModal = document.getElementById('showAllCollections-modal')
-    const showCollectionByIdModal = document.getElementById('showCollectionById-modal')
-    showAllCollectionsModal.style.display = "none"
-    showCollectionByIdModal.style.display = "block"
     selectedCollectionId = collectionId
 
 
-    showCollectionById(showCollectionByIdModal, displayCollectionById)
+    showCollectionById(contentContainer, displayCollectionById)
   })
 }
 
@@ -108,6 +104,7 @@ function displayCollectionById(container, collection) {
   collection.collectionLineCards.forEach(clc => {
     container.innerHTML += ` 
       <div class="showCollectionById-displayCollections-elements">
+      <img class="cardImg" src="${clc.card.imageUrl}">
     <p>There are: ${clc.quantity} of this card</p>
       </div> `
   }

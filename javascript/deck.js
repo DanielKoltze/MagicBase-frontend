@@ -51,12 +51,10 @@ const addEventListener_goToDeckBtn = (element, deckId) => {
         console.log("ID på hvad jeg trykker på: " + deckId)
         const showAllDecksModal = document.getElementById('showAllDecks-modal')
         const showDeckByIdModal = document.getElementById('showDeckById-modal')
-        showAllDecksModal.style.display = "none"
-        showDeckByIdModal.style.display = "block"
         selectedDeckId = deckId
 
 
-        showDeckById(showDeckByIdModal, displayDeckById)
+        showDeckById(contentContainer, displayDeckById)
     })
 }
 
@@ -72,6 +70,7 @@ function displayDeckById(container, deck) {
     deck.deckLineCards.forEach(dlc => {
         container.innerHTML += ` 
         <div class="showdeckById-displayDecks-elements">
+        <img class="cardImg"src="${dlc.card.imageUrl}">
       <p>${dlc.quantity}</p>
         </div> `
     }
