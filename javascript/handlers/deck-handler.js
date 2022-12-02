@@ -52,11 +52,11 @@ function displayMyDecks() {
   myDecks.addEventListener('click', e => {
     const showAllDecksModal = document.getElementById('showAllDecks-modal')
     showDecks(showAllDecksModal, displayAllDecksInModal)
-    const decks_showAll_parent = document.getElementById('decks-showAll-parent')
+   /*  const decks_showAll_parent = document.getElementById('decks-showAll-parent')
     decks_showAll_parent.style.display = "grid"
 
     const collections_showAll_parent = document.getElementById('collections-showAll-parent')
-    collections_showAll_parent.style.display = "none"
+    collections_showAll_parent.style.display = "none" */
   })
 }
 

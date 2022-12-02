@@ -98,7 +98,7 @@
           <div>
             <!--FLEX -->
             <div class="my-collection-header">
-              <h3>My decks</h3>
+              <h3 id="display-my-decks">My decks</h3>
               <h2
                 class="tool-symbol"
                 id="tool-symbol-deck"
@@ -107,15 +107,13 @@
               >
                 ➕
               </h2>
-              <h2 id="display-my-decks">💩</h2>
             </div>
             <div class="deck-name-container" id="deck-container"></div>
           </div>
           <div>
             <!--FLEX -->
             <div class="my-collection-header">
-              <h3>My collection</h3>
-              <h2 id="display-my-collections">🤡</h2>
+              <h3 id="display-my-collections">My collection</h3>
               <h2
                 class="tool-symbol"
                 id="tool-symbol-collection"
@@ -134,9 +132,152 @@
       </div>
     </div>
 
-    <div id="container"></div>
+    <div id="page-container"></div>
 
-    <template id="my-collection"> </template>
+    <template id="collection">
+       <!--Modal Show All Collections-->
+    <div
+    id="collections-showAll-parent"
+    class="showAll-parent">
+    <div class="showAll-title-grid">
+      <div id="showAllCollections-title" class="showAll-title">
+        My collection template???
+      </div>
+      <!--Searchbar - Bruger css fra createCard.css-->
+      <div class="showAll-searchbar">
+        <input
+          type="text"
+          id="myCollections-searchbar-input"
+          class="myCollections-searchbar"
+          placeholder=" Search for any collections"
+        />
+        <button type="button" class="searchbar-btn">
+          <span class="material-symbols-outlined"> search </span>
+        </button>
+      </div>
+      <!--Searchbar-->
+    </div>
+    <div id="showAllCollections-modal" class="showAll-modal">
+      Modal
+      <div class="showAll-display">
+        <div class="showAllCollections-displayCollections-elements"></div>
+      </div>
+    </div>
+    <!--Modal Show All Collections-->
+    <!--Modal Show Collection by ID-->
+    <div
+      id="showCollectionById-modal"
+      class="showAll-modal"
+      style="display: block"
+    >
+      <div class="showCollectionById-displayCollections">
+        <div class="showCollectionById-displayCollections-elements"></div>
+      </div>
+    </div>
+    <!--Modal Show Collection by ID-->
+  </div>
+
+  <!--Modal Show All Decks-->
+  <div id="decks-showAll-parent" class="showAll-parent" style="display: none">
+    <div class="showAll-title-grid">
+      <div id="showAllDecks-title" class="showAll-title">MY DECKS</div>
+      <!--Searchbar - Bruger css fra createCard.css-->
+      <div class="showAll-searchbar">
+        <input
+          type="text"
+          id="myDecks-searchbar-input"
+          class="myCollections-searchbar"
+          placeholder=" Search for any decks"
+        />
+        <button type="button" class="searchbar-btn">
+          <span class="material-symbols-outlined"> search </span>
+        </button>
+      </div>
+      <!--Searchbar - Bruger css fra createCard.css-->
+    </div>
+
+
+
+    <div id="showAllDecks-modal" class="showAll-modal">
+      Deck Modal
+      <div class="showAll-display">
+        <div class="showAllDecks-displayDecks-elements"></div>
+      </div>
+    </div>
+    <!--Modal Show Deck by ID-->
+
+
+
+    <div id="showDeckById-modal" class="showAll-modal" style="display: block">
+      <div class="showDeckById-displayDecks">
+        <div class="showDeckById-displayDecks-elements"></div>
+      </div>
+    </div>
+    <!--Modal Show Deck by ID-->
+
+
+    
+  </div>
+  <!--Modal Show All Decks-->
+    
+    </template>
+    
+    
+    <!-- Landing page -->
+    <template id="landing-page">
+
+      <div id="landing-page-container">
+          
+
+    <div id="preload"></div>
+    <script type="text/javascript">
+        var loader;
+        function loadNow(opacity) {
+            if(opacity <= 0) {
+                displayContent();
+            } else {
+                loader.style.opacity = opacity;
+                window.setTimeout(function() {
+                    loadNow(opacity - 0.05) 
+                }, 100)
+            }
+        }
+        function displayContent() {
+            loader.style.display = 'none';
+            document.getElementsById('content').style.display = 'block';
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            loader = document.getElementById('preload');
+            loadNow(1);
+        });
+    </script>
+
+<div class="containerlogo">
+    <img class="logo" src="/images/NewMagic.bmp">
+        <div class="textunderpic">
+            <h1>Welcome to MagicBase.</h1>
+        </div>
+        <div class="textunderpic2">
+            <div class="linkmagic">
+                <a href="https://magic.wizards.com/en" target="_blank">Homepage of The Gathering.</a>
+            </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function show() {
+        AB = document.querySelector('.containerlogo');
+        AB.style.display = 'inline';
+    } setTimeout("show()", 2500);
+</script>
+
+
+</div>
+    </template>
+
+    <!-- Landing page end-->
+
+    
 
     <!-- create-user-container
     <div class="create-user-container">
@@ -510,49 +651,7 @@
     </div>
     <!-- Modal Create Collection-->
 
-    <!--Modal Show All Collections-->
-    <div
-      id="collections-showAll-parent"
-      class="showAll-parent"
-      style="display: none"
-    >
-      <div class="showAll-title-grid">
-        <div id="showAllCollections-title" class="showAll-title">
-          MY COLLECTIONS
-        </div>
-        <!--Searchbar - Bruger css fra createCard.css-->
-        <div class="showAll-searchbar">
-          <input
-            type="text"
-            id="myCollections-searchbar-input"
-            class="myCollections-searchbar"
-            placeholder=" Search for any collections"
-          />
-          <button type="button" class="searchbar-btn">
-            <span class="material-symbols-outlined"> search </span>
-          </button>
-        </div>
-        <!--Searchbar-->
-      </div>
-      <div id="showAllCollections-modal" class="showAll-modal">
-        Modal
-        <div class="showAll-display">
-          <div class="showAllCollections-displayCollections-elements"></div>
-        </div>
-      </div>
-      <!--Modal Show All Collections-->
-      <!--Modal Show Collection by ID-->
-      <div
-        id="showCollectionById-modal"
-        class="showAll-modal"
-        style="display: block"
-      >
-        <div class="showCollectionById-displayCollections">
-          <div class="showCollectionById-displayCollections-elements"></div>
-        </div>
-      </div>
-      <!--Modal Show Collection by ID-->
-    </div>
+ 
 
     <!--Modal Show All Decks-->
     <div id="decks-showAll-parent" class="showAll-parent" style="display: none">
@@ -639,6 +738,7 @@
     <!-- Js -->
     <script src="javascript/router.js"></script>
     <script src="javascript/fetch.js"></script>
+    <script src="javascript/landing-page.js"></script>
     <script src="javascript/handlers/user-handler.js"></script>
     <script src="javascript/sidebar.js"></script>
     <script src="javascript/navbar.js"></script>

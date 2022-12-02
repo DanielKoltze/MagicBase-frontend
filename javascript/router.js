@@ -3,14 +3,9 @@ let templates = {};
 
 const DEFAULT_ROUTE = "http://127.0.0.1:5501"
 const COLLECTION_ROUTE = "#/collection"
+const pageContainer = document.querySelector('#page-container');
 
 
-function home() {
-  console.log("Har routet til home");
-}
-
-
-const appDiv = document.getElementById('container');
 
 function route(path, template) {
     if (typeof template === 'function') {
@@ -29,7 +24,7 @@ function template(name, templateFunction) {
 }
 
 template('home', () => {
-    home();
+    landingPage();
 })
 
 template('collection', () => {
