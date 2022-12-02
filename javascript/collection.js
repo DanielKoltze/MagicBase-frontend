@@ -1,4 +1,4 @@
-let collectionId = null;
+let selectedCollectionId = null;
 
 async function getCollectionsByUserId(userId) {
   const settings = {
@@ -29,7 +29,7 @@ function displayCollectionsInSidebar(container, items) {
   container.innerHTML = ""
 
   items.forEach(collection => {
-      container.innerHTML += `
+    container.innerHTML += `
       <div class="deck-collection-element-container">
           <p>${collection.name}</p>
           <p id="removeCollectionBtn${collection.id + "_" + collection.name}">
@@ -39,62 +39,67 @@ function displayCollectionsInSidebar(container, items) {
       `
   });
   const deleteBtnElements = document.getElementsByClassName('delete-collection-button');
-  
-  for (let i = 0; i < deleteBtnElements.length ; i++) {
+
+  for (let i = 0; i < deleteBtnElements.length; i++) {
     addEventListenerToElement(
       deleteBtnElements[i],
       deleteBtnElements[i].getAttribute('collection-id'),
-       deleteBtnElements[i].getAttribute('collection-name')
-       )
+      deleteBtnElements[i].getAttribute('collection-name')
+    )
   }
 }
 const addEventListenerToElement = (element, collectionId, collectionName) => {
   element.addEventListener('click', async e => {
-      if (window.confirm(`Are you sure want to delete this collection: ${collectionName}?`)) {
-        await deleteCollectionOrDeck("collection", collectionId)
-        const collectionContainer = document.getElementById('deck-collection-container')
-        showCollections(collectionContainer, displayCollectionsInSidebar)
+    if (window.confirm(`Are you sure want to delete this collection: ${collectionName}?`)) {
+      await deleteCollectionOrDeck("collection", collectionId)
+      const collectionContainer = document.getElementById('deck-collection-container')
+      showCollections(collectionContainer, displayCollectionsInSidebar)
 
-    } 
+    }
   })
 }
-
 
 function displayAllCollectionsInModal(container, items) {
   container.innerHTML = ""
   items.forEach(collection => {
     container.innerHTML += `
-    <div class="showAll-display-elements" id="${collection.id}">
+    <div class="showAll-display-elements" collection-id="${collection.id}" collection-name="${collection.name}">
       <h1 class="showAll-display-elements-name">${collection.name}</h1>
       <h5 class="showAll-display-elements-description">${collection.description}</h5>
       </div>`
     console.log(collection)
     console.log(collection.id)
+  });
 
-    const goToCollection = document.querySelector('.showAll-display-elements')
+  const goToCollectionBtn = document.getElementsByClassName('showAll-display-elements')
 
-
-    goToCollection.addEventListener('click', e => {
-      collectionId = document.querySelector('.showAll-display-elements').id;
-      console.log("ID på hvad jeg trykker på: " + collectionId)
-      const showAllCollectionsModal = document.getElementById('showAllCollections-modal')
-      const showCollectionByIdModal = document.getElementById('showCollectionById-modal')
-      showAllCollectionsModal.style.display = "none"
-      showCollectionByIdModal.style.display = "block"
-
-      console.log("Showing collected id " + collectionId)
-      console.log(goToCollection)
-      showCollectionById(showCollectionByIdModal, displayCollectionById)
-    })
+  for (let i = 0; i < goToCollectionBtn.length; i++) {
+    addEventListener_goToCollectionBtn(
+      goToCollectionBtn[i],
+      goToCollectionBtn[i].getAttribute('collection-id'),
+    )
   }
-
-  );
 }
 
+const addEventListener_goToCollectionBtn = (element, collectionId) => {
+  element.addEventListener('click', async e => {
+    await getCollectionById(collectionId)
+
+    console.log("ID på hvad jeg trykker på: " + collectionId)
+    const showAllCollectionsModal = document.getElementById('showAllCollections-modal')
+    const showCollectionByIdModal = document.getElementById('showCollectionById-modal')
+    showAllCollectionsModal.style.display = "none"
+    showCollectionByIdModal.style.display = "block"
+    selectedCollectionId = collectionId
+
+
+    showCollectionById(showCollectionByIdModal, displayCollectionById)
+  })
+}
 
 /*Show Collection by ID*/
 async function showCollectionById(container, displayMode) {
-  const data = await getCollectionById(collectionId)
+  const data = await getCollectionById(selectedCollectionId)
   displayMode(container, data)
 }
 
