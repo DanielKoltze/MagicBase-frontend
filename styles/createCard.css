@@ -1,7 +1,7 @@
 .createCard-modal {
   height: 85vh;
   width: 100%;
-  display: block;
+  display: none;
   position: relative;
   background-color: transparent;
 }

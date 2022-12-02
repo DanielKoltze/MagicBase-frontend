@@ -63,12 +63,12 @@ function displayAllCollectionsInModal(container, items) {
   container.innerHTML = ""
   items.forEach(collection => {
     container.innerHTML += `
-    <div class="showAll-display-elements" collection-id="${collection.id}" collection-name="${collection.name}">
+    <div class="showAll-display-elements" collection-id="${collection.id}">
       <h1 class="showAll-display-elements-name">${collection.name}</h1>
       <h5 class="showAll-display-elements-description">${collection.description}</h5>
       </div>`
     console.log(collection)
-    console.log(collection.id)
+    console.log("Collection id: " + collection.id)
   });
 
   const goToCollectionBtn = document.getElementsByClassName('showAll-display-elements')
