@@ -38,11 +38,8 @@ function displayCollectionsInSidebar(container, items) {
       </div>
       `
   });
-
   const deleteBtnElements = document.getElementsByClassName('delete-collection-button');
-  console.log(deleteBtnElements);
   
-
   for (let i = 0; i < deleteBtnElements.length ; i++) {
     addEventListenerToElement(
       deleteBtnElements[i],
@@ -50,11 +47,8 @@ function displayCollectionsInSidebar(container, items) {
        deleteBtnElements[i].getAttribute('collection-name')
        )
   }
-
 }
-
 const addEventListenerToElement = (element, collectionId, collectionName) => {
-
   element.addEventListener('click', async e => {
       if (window.confirm(`Are you sure want to delete this collection: ${collectionName}?`)) {
         await deleteCollectionOrDeck("collection", collectionId)
