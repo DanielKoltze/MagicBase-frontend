@@ -1,4 +1,3 @@
-
 let container = document.getElementById("decks-item")
 
 async function getDecks(userId) {
@@ -18,7 +17,6 @@ myDeckLink.addEventListener("click", () => {
 async function showDecks(container, displayMode) {
   const decks = await getDecks(loggedInUser.id)
   displayMode(container, decks)
-
 }
 
 function displayDecksInSidebar2(container, items) {
@@ -46,10 +44,19 @@ function displayDecksInSidebar2(container, items) {
         showDecks(deckContainer, displayDecksInSidebar2)
       } */
     })
-
-
-
   });
-
-
 }
+
+function displayMyDecks() {
+  const myDecks = document.getElementById('display-my-decks')
+  myDecks.addEventListener('click', e => {
+    const showAllDecksModal = document.getElementById('showAllDecks-modal')
+    showDecks(showAllDecksModal, displayAllDecksInModal)
+    const decks_showAll_parent = document.getElementById('decks-showAll-parent')
+    decks_showAll_parent.style.display = "grid"
+
+    const collections_showAll_parent = document.getElementById('collections-showAll-parent')
+    collections_showAll_parent.style.display = "none"
+  })
+}
+

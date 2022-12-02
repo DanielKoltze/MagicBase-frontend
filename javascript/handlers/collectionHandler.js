@@ -10,13 +10,20 @@ function collection() {
     showDecks(deckContainer, displayDecksInSidebar2)
 
     displayMyCollection();
+    displayMyDecks()
 }
 
 
 function displayMyCollection() {
-    const myCollection = document.getElementById("display-my-collection")
-    myCollection.addEventListener('click', e => {
-        const showAllCollectionsModal = document.querySelector('.showAllCollections-modal')
+    const myCollections = document.getElementById("display-my-collections")
+
+    myCollections.addEventListener('click', e => {
+        const showAllCollectionsModal = document.getElementById('showAllCollections-modal')
         showCollections(showAllCollectionsModal, displayAllCollectionsInModal)
+        const collections_showAll_parent = document.getElementById('collections-showAll-parent')
+        collections_showAll_parent.style.display = "grid"
+
+        const decks_showAll_parent = document.getElementById('decks-showAll-parent')
+        decks_showAll_parent.style.display = "none"
     })
 }
