@@ -9,3 +9,4 @@ function landingPage() {
 
     pageContainer.replaceChildren(landingPageClone);
 }
+

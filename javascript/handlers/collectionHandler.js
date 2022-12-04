@@ -25,6 +25,7 @@ function collection() {
     addEventListenerToSidebarMyCollections()
     addEventListenerToSidebarMyDecks()
 
+    // Det som bliver vist som default ude i højre container (ikke sidebar)
     showCollections(contentContainer, displayAllCollectionsInModal)
 }
 

@@ -27,7 +27,7 @@ async function showCollections(container, displayMode) {
 function displayCollectionsInSidebar(container, items) {
   //const container = document.getElementById('deck-collection-container')
   container.innerHTML = ""
-
+  console.log(items);
   items.forEach(collection => {
     container.innerHTML += `
       <div class="deck-collection-element-container">
@@ -38,17 +38,20 @@ function displayCollectionsInSidebar(container, items) {
       </div>
       `
   });
-  const deleteBtnElements = document.getElementsByClassName('delete-collection-button');
+  
+  const deleteBtnElements = document.getElementsByClassName('delete-collection-button')
 
   for (let i = 0; i < deleteBtnElements.length; i++) {
-    addEventListenerToElement(
+    addEventListenerToCollectionElement(
       deleteBtnElements[i],
       deleteBtnElements[i].getAttribute('collection-id'),
       deleteBtnElements[i].getAttribute('collection-name')
     )
   }
+
+
 }
-const addEventListenerToElement = (element, collectionId, collectionName) => {
+const addEventListenerToCollectionElement = (element, collectionId, collectionName) => {
   element.addEventListener('click', async e => {
     if (window.confirm(`Are you sure want to delete this collection: ${collectionName}?`)) {
       await deleteCollectionOrDeck("collection", collectionId)
@@ -122,33 +125,5 @@ async function deleteCollectionOrDeck(type, id) {
 
 }
 
-async function createCollection(collection) {
 
-  const settings = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(collection),
-  };
-
-  return addedCollection = await makeRequest(`${BASE_URL}/collection`, settings);
-
-}
-/*
-const createCollectionBtn = document.querySelector('#create-collection-btn')
-
-createCollectionBtn.addEventListener('click', async (e) => {
-  const createCollectionNameInput = document.querySelector('#createCollectionNameInput').value
-  const createCollectionDescriptionInput = document.querySelector('#createCollectionDescriptionInput').value
-  const createCollectionTypeInput = document.querySelector('#createCollectionTypeInput').value
-  const collection = {
-    userId: loggedInUser.id,
-    name: createCollectionNameInput,
-    description: createCollectionDescriptionInput,
-    type: createCollectionTypeInput,
-  };
-  await createCollection(collection)
-})
-*/
 

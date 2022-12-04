@@ -43,7 +43,7 @@ async function displayCardsInCreateCard(searchWord) {
     cardImageDiv.classList.add("createCard-page-cardpage-card");
     cardImageDiv.innerHTML += `
         <div class="cardElements">
-          <img class="cardImg" src="${card.image_uris.png}" alt="does not load picture">
+          <img class="cardImg" src="${card.image_uris.png}" alt="magic card">
         </div>`;
 
     let cardObject;
@@ -96,6 +96,7 @@ async function displayCardsInCreateCard(searchWord) {
         const sideBarCardsContainer = document.createElement("div");
         const sideBarDiv = document.createElement("div");
         const sideBarBtn = document.createElement("button");
+        // sideBarBtnIcon ikke brugt
         const sideBarBtnIcon = document.createElement("span");
         const sideBarCardsContainerInfo = document.createElement("div");
         sideBarBtn.classList.add(
