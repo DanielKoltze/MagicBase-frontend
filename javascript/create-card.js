@@ -232,3 +232,4 @@ async function getDataFromExternalApi(searchWord) {
 
   return await makeRequest(API_URL + searchWord, setting);
 }
+

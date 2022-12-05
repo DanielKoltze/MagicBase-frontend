@@ -1,5 +1,10 @@
 let contentContainer = null;
 
+const currentPage = {
+    type: null,
+    id: null
+}
+
 
 function collection() {
     console.log("Har routet til collection")

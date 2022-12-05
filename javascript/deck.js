@@ -1,4 +1,4 @@
-let deckId = null;
+
 
 async function getDecksByUserId(userId) {
     const settings = {
@@ -47,10 +47,10 @@ function displayAllDecksInModal(container, items) {
 
 const addEventListener_goToDeckBtn = (element, deckId) => {
     element.addEventListener('click', async e => {
+        currentPage.id = deckId;
+        currentPage.type = "deck";
         await getDeckById(deckId)
         console.log("ID på hvad jeg trykker på: " + deckId)
-        const showAllDecksModal = document.getElementById('showAllDecks-modal')
-        const showDeckByIdModal = document.getElementById('showDeckById-modal')
         selectedDeckId = deckId
 
 
