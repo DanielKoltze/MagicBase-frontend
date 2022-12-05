@@ -15,7 +15,7 @@
 }
 
 #specific-card-header {
-    height: 50px;
+    height: 30px;
     background-color: aliceblue;
     display: flex;
     align-items: center;
@@ -26,11 +26,21 @@
 }
 
 #specific-card-image img {
-    max-width: 60%;
-    padding: 5% auto;
+    
+    height: 65vh;
 }
 
 #specific-card-page-content {
     display: flex;
+    justify-content: space-around;
     
+}
+#specific-card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.specific-card-item {
+    flex: 1 1 0;
 }
