@@ -135,149 +135,142 @@
     <div id="page-container"></div>
 
     <template id="collection">
-       <!--Modal Show All Collections-->
-    <div
-    id="collections-showAll-parent"
-    class="showAll-parent">
-    <div class="showAll-title-grid">
-      <div id="showAllCollections-title" class="showAll-title">
-        My collection template???
+      <!--Modal Show All Collections-->
+      <div id="collections-showAll-parent" class="showAll-parent">
+        <div class="showAll-title-grid">
+          <div id="showAllCollections-title" class="showAll-title">
+            My collection template???
+          </div>
+          <!--Searchbar - Bruger css fra createCard.css-->
+          <div class="showAll-searchbar">
+            <input
+              type="text"
+              id="myCollections-searchbar-input"
+              class="myCollections-searchbar"
+              placeholder=" Search for any collections"
+            />
+            <button type="button" class="searchbar-btn">
+              <span class="material-symbols-outlined"> search </span>
+            </button>
+          </div>
+          <!--Searchbar-->
+        </div>
+        <div id="showAllCollections-modal" class="showAll-modal">
+          Modal
+          <div class="showAll-display">
+            <div class="showAllCollections-displayCollections-elements"></div>
+          </div>
+        </div>
+        <!--Modal Show All Collections-->
+        <!--Modal Show Collection by ID-->
+        <div
+          id="showCollectionById-modal"
+          class="showAll-modal"
+          style="display: block"
+        >
+          <div class="showCollectionById-displayCollections">
+            <div class="showCollectionById-displayCollections-elements"></div>
+          </div>
+        </div>
+        <!--Modal Show Collection by ID-->
       </div>
-      <!--Searchbar - Bruger css fra createCard.css-->
-      <div class="showAll-searchbar">
-        <input
-          type="text"
-          id="myCollections-searchbar-input"
-          class="myCollections-searchbar"
-          placeholder=" Search for any collections"
-        />
-        <button type="button" class="searchbar-btn">
-          <span class="material-symbols-outlined"> search </span>
-        </button>
+
+      <!--Modal Show All Decks-->
+      <div
+        id="decks-showAll-parent"
+        class="showAll-parent"
+        style="display: none"
+      >
+        <div class="showAll-title-grid">
+          <div id="showAllDecks-title" class="showAll-title">MY DECKS</div>
+          <!--Searchbar - Bruger css fra createCard.css-->
+          <div class="showAll-searchbar">
+            <input
+              type="text"
+              id="myDecks-searchbar-input"
+              class="myCollections-searchbar"
+              placeholder=" Search for any decks"
+            />
+            <button type="button" class="searchbar-btn">
+              <span class="material-symbols-outlined"> search </span>
+            </button>
+          </div>
+          <!--Searchbar - Bruger css fra createCard.css-->
+        </div>
+
+        <div id="showAllDecks-modal" class="showAll-modal">
+          Deck Modal
+          <div class="showAll-display">
+            <div class="showAllDecks-displayDecks-elements"></div>
+          </div>
+        </div>
+        <!--Modal Show Deck by ID-->
+
+        <div
+          id="showDeckById-modal"
+          class="showAll-modal"
+          style="display: block"
+        >
+          <div class="showDeckById-displayDecks">
+            <div class="showDeckById-displayDecks-elements"></div>
+          </div>
+        </div>
+        <!--Modal Show Deck by ID-->
       </div>
-      <!--Searchbar-->
-    </div>
-    <div id="showAllCollections-modal" class="showAll-modal">
-      Modal
-      <div class="showAll-display">
-        <div class="showAllCollections-displayCollections-elements"></div>
-      </div>
-    </div>
-    <!--Modal Show All Collections-->
-    <!--Modal Show Collection by ID-->
-    <div
-      id="showCollectionById-modal"
-      class="showAll-modal"
-      style="display: block"
-    >
-      <div class="showCollectionById-displayCollections">
-        <div class="showCollectionById-displayCollections-elements"></div>
-      </div>
-    </div>
-    <!--Modal Show Collection by ID-->
-  </div>
-
-  <!--Modal Show All Decks-->
-  <div id="decks-showAll-parent" class="showAll-parent" style="display: none">
-    <div class="showAll-title-grid">
-      <div id="showAllDecks-title" class="showAll-title">MY DECKS</div>
-      <!--Searchbar - Bruger css fra createCard.css-->
-      <div class="showAll-searchbar">
-        <input
-          type="text"
-          id="myDecks-searchbar-input"
-          class="myCollections-searchbar"
-          placeholder=" Search for any decks"
-        />
-        <button type="button" class="searchbar-btn">
-          <span class="material-symbols-outlined"> search </span>
-        </button>
-      </div>
-      <!--Searchbar - Bruger css fra createCard.css-->
-    </div>
-
-
-
-    <div id="showAllDecks-modal" class="showAll-modal">
-      Deck Modal
-      <div class="showAll-display">
-        <div class="showAllDecks-displayDecks-elements"></div>
-      </div>
-    </div>
-    <!--Modal Show Deck by ID-->
-
-
-
-    <div id="showDeckById-modal" class="showAll-modal" style="display: block">
-      <div class="showDeckById-displayDecks">
-        <div class="showDeckById-displayDecks-elements"></div>
-      </div>
-    </div>
-    <!--Modal Show Deck by ID-->
-
-
-    
-  </div>
-  <!--Modal Show All Decks-->
-    
+      <!--Modal Show All Decks-->
     </template>
-    
-    
+
     <!-- Landing page -->
     <template id="landing-page">
-
       <div id="landing-page-container">
-          
-
-    <div id="preload"></div>
-    <script type="text/javascript">
-        var loader;
-        function loadNow(opacity) {
-            if(opacity <= 0) {
-                displayContent();
+        <div id="preload"></div>
+        <script type="text/javascript">
+          var loader;
+          function loadNow(opacity) {
+            if (opacity <= 0) {
+              displayContent();
             } else {
-                loader.style.opacity = opacity;
-                window.setTimeout(function() {
-                    loadNow(opacity - 0.05) 
-                }, 100)
+              loader.style.opacity = opacity;
+              window.setTimeout(function () {
+                loadNow(opacity - 0.05);
+              }, 100);
             }
-        }
-        function displayContent() {
-            loader.style.display = 'none';
-            document.getElementsById('content').style.display = 'block';
-        }
-        document.addEventListener("DOMContentLoaded", function() {
-            loader = document.getElementById('preload');
+          }
+          function displayContent() {
+            loader.style.display = "none";
+            document.getElementsById("content").style.display = "block";
+          }
+          document.addEventListener("DOMContentLoaded", function () {
+            loader = document.getElementById("preload");
             loadNow(1);
-        });
-    </script>
+          });
+        </script>
 
-<div class="containerlogo">
-    <img class="logo" src="/images/NewMagic.bmp">
-        <div class="textunderpic">
+        <div class="containerlogo">
+          <img class="logo" src="/images/NewMagic.bmp" />
+          <div class="textunderpic">
             <h1>Welcome to MagicBase.</h1>
-        </div>
-        <div class="textunderpic2">
+          </div>
+          <div class="textunderpic2">
             <div class="linkmagic">
-                <a href="https://magic.wizards.com/en" target="_blank">Homepage of The Gathering.</a>
+              <a href="https://magic.wizards.com/en" target="_blank"
+                >Homepage of The Gathering.</a
+              >
             </div>
-    </div>
-</div>
+          </div>
+        </div>
 
-<script type="text/javascript">
-    function show() {
-        AB = document.querySelector('.containerlogo');
-        AB.style.display = 'inline';
-    } setTimeout("show()", 2500);
-</script>
-
-
-</div>
+        <script type="text/javascript">
+          function show() {
+            AB = document.querySelector(".containerlogo");
+            AB.style.display = "inline";
+          }
+          setTimeout("show()", 2500);
+        </script>
+      </div>
     </template>
 
     <!-- Landing page end-->
-
-    
 
     <!-- create-user-container
     <div class="create-user-container">
@@ -650,10 +643,6 @@
       </div>
     </div>
     <!-- Modal Create Collection-->
-
- 
-
-    
 
     <!-- Placeholder
     <div class="cardContainer" style="width: 100%; height: 100vh;">

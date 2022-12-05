@@ -38,7 +38,7 @@ function displayCollectionsInSidebar(container, items) {
       </div>
       `
   });
-  
+
   const deleteBtnElements = document.getElementsByClassName('delete-collection-button')
 
   for (let i = 0; i < deleteBtnElements.length; i++) {
@@ -106,14 +106,26 @@ function displayCollectionById(container, collection) {
   container.innerHTML = ""
   collection.collectionLineCards.forEach(clc => {
     container.innerHTML += ` 
+    <button class="addCardButton-collection" collection-id="${collection.id}">Add Card</button>
       <div class="showCollectionById-displayCollections-elements">
       <img class="cardImg" src="${clc.card.imageUrl}">
     <p>There are: ${clc.quantity} of this card</p>
       </div> `
   }
+
   )
+  const addCardBtn = document.querySelector('.addCardButton-collection')
+  addCardBtn.addEventListener('click', async e => {
+    const createCard_modal = document.querySelector('.createCard-modal');
+    createCard_modal.style.display = "block";
+
+  })
+
+  console.log("addCardToColleciton kører")
   console.log("displayCollectionById kører")
 }
+
+
 
 /*Show Collection by ID*/
 async function deleteCollectionOrDeck(type, id) {
