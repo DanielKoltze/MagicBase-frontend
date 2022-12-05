@@ -79,9 +79,7 @@ body {
   cursor: pointer;
 }
 
-
 /*----- Dropdown Menu -----*/
-
 
 .dropdown:hover .dropdown-content {
   display: block;
@@ -91,7 +89,6 @@ body {
   color: white;
   font-size: 50px;
   /*Størrelse på ikonet*/
-
 }
 
 .dropdown-menu-class {
@@ -111,7 +108,7 @@ body {
   display: none;
 }
 
-.dropdown-content-btn{
+.dropdown-content-btn {
   color: white;
   font-size: 21px;
   font-weight: 700;
@@ -134,7 +131,7 @@ body {
   transform: translate(-50%, -50%);
 }
 
-.dropdown-content-btn-logout{
+.dropdown-content-btn-logout {
   background-color: #2d202f;
   position: absolute;
   top: 50%;
@@ -142,14 +139,12 @@ body {
   transform: translate(-50%, -50%);
 }
 
-
-
 .dropdown-content-btn:hover {
   background-color: #271c29;
   cursor: pointer;
 }
 
-.dropdown-content-btn:active{
+.dropdown-content-btn:active {
   background-color: #161117;
 }
 
@@ -161,14 +156,12 @@ body {
 }
 
 /*Dropdown Login Modal*/
-.login-message{
+.login-message {
   display: none;
-
 }
 
-.form-outline{
+.form-outline {
   margin-top: auto !important;
 }
-
 
 /*Dropdown Login Modal*/

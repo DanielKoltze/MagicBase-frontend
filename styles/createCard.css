@@ -1,6 +1,5 @@
 .createCard-modal {
   background-color: rgba(0, 0, 0, 0.5);
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -180,7 +179,7 @@
 /*-----CARDPAGE-----*/
 .createCard-page {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 0.1fr;
   grid-template-rows: 0.1fr 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
@@ -240,6 +239,25 @@
 .searchbar-btn span:hover {
   color: rgba(255, 255, 255, 0.793);
   scale: 1.1;
+}
+
+/*CLOSE BUTTON*/
+.createCard-closeBtn {
+  background-color: transparent;
+  border: none;
+}
+.createCard-closeBtn .material-symbols-outlined {
+  font-size: 45px;
+  color: white;
+}
+.createCard-closeBtn .material-symbols-outlined:hover {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.578);
+}
+.createCard-closeBtn .material-symbols-outlined:active {
+  cursor: pointer;
+  scale: 0.9;
+  color: rgba(255, 255, 255, 0.244);
 }
 
 /*MAGIC CARDS*/

@@ -1,3 +1,4 @@
+let selectedCollectionId = "";
 
 async function getCollectionsByUserId(userId) {
   const settings = {
@@ -20,7 +21,6 @@ async function getCollectionById(collectionId) {
 async function showCollections(container, displayMode) {
   const collections = await getCollectionsByUserId(loggedInUser.id)
   displayMode(container, collections)
-
 }
 
 function displayCollectionsInSidebar(container, items) {
@@ -115,12 +115,27 @@ function displayCollectionById(container, collection) {
         <h1 class="cardQuantity"><span class="plus-minus-quantity">➖</span>${clc.quantity}<span class="plus-minus-quantity">➕</span></h1>
       </div>
       </div>
-      
        `
   }
-
   )
+  contentContainerParent = document.getElementById('showAllCollections-title')
+  addCardToCollectionById(contentContainerParent, collection.name, collection.id)
   console.log("displayCollectionById kører")
+}
+
+
+function addCardToCollectionById(container, collectionName, collectionId) {
+  container.innerHTML += `
+  <button class="createCardButton" id="${collectionId}">Add Card</button>
+  `
+  const addCardBtn = document.querySelector('.createCardButton')
+  console.log("addCardtoColleciton modal kører")
+  console.log(collectionId)
+
+  addCardBtn.addEventListener('click', async e => {
+    createCardModal(collectionName);
+  })
+
 }
 
 

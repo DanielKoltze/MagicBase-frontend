@@ -138,7 +138,9 @@
       <!--Modal Show All Collections-->
       <div id="collections-showAll-parent" class="showAll-parent">
         <div class="showAll-title-grid">
-          <div id="showAllCollections-title" class="showAll-title"></div>
+          <div id="showAllCollections-title" class="showAll-title">
+            MY COLLECTIONS
+          </div>
           <!--Searchbar - Bruger css fra createCard.css-->
           <div class="showAll-searchbar">
             <input
@@ -470,7 +472,7 @@
     <!-- Modal Login In-->
 
     <!-- Modal Create Card-->
-    <div class="createCard-modal">
+    <div class="createCard-modal" style="display: none">
       <div class="createCard-container">
         <div class="createCard-sideBar">
           <div class="createCard-sideBar-nested">
@@ -499,6 +501,9 @@
               <span class="material-symbols-outlined"> search </span>
             </button>
           </div>
+          <button type="button" class="createCard-closeBtn">
+            <span class="material-symbols-outlined"> close </span>
+          </button>
           <div class="createCard-page-cardpage"></div>
         </div>
       </div>

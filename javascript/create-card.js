@@ -12,7 +12,7 @@ function searchbarInput() {
 let addCardList = [];
 
 /*
-const cardtest = {
+const cardTest = {
     apiId: "",
     name: "",
     oracleText: "",
@@ -29,6 +29,8 @@ const cardtest = {
     colors : "mangler"
 }
 */
+
+
 
 //Indsætter billeder i "cardpage"
 async function displayCardsInCreateCard(searchWord) {
@@ -48,6 +50,7 @@ async function displayCardsInCreateCard(searchWord) {
 
     let cardObject;
 
+    /* ORIGINAL
     cardObject = {
       apiId: card.id,
       name: card.name,
@@ -63,6 +66,23 @@ async function displayCardsInCreateCard(searchWord) {
       quantity: 1, //1 indtil videre da den funktionalitet ikke er lavet endnnu
       collectionId: 1, //senere lave en dropdown hvor mna kan adde kort til en specifik
 
+    };
+*/
+
+    cardObject = {
+      apiId: card.id,
+      name: card.name,
+      oracleText: card.oracle_text,
+      rarity: card.rarity,
+      typeLine: card.type_line,
+      power: null,
+      toughness: null,
+      convertedManaCost: card.cmc,
+      setName: card.set_name,
+      euroPrice: card.prices.eur,
+      imageUrl: card.image_uris.png,
+      quantity: 1,
+      containerId: selectedCollectionId,
     };
 
     if (cardObject.typeLine.includes("Creature")) {
@@ -110,8 +130,6 @@ async function displayCardsInCreateCard(searchWord) {
         sideBarCardsContainer.classList.add("createCard-sideBar-card-container");
         sideBarCardsContainerInfo.classList.add("createCard-sideBar-card-container-info");
 
-
-        //-------------------Test, men slettes muligvis ikke-------------------
         const imageElement = document.createElement("img");
         const imageElementShadow = document.createElement("div");
 
@@ -233,3 +251,26 @@ async function getDataFromExternalApi(searchWord) {
   return await makeRequest(API_URL + searchWord, setting);
 }
 
+function createCardModal(name) {
+  const collectionName = document.getElementById.innerHTML = "";
+  collectionName.innerHTML = name;
+  open_createCardModal();
+  close_createCardModal();
+}
+
+function open_createCardModal() {
+  document.querySelector(".createCard-modal").style.display = "block";
+}
+
+function close_createCardModal() {
+  const createCardModal = document.querySelector(".createCard-modal");
+  const createCard_closeButton = document.querySelector(".createCard-closeBtn");
+  createCard_closeButton.addEventListener("click", (e) => {
+    createCardModal.style.display = "none";
+  });
+  document.onkeydown = function (e) {
+    if (e.key === "Escape") {
+      createCardModal.style.display = "none";
+    }
+  }
+}
