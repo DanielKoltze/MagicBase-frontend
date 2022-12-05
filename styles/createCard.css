@@ -1,29 +1,27 @@
 .createCard-modal {
-  height: 85vh;
-  width: 100%;
-  display: none;
-  position: relative;
-  background-color: transparent;
-}
-.createCard-container {
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
   left: 0;
   right: 0;
-  top: 3%;
+  bottom: 0;
+  z-index: 1;
+}
 
+.createCard-container {
+  margin-left: auto;
+  margin-right: auto;
   display: grid;
-  grid-template-columns: 0.3fr 1fr;
-  grid-template-rows: ;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  background-color: rgb(45, 32, 47);
-  /*height: 85vh;*/
+  margin-top: 10vh;
+  grid-template-columns: minmax(180px, 300px) minmax(500px, 1fr);
+  background-color: #181a1b;
   height: 80vh;
-  width: 65%;
+  border-radius: 20px;
+  min-width: 750px;
+  max-width: 80%;
   border-radius: 20px;
   border: 4px solid black;
+  z-index: 2;
 }
 
 /*-----SIDEBAR-----*/
@@ -31,20 +29,15 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
   height: inherit;
 }
 .createCard-sideBar-nested {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 0.01fr 1fr 0.1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
   overflow: hidden;
   height: 99%;
-  width: 100%;
-  border-right: 4px solid black;
+  border-right: 6px solid black;
 }
 
 .createCard-sideBar-card-nested-title {
@@ -53,11 +46,11 @@
   font-weight: 700;
   margin-bottom: 5px;
 }
+
 .createCard-sideBar-card-nested {
-  width: 100%;
   overflow-y: auto;
-  scrollbar-gutter: stable both-edges; /*Giver plads til scrollbar*/
-  scrollbar-width: wide;
+  scrollbar-gutter: stable; /*Giver plads til scrollbar*/
+  padding-left: 5%;
 }
 
 /*------Sidebar saved cards---------------------------------------------------------------------------------------*/
@@ -66,13 +59,14 @@
   border-radius: 5px;
   border: solid 5px;
   border-color: #303030;
-  width: 100%;
   height: 50px;
   justify-content: center;
   background: transparent;
   margin-bottom: 1.2%;
   position: relative;
-  z-index: 3;
+  min-width: 80%;
+  width: 100%;
+  z-index: 4;
 }
 .createCard-sideBar-card-container:hover {
   border-color: gold;
@@ -87,12 +81,11 @@
   object-position: 80% 15%;
   pointer-events: none;
   position: absolute;
-  z-index: 1;
+  z-index: 2;
 }
 .createCard-sideBar-card-image-shadow {
-  width: inherit;
   height: 99%;
-
+  width: inherit;
   pointer-events: none;
   background: linear-gradient(
     90deg,
@@ -101,14 +94,14 @@
     rgba(31, 30, 30, 1) 90%
   );
   position: absolute;
-  z-index: 2;
+  z-index: 3;
 }
 
 .createCard-sideBar-card-container-info {
   width: inherit;
   height: 99%;
   position: absolute;
-  z-index: 6;
+  z-index: 7;
   overflow: hidden;
   display: grid;
   grid-template-columns: 0.2fr 1fr 0.3fr;
@@ -135,7 +128,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: 100%;
 }
 
 .createCard-sideBar-card-btn-remove {
@@ -143,93 +135,6 @@
   border: none;
   background: transparent;
 }
-
-/*----------------------------------------------------------------------------------------------------*/
-
-/*-----CARD-----
-.createCard-sideBar-card-container {
-  border-radius: 5px;
-  border: solid 5px;
-  border-color: #303030;
-  width: 100%;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  background: transparent;
-  position: relative;
-  margin-bottom: 1.2%;
-}
-.createCard-sideBar-card-container:hover {
-  border-color: gold;
-  cursor: pointer;
-  box-shadow: 0 0 10px gold;
-  padding: auto;
-}
-
-.createCard-sideBar-card-background-image {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  object-position: 80% 15%;
-  pointer-events: none;
-}
-.createCard-sideBar-card-image-shadow {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    rgba(31, 30, 30, 1) 10%,
-    rgba(143, 0, 0, 0) 50%,
-    rgba(31, 30, 30, 1) 90%
-  );
-}
-
-.createCard-sideBar-card-container-info {
-}
-
-.createCard-sideBar-card-quantity {
-  color: white;
-  border: none;
-  height: 100%;
-  max-width: 10%;
-  position: absolute;
-  left: 0;
-  top: 15%;
-  background: red;
-}
-
-.createCard-sideBar-card-nested-text {
-  height: 100%;
-  width: 80%;
-  position: absolute;
-  right: 10%;
-  top: 10%;
-
-  font-family: "cooperplate, sans-serif";
-  font-weight: 900;
-  color: white;
-  font-size: 20px;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-    1px 1px 0 #000;
-
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.createCard-sideBar-card-btn-remove {
-  color: white;
-  border: none;
-  height: 100%;
-  max-width: 20%;
-  position: absolute;
-  right: 0;
-  background: transparent;
-}
-
-*/
 
 .createCard-sideBar-card-btn-remove:hover {
   scale: 1.1;
@@ -274,7 +179,7 @@
 /*-----CARDPAGE-----*/
 .createCard-page {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 0.1fr;
   grid-template-rows: 0.1fr 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
@@ -292,20 +197,17 @@
   height: 99%;
   overflow-y: auto;
   scrollbar-gutter: stable both-edges; /*Giver plads til scrollbar*/
-  border-radius: 20px;
-  border: 10px solid transparent;
+  border-radius: 10px;
+  width: inherit;
 }
 
 /*-----CARDPAGE SEARCHBAR-----*/
 .searchbar-container {
-  width: 100%;
-  height: min-content;
   display: flex;
   justify-content: center;
-  padding: 1%;
+  align-items: center;
 }
 .createCard-page-searchbar {
-  width: 60vh;
   height: 5vh;
   border-radius: 1.625rem;
   text-align: center;
@@ -313,14 +215,15 @@
   color: white;
   outline: none;
   border: none;
+  width: 80%;
 }
 .searchbar-btn {
   outline: none;
   border: none;
   border-radius: 1.625rem;
-  width: 80px;
-  margin-left: -5.1rem;
-  background-color: #303030;
+  width: fit-content;
+  margin-left: -3rem;
+  background-color: transparent;
   color: white;
 }
 .searchbar-btn:active {
@@ -336,6 +239,25 @@
 .searchbar-btn span:hover {
   color: rgba(255, 255, 255, 0.793);
   scale: 1.1;
+}
+
+/*CLOSE BUTTON*/
+.createCard-closeBtn {
+  background-color: transparent;
+  border: none;
+}
+.createCard-closeBtn .material-symbols-outlined {
+  font-size: 45px;
+  color: white;
+}
+.createCard-closeBtn .material-symbols-outlined:hover {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.578);
+}
+.createCard-closeBtn .material-symbols-outlined:active {
+  cursor: pointer;
+  scale: 0.9;
+  color: rgba(255, 255, 255, 0.244);
 }
 
 /*MAGIC CARDS*/

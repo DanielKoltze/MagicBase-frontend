@@ -1,18 +1,21 @@
 .showAll-parent {
+  padding-bottom: 30px;
+  margin-top: 30px;
   position: absolute;
   margin-left: auto;
   margin-right: auto;
   left: 0;
   right: 0;
   top: auto;
-  height: 70vh;
-  width: 80%;
+  height: 100vh;
+  width: 90%;
   grid-gap: 1rem;
   grid-template-columns: minmax(0, 1fr);
   grid-template-rows: 0.1fr 1fr;
 
   background-color: #181a1b;
-  border: 3px solid red;
+  border: 3px solid rgb(160, 123, 248);
+  box-shadow: 0 0 100px black;
   border-radius: 20px;
 
   padding: 1rem;
@@ -53,10 +56,13 @@
 /*-----SEARCHBAR-----*/
 
 .showAll-modal {
+  padding: 30px 0px;
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(13%, 1fr));
+  /*grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));*/
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  /*grid-template-rows: repeat(auto-fill, minmax(13%, 1fr));*/
   width: 100%;
 }
 .showAll-display-elements {
@@ -85,3 +91,42 @@
   height: 50%;
   font-size: 14px;
 }
+.plus-minus-quantity{
+  font-size: 18px;
+}
+
+
+.showAll-modal-container{
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+}
+
+.rightArrowSlide{
+  height: inherit;
+}
+.rightArrowSlide, .leftArrowSlide{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+  opacity: 0;
+  transition: 0.5s;
+}
+.rightArrowSlide{
+  right: 10px;
+}
+.leftArrowSlide{
+  left: 10px;
+}
+.rightArrowSlide:hover{
+  opacity: 1;
+  cursor: pointer;
+  right: 0px;
+}
+.leftArrowSlide:hover{
+  opacity: 1;
+  cursor: pointer;
+  left: 0px;
+}
+

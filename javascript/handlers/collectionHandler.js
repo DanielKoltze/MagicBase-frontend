@@ -25,7 +25,7 @@ function collection() {
     // Sidebar 
 
     // displayMyCollection();
-    
+
     contentContainer = document.getElementById('showAllCollections-modal')
     addEventListenerToSidebarMyCollections()
     addEventListenerToSidebarMyDecks()

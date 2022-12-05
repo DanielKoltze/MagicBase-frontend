@@ -1,3 +1,4 @@
+let selectedCollectionId = "";
 
 async function getCollectionsByUserId(userId) {
   const settings = {
@@ -20,7 +21,6 @@ async function getCollectionById(collectionId) {
 async function showCollections(container, displayMode) {
   const collections = await getCollectionsByUserId(loggedInUser.id)
   displayMode(container, collections)
-
 }
 
 function displayCollectionsInSidebar(container, items) {
@@ -37,7 +37,7 @@ function displayCollectionsInSidebar(container, items) {
       </div>
       `
   });
-  
+
   const deleteBtnElements = document.getElementsByClassName('delete-collection-button')
 
   for (let i = 0; i < deleteBtnElements.length; i++) {
@@ -106,16 +106,50 @@ async function showCollectionById(container, displayMode) {
 
 function displayCollectionById(container, collection) {
   container.innerHTML = ""
+  document.getElementById('showAllCollections-title').innerHTML = collection.name
   collection.collectionLineCards.forEach(clc => {
     container.innerHTML += ` 
       <div class="showCollectionById-displayCollections-elements">
       <img class="cardImg" src="${clc.card.imageUrl}">
-    <p>There are: ${clc.quantity} of this card</p>
-      </div> `
+      <div class="cardQuantityContainer">
+        <h1 class="cardQuantity"><span class="plus-minus-quantity">➖</span>${clc.quantity}<span class="plus-minus-quantity">➕</span></h1>
+      </div>
+      </div>
+       `
   }
   )
+  contentContainerParent = document.getElementById('showAllCollections-title')
+  addCardToCollectionById(contentContainerParent, collection.name, collection.id)
   console.log("displayCollectionById kører")
 }
+
+
+function addCardToCollectionById(container, collectionName, collectionId) {
+  container.innerHTML += `
+  <button class="createCardButton" id="${collectionId}">Add Card</button>
+  `
+  const addCardBtn = document.querySelector('.createCardButton')
+  console.log("addCardtoColleciton modal kører")
+  console.log(collectionId)
+
+  addCardBtn.addEventListener('click', async e => {
+    createCardModal(collectionName);
+  })
+
+}
+
+
+
+/*
+<div class="cardElements">
+            <img class="cardImg"
+                src="https://cards.scryfall.io/large/front/6/6/66e2d723-3fa0-4411-8f98-e4e6b3a5e6df.jpg?1627705997"
+                alt="">
+            <div class="cardQuantityContainer">
+                <h1 class="cardQuantity">x1</h1>
+            </div>
+        </div>
+*/
 
 /*Show Collection by ID*/
 async function deleteCollectionOrDeck(type, id) {
