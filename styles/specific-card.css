@@ -1,46 +1,60 @@
 #specific-card-container {
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  top: auto;
-  height: 70vh;
-  width: 80%;
-  background-color: #181a1b;
-  border: 3px solid red;
-  border-radius: 20px;
-
-  padding: 1rem;
+    padding-bottom: 30px;
+    margin-top: 30px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: auto;
+    height: 100vh;
+    width: 90%;
+    grid-gap: 1rem;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 0.1fr 1fr;
+  
+    background-color: #181a1b;
+    border: 3px solid rgb(160, 123, 248);
+    box-shadow: 0 0 100px black;
+    border-radius: 20px;
+  
+    padding: 1rem;
 }
 
 #specific-card-header {
-    height: 30px;
-    background-color: aliceblue;
+    height: 60px;
+    color: ghostwhite;
     display: flex;
     align-items: center;
 }
 
 #specific-card-header-title {
-    margin-left: 200px;
+    margin-left: 100px;
 }
 
 #specific-card-image img {
     
-    height: 65vh;
+    height: 90vh;
+}
+#specific-card-image {
+    display: flex;
+    justify-content: center;
 }
 
 #specific-card-page-content {
     display: flex;
     justify-content: space-around;
+
     
 }
 #specific-card-info {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: center;
+    color: ghostwhite;
 }
 
 .specific-card-item {
     flex: 1 1 0;
 }
+
