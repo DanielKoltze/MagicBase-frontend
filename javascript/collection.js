@@ -106,26 +106,35 @@ async function showCollectionById(container, displayMode) {
 
 function displayCollectionById(container, collection) {
   container.innerHTML = ""
+  document.getElementById('showAllCollections-title').innerHTML = collection.name
   collection.collectionLineCards.forEach(clc => {
     container.innerHTML += ` 
       <div class="showCollectionById-displayCollections-elements">
       <img class="cardImg" src="${clc.card.imageUrl}">
-    <p>There are: ${clc.quantity} of this card</p>
-      </div> `
+      <div class="cardQuantityContainer">
+        <h1 class="cardQuantity"><span class="plus-minus-quantity">➖</span>${clc.quantity}<span class="plus-minus-quantity">➕</span></h1>
+      </div>
+      </div>
+      
+       `
   }
 
   )
-  const addCardBtn = document.querySelector('.addCardButton-collection')
-  addCardBtn.addEventListener('click', async e => {
-    const createCard_modal = document.querySelector('.createCard-modal');
-    createCard_modal.style.display = "block";
-  })
-
-  console.log("addCardToColleciton kører")
   console.log("displayCollectionById kører")
 }
 
 
+
+/*
+<div class="cardElements">
+            <img class="cardImg"
+                src="https://cards.scryfall.io/large/front/6/6/66e2d723-3fa0-4411-8f98-e4e6b3a5e6df.jpg?1627705997"
+                alt="">
+            <div class="cardQuantityContainer">
+                <h1 class="cardQuantity">x1</h1>
+            </div>
+        </div>
+*/
 
 /*Show Collection by ID*/
 async function deleteCollectionOrDeck(type, id) {
