@@ -1,4 +1,3 @@
-let selectedCollectionId = null;
 
 async function getCollectionsByUserId(userId) {
   const settings = {
@@ -86,6 +85,9 @@ function displayAllCollectionsInModal(container, items) {
 
 const addEventListener_goToCollectionBtn = (element, collectionId) => {
   element.addEventListener('click', async e => {
+    currentPage.id = collectionId;
+    currentPage.type = "collection";
+    console.log(currentPage);
     await getCollectionById(collectionId)
 
     console.log("ID på hvad jeg trykker på: " + collectionId)
