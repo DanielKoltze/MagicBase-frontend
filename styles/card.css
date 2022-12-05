@@ -20,7 +20,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 4px;
     border-bottom-right-radius: 100%;
     border-bottom-left-radius: 100%;
     margin: 0px;
@@ -29,5 +29,5 @@
 }
 .cardQuantity{
     color: white;
-    font-size: 2em;
+    font-size: 1.6em;
 }
