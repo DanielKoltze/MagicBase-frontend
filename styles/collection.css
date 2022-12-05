@@ -7,18 +7,21 @@
   left: 0;
   right: 0;
   top: auto;
-  height: 100vh;
-  width: 90%;
+  min-width: 750px;
+  max-width: 90%;
   grid-gap: 1rem;
   grid-template-columns: minmax(0, 1fr);
   grid-template-rows: 0.1fr 1fr;
 
-  background-color: #181a1b;
-  border: 3px solid rgb(160, 123, 248);
+  background-color: #121212;
+  border: 3px solid #1e1e1e;
   box-shadow: 0 0 100px black;
   border-radius: 20px;
 
   padding: 1rem;
+
+  height: 80vh;
+  overflow: hidden;
 }
 
 .showAll-title-grid {
@@ -31,7 +34,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: clamp(14px, 5vw, 32px);
+  font-size: clamp(16px, 5vw, 32px);
   font-weight: 700;
 }
 
@@ -48,7 +51,7 @@
   border-radius: 1.625rem;
   text-align: center;
   background-color: #303030;
-  color: white;
+  color: #e1e1e1;
   outline: none;
   border: none;
 }
@@ -59,11 +62,11 @@
   padding: 30px 0px;
   display: grid;
   grid-gap: 1rem;
-  /*grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));*/
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+
+  /*grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;*/
+  /*grid-template-rows: 1fr 1fr;*/
   /*grid-template-rows: repeat(auto-fill, minmax(13%, 1fr));*/
-  width: 100%;
 }
 .showAll-display-elements {
   border: 3px solid orange;
@@ -87,24 +90,24 @@
   text-align: center;
   overflow: hidden;
   white-space: nowrap;
-  width: 100%;
   height: 50%;
   font-size: 14px;
 }
-.plus-minus-quantity{
+.plus-minus-quantity {
   font-size: 18px;
 }
 
-
-.showAll-modal-container{
+.showAll-modal-container {
+  margin-left: auto;
+  margin-right: auto;
   display: grid;
-  grid-template-columns: 100px 1fr 100px;
+  margin-top: 1vh;
+  grid-template-columns: 100px minmax(500px, 1fr) 100px;
+  overflow: hidden;
 }
 
-.rightArrowSlide{
-  height: inherit;
-}
-.rightArrowSlide, .leftArrowSlide{
+.rightArrowSlide,
+.leftArrowSlide {
   position: relative;
   display: flex;
   justify-content: center;
@@ -112,21 +115,30 @@
   font-size: 100px;
   opacity: 0;
   transition: 0.5s;
+  cursor: pointer;
 }
-.rightArrowSlide{
+.rightArrowSlide {
   right: 10px;
 }
-.leftArrowSlide{
+.leftArrowSlide {
   left: 10px;
 }
-.rightArrowSlide:hover{
+.rightArrowSlide:hover {
   opacity: 1;
   cursor: pointer;
   right: 0px;
 }
-.leftArrowSlide:hover{
+.leftArrowSlide:hover {
   opacity: 1;
   cursor: pointer;
   left: 0px;
 }
 
+.leftArrowSlide:active {
+  scale: 0.9;
+  color: #e1e1e1b9;
+}
+.rightArrowSlide:active {
+  scale: 0.9;
+  color: #e1e1e1b9;
+}
