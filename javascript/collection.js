@@ -1,5 +1,5 @@
 let selectedCollectionId = "";
-
+/*------------------------------------------------------------------------------------
 async function getCollectionsByUserId(userId) {
   const settings = {
     method: "GET",
@@ -23,7 +23,7 @@ async function showCollections(container, displayMode) {
   console.log(type)
   displayMode(container, collections)
 }
-
+---------------------------------------------------------------------------*/
 function displayCollectionsInSidebar(container, items) {
   //const container = document.getElementById('deck-collection-container')
   container.innerHTML = ""
@@ -60,7 +60,7 @@ const addEventListenerToCollectionElement = (element, collectionId, collectionNa
     }
   })
 }
-
+/*------------------------------------------------------------------------------------
 function displayAllCollectionsInModal(container, items) {
   container.innerHTML = ""
   items.forEach(collection => {
@@ -98,7 +98,9 @@ const addEventListener_goToCollectionBtn = (element, collectionId) => {
     showCollectionById(contentContainer, displayCollectionById)
   })
 }
+
 /*Show Collection by ID*/
+/*------------------------------------------------------------------------------------
 async function showCollectionById(container, displayMode) {
   const data = await getCollectionById(selectedCollectionId)
   displayMode(container, data)
@@ -151,6 +153,7 @@ function addCardToCollectionById(container, collectionName, collectionId) {
 */
 
 /*Show Collection by ID*/
+/*------------------------------------------------------------------------------------
 async function deleteCollectionOrDeck(type, id) {
   const settings = {
     method: "DELETE",
@@ -159,5 +162,5 @@ async function deleteCollectionOrDeck(type, id) {
   await makeRequest(BASE_URL + "/" + type + "/" + id + "/user/" + loggedInUser.id, settings)
 }
 
-
+------------------------------------------------------------------------------------*/
 

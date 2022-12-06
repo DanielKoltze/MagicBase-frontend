@@ -1,5 +1,5 @@
 
-
+/*
 async function getDecksByUserId(userId) {
     const settings = {
         method: "GET",
@@ -58,7 +58,7 @@ const addEventListener_goToDeckBtn = (element, deckId) => {
     })
 }
 
-/*Show Deck by ID*/
+/*Show Deck by ID*//*
 async function showDeckById(container, displayMode) {
     const data = await getDeckById(selectedDeckId)
     displayMode(container, data)

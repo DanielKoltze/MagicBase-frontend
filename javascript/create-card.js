@@ -11,26 +11,6 @@ function searchbarInput() {
 }
 let addCardList = [];
 
-/*
-const cardTest = {
-    apiId: "",
-    name: "",
-    oracleText: "",
-    rarity: "",
-    power: "",
-    typeline: "",
-    toughness: "",
-    convertedManaCost: "",
-    setName: "",
-    euroPrice: "",
-    image: "",
-    collectionId: "",
-    quantity: "1"
-    colors : "mangler"
-}
-*/
-
-
 
 //Indsætter billeder i "cardpage"
 async function displayCardsInCreateCard(searchWord) {
@@ -49,25 +29,6 @@ async function displayCardsInCreateCard(searchWord) {
         </div>`;
 
     let cardObject;
-
-    /* ORIGINAL
-    cardObject = {
-      apiId: card.id,
-      name: card.name,
-      oracleText: card.oracle_text,
-      rarity: card.rarity,
-      typeLine: card.type_line,
-      power: null,
-      toughness: null,
-      convertedManaCost: card.cmc,
-      setName: card.set_name,
-      euroPrice: card.prices.eur,
-      imageUrl: card.image_uris.png,
-      quantity: 1, //1 indtil videre da den funktionalitet ikke er lavet endnnu
-      collectionId: 1, //senere lave en dropdown hvor mna kan adde kort til en specifik
-
-    };
-*/
 
     cardObject = {
       apiId: card.id,
@@ -226,7 +187,7 @@ submitCreateCardsBtn.addEventListener("click", (e) => {
     ".createCard-sideBar-card-nested"
   );
   clearContainer.innerHTML = "";
-  showCollections(contentContainer, displayAllCollectionsInModal)
+  showCollections(contentContainer, displayAllElementsInModal, currentPage.type)
 });
 
 //Lukker Modal når der klikkes udenfor

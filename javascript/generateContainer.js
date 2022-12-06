@@ -15,6 +15,8 @@ async function getCollectionById(collectionId) {
     return await makeRequest(BASE_URL + '/collection/' + collectionId, settings);
 }
 /*----------Collection----------*/
+
+
 /*----------Deck----------*/
 async function getDecksByUserId(userId) {
     const settings = {
@@ -33,6 +35,8 @@ async function getDeckById(deckId) {
 /*----------Deck----------*/
 /*------------------------------GETMAPPINGS------------------------------*/
 
+
+
 /*------------------------------DELETEMAPPING------------------------------*/
 async function deleteCollectionOrDeck(type, id) {
     const settings = {
@@ -42,14 +46,10 @@ async function deleteCollectionOrDeck(type, id) {
 }
 /*------------------------------DELETEMAPPING------------------------------*/
 
-/*------------------------------DISPLAY COLLECTIONS------------------------------*/
-async function showCollections(container, displayMode) {
-    const collections = await getCollectionsByUserId(loggedInUser.id)
-    displayMode(container, collections)
-}
 
 
-function displayAllElementsInModal(container, items) {
+/*------------------------------DISPLAY ELEMENTS------------------------------*/
+function displayAllElementsInModal(container, items, type) {
     container.innerHTML = ""
     items.forEach(element => {
         container.innerHTML += `
@@ -63,31 +63,69 @@ function displayAllElementsInModal(container, items) {
 
     const goToElementBtn = document.getElementsByClassName('showAll-display-elements')
 
-    for (let i = 0; i < goToElementBtn.length; i++) {
-        addEventListener_goToElementBtn(
-            goToElementBtn[i],
-            goToElementBtn[i].getAttribute('element-id'),
-        )
+
+    /*GO TO "DISPLAY COLLECTIONS"*/
+    if (type === "collection") {
+        for (let i = 0; i < goToElementBtn.length; i++) {
+            addEventListener_goToCollectionBtn(
+                goToElementBtn[i],
+                goToElementBtn[i].getAttribute('element-id'),
+            )
+        }
+        console.log("Current type clicked: " + type)
+    }
+    /*GO TO "DISPLAY DECKS"*/
+    if (type === "deck") {
+        for (let i = 0; i < goToElementBtn.length; i++) {
+            addEventListener_goToDeckBtn(
+                goToElementBtn[i],
+                goToElementBtn[i].getAttribute('element-id'),
+            )
+        }
+        console.log("Current type clicked: " + type)
     }
 }
+/*------------------------------DISPLAY ELEMENTS------------------------------*/
 
-const addEventListener_goToElementBtn = (element, elementId) => {
-    element.addEventListener('click', async e => {
-        currentPage.id = elementId;
-        currentPage.type = "collection";
-        console.log(currentPage);
-        await getCollectionById(collectionId)
 
-        console.log("ID på hvad jeg trykker på: " + collectionId)
-        selectedCollectionId = collectionId
+/*------------------------------ADD CARD TO ELEMENT------------------------------*/
+function addCardToCollectionById(container, collectionName, collectionId) {
+    container.innerHTML += `
+    <button class="createCardButton" id="${collectionId}">Add Card</button>
+    `
+    const addCardBtn = document.querySelector('.createCardButton')
+    console.log("addCardtoCollection modal kører")
+    console.log(collectionId)
 
-        showCollectionById(contentContainer, displayCollectionById)
+    addCardBtn.addEventListener('click', async e => {
+        createCardModal(collectionName);
     })
+}
+/*------------------------------ADD CARD TO ELEMENT------------------------------*/
+
+
+
+/*------------------------------DISPLAY COLLECTIONS------------------------------*/
+async function showCollections(container, displayMode, type) {
+    const collections = await getCollectionsByUserId(loggedInUser.id)
+    displayMode(container, collections, type)
 }
 /*Show Collection by ID*/
 async function showCollectionById(container, displayMode) {
     const data = await getCollectionById(selectedCollectionId)
     displayMode(container, data)
+}
+const addEventListener_goToCollectionBtn = (element, collectionId) => {
+    element.addEventListener('click', async e => {
+        currentPage.id = collectionId;
+        currentPage.type = "collection";
+        await getCollectionById(collectionId)
+
+        console.log("ID på COLLECTION: " + collectionId)
+        selectedCollectionId = collectionId
+
+        showCollectionById(contentContainer, displayCollectionById)
+    })
 }
 
 function displayCollectionById(container, collection) {
@@ -108,21 +146,47 @@ function displayCollectionById(container, collection) {
     addCardToCollectionById(contentContainerParent, collection.name, collection.id)
     console.log("displayCollectionById kører")
 }
+/*------------------------------DISPLAY COLLECTIONS------------------------------*/
 
+/*------------------------------DISPLAY DECKS------------------------------*/
+async function showDecks(container, displayMode, type) {
+    const decks = await getDecksByUserId(loggedInUser.id)
+    displayMode(container, decks, type)
+}
+/*Show Decks by ID*/
+async function showDeckById(container, displayMode) {
+    const data = await getDeckById(selectedDeckId)
+    displayMode(container, data)
+}
+const addEventListener_goToDeckBtn = (element, deckId) => {
+    element.addEventListener('click', async e => {
+        currentPage.id = deckId;
+        currentPage.type = "deck";
+        await getDeckById(deckId)
 
-function addCardToCollectionById(container, collectionName, collectionId) {
-    container.innerHTML += `
-    <button class="createCardButton" id="${collectionId}">Add Card</button>
-    `
-    const addCardBtn = document.querySelector('.createCardButton')
-    console.log("addCardtoCollection modal kører")
-    console.log(collectionId)
+        console.log("ID på DECK: " + deckId)
+        selectedDeckId = deckId
 
-    addCardBtn.addEventListener('click', async e => {
-        createCardModal(collectionName);
+        showDeckById(contentContainer, displayDeckById)
     })
 }
 
-
-
-/*------------------------------DISPLAY COLLECTIONS------------------------------*/
+function displayDeckById(container, deck) {
+    container.innerHTML = ""
+    document.getElementById('showAllCollections-title').innerHTML = deck.name
+    deck.deckLineCards.forEach(dlc => {
+        container.innerHTML += ` 
+        <div class="showCollectionById-displayCollections-elements">
+        <img class="cardImg" src="${dlc.card.imageUrl}">
+        <div class="cardQuantityContainer">
+          <h1 class="cardQuantity"><span class="plus-minus-quantity">➖</span>${dlc.quantity}<span class="plus-minus-quantity">➕</span></h1>
+        </div>
+        </div>
+         `
+    }
+    )
+    contentContainerParent = document.getElementById('showAllCollections-title')
+    addCardToCollectionById(contentContainerParent, deck.name, deck.id)
+    console.log("displayDeckById kører")
+}
+/*------------------------------DISPLAY DECKS------------------------------*/
