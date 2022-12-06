@@ -1,5 +1,3 @@
-let container = document.getElementById("decks-item")
-
 async function getDecks(userId) {
   const settings = {
     method: "GET",
@@ -8,12 +6,6 @@ async function getDecks(userId) {
   const decks = await makeRequest(`${BASE_URL}/deck/user/${userId}`, settings);
   return decks;
 }
-
-/*
-myDeckLink.addEventListener("click", () => {
-    console.log("show deck to danni")
-});
-*/
 async function showDecks(container, displayMode) {
   const decks = await getDecks(loggedInUser.id)
   displayMode(container, decks)
@@ -30,8 +22,8 @@ function displayDecksInSidebar2(container, items) {
           <span class="delete-deck-button" deck-id="${deck.id}" deck-name="${deck.name}">❌</span>
       </div>`
 
-    
-    
+
+
   });
 
   const deleteBtnElements = document.getElementsByClassName(

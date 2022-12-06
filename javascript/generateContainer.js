@@ -98,9 +98,9 @@ function addCardToCollectionById(container, collection) {
     console.log(collection.id)
 
     addCardBtn.addEventListener('click', async e => {
-        console.log("addCardtoCollection modal kører")
-        console.log(currentPage)
-        createCardModal(collection);
+        createCardModal(collection.name);
+
+        submitCards();
     })
 }
 function clearAddToCollectionButton() {
@@ -128,13 +128,14 @@ async function showCollectionById(container, displayMode) {
 }
 const addEventListener_goToCollectionBtn = (element, collectionId) => {
     element.addEventListener('click', async e => {
-        currentPage.id = collectionId;
-        currentPage.type = "collection";
+
         await getCollectionById(collectionId)
 
-        console.log("ID på COLLECTION: " + collectionId)
-        selectedCollectionId = collectionId
 
+        selectedCollectionId = collectionId
+        currentPage.id = collectionId;
+        console.log("ID på COLLECTION: " + collectionId)
+        console.log("ID på CurrentPage: " + currentPage.id)
         showCollectionById(contentContainer, displayCollectionById)
     })
 }
@@ -153,6 +154,7 @@ function displayCollectionById(container, collection) {
          `
     }
     )
+
     contentContainerParent = document.getElementById('showAllCollections-title')
     addCardToCollectionById(contentContainerParent, collection)
     console.log("displayCollectionById kører")
@@ -171,13 +173,13 @@ async function showDeckById(container, displayMode) {
 }
 const addEventListener_goToDeckBtn = (element, deckId) => {
     element.addEventListener('click', async e => {
-        currentPage.id = deckId;
-        currentPage.type = "deck";
+
         await getDeckById(deckId)
 
-        console.log("ID på DECK: " + deckId)
         selectedDeckId = deckId
-
+        currentPage.id = deckId;
+        console.log("ID på DECK: " + deckId)
+        console.log("ID på CurrentPage: " + currentPage.id)
         showDeckById(contentContainer, displayDeckById)
     })
 }
