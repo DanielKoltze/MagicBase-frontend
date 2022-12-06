@@ -20,6 +20,7 @@ async function getCollectionById(collectionId) {
 
 async function showCollections(container, displayMode) {
   const collections = await getCollectionsByUserId(loggedInUser.id)
+  console.log(type)
   displayMode(container, collections)
 }
 
@@ -74,6 +75,8 @@ function displayAllCollectionsInModal(container, items) {
 
   const goToCollectionBtn = document.getElementsByClassName('showAll-display-elements')
 
+  console.log(items)
+
   for (let i = 0; i < goToCollectionBtn.length; i++) {
     addEventListener_goToCollectionBtn(
       goToCollectionBtn[i],
@@ -95,7 +98,6 @@ const addEventListener_goToCollectionBtn = (element, collectionId) => {
     showCollectionById(contentContainer, displayCollectionById)
   })
 }
-
 /*Show Collection by ID*/
 async function showCollectionById(container, displayMode) {
   const data = await getCollectionById(selectedCollectionId)
@@ -155,7 +157,6 @@ async function deleteCollectionOrDeck(type, id) {
   }
 
   await makeRequest(BASE_URL + "/" + type + "/" + id + "/user/" + loggedInUser.id, settings)
-
 }
 
 
