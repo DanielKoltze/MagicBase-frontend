@@ -12,7 +12,7 @@
   margin-left: auto;
   margin-right: auto;
   display: grid;
-  margin-top: 10vh;
+  margin-top: 12vh;
   grid-template-columns: minmax(180px, 300px) minmax(500px, 1fr);
   background-color: #181a1b;
   height: 80vh;
@@ -121,7 +121,8 @@
   font-family: "cooperplate, sans-serif";
   font-weight: 900;
   color: white;
-  font-size: 12px;
+  font-size: 20px;
+  max-width: 180px;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
     1px 1px 0 #000;
 

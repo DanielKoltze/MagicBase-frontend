@@ -142,3 +142,7 @@
   scale: 0.9;
   color: #e1e1e1b9;
 }
+
+.createCardButton {
+  justify-self: center;
+}

@@ -47,9 +47,8 @@ function displayCollectionsInSidebar(container, items) {
       deleteBtnElements[i].getAttribute('collection-name')
     )
   }
-
-
 }
+
 const addEventListenerToCollectionElement = (element, collectionId, collectionName) => {
   element.addEventListener('click', async e => {
     if (window.confirm(`Are you sure want to delete this collection: ${collectionName}?`)) {
@@ -93,7 +92,6 @@ const addEventListener_goToCollectionBtn = (element, collectionId) => {
     console.log("ID på hvad jeg trykker på: " + collectionId)
     selectedCollectionId = collectionId
 
-
     showCollectionById(contentContainer, displayCollectionById)
   })
 }
@@ -129,13 +127,12 @@ function addCardToCollectionById(container, collectionName, collectionId) {
   <button class="createCardButton" id="${collectionId}">Add Card</button>
   `
   const addCardBtn = document.querySelector('.createCardButton')
-  console.log("addCardtoColleciton modal kører")
+  console.log("addCardtoCollection modal kører")
   console.log(collectionId)
 
   addCardBtn.addEventListener('click', async e => {
     createCardModal(collectionName);
   })
-
 }
 
 

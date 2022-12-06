@@ -82,7 +82,7 @@ async function displayCardsInCreateCard(searchWord) {
       euroPrice: card.prices.eur,
       imageUrl: card.image_uris.png,
       quantity: 1,
-      containerId: selectedCollectionId,
+      containerId: currentPage.id,
     };
 
     if (cardObject.typeLine.includes("Creature")) {
@@ -226,14 +226,15 @@ submitCreateCardsBtn.addEventListener("click", (e) => {
     ".createCard-sideBar-card-nested"
   );
   clearContainer.innerHTML = "";
+  showCollections(contentContainer, displayAllCollectionsInModal)
 });
 
 //Lukker Modal når der klikkes udenfor
 /*
-const createCardModal = document.querySelector(".createCard-modal");
+const createCardModalTest = document.querySelector(".createCard-modal");
 document.onclick = function (e) {
-  if (e.target == createCardModal) {
-    createCardModal.style.display = "none";
+  if (e.target == createCardModalTest) {
+    createCardModalTest.style.display = "none";
     cardpageContainer.style.display = "none";
   }
   //Hvis der bliver klikket i modalen, så forbliver den åben
@@ -256,6 +257,15 @@ function createCardModal(name) {
   collectionName.innerHTML = name;
   open_createCardModal();
   close_createCardModal();
+
+  const createCardModal = document.querySelector(".createCard-modal");
+
+  document.onclick = function (e) {
+    if (e.target == createCardModal) {
+      createCardModal.style.display = "none";
+      console.log("Closing")
+    }
+  };
 }
 
 function open_createCardModal() {

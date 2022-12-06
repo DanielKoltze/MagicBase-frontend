@@ -28,7 +28,7 @@ template('home', () => {
 })
 
 template('collection', () => {
-  collection();
+    collection();
 })
 
 route('/', 'home');
