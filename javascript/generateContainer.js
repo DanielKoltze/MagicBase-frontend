@@ -41,8 +41,12 @@ function displayAllElementsInModal(container, items, type) {
 /*------------------------------ADD CARD TO ELEMENT------------------------------*/
 function addCardToCollectionById(container, collection) {
     container.innerHTML += `
-    <button class="createCardButton" id="${collection.id}">Add Card</button>
+    <h3 class="addCardToCollectionById">${collection.name}</h3>
+    <button class="createCardButton" id="${collection.id}">
+    <span class="material-symbols-outlined createCardButtonFont">add</span></button>
+    
     `
+
     const addCardBtn = document.querySelector('.createCardButton')
     console.log("addCardtoCollection modal kører")
     console.log(collection.id)

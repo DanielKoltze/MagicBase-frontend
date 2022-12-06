@@ -41,7 +41,7 @@ const addEventListener_goToDeckBtn = (element, deckId) => {
 
 function displayDeckById(container, deck) {
     container.innerHTML = ""
-    document.getElementById('showAllCollections-title').innerHTML = deck.name
+    document.getElementById('showAllCollections-title').innerHTML = "";
     deck.deckLineCards.forEach(dlc => {
         container.innerHTML += ` 
         <div class="showCollectionById-displayCollections-elements">

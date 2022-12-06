@@ -91,7 +91,7 @@ const addEventListener_goToCollectionBtn = (element, collectionId) => {
 
 function displayCollectionById(container, collection) {
   container.innerHTML = ""
-  document.getElementById('showAllCollections-title').innerHTML = collection.name
+  document.getElementById('showAllCollections-title').innerHTML = "";
   collection.collectionLineCards.forEach(clc => {
     container.innerHTML += ` 
       <div class="showCollectionById-displayCollections-elements">
