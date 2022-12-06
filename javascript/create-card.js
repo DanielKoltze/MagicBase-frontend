@@ -166,29 +166,47 @@ searchbarEnterBtn.addEventListener("keypress", function (event) {
   }
 });
 
-const submitCreateCardsBtn = document.querySelector(".createCard-sideBar-btn");
+/*-----------------------POST MAPPING-------------------------*/
+async function postCardToCollection(card) {
+  const settings = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(card),
+  };
+  console.log(settings);
 
-submitCreateCardsBtn.addEventListener("click", (e) => {
-  addCardList.forEach(async (card) => {
-    console.log(card);
-    const settings = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(card),
-    };
-    console.log(settings);
+  if (currentPage.type === "collection") {
     await makeRequest(BASE_URL + "/clc", settings);
+  }
+
+  if (currentPage.type === "deck") {
+    await makeRequest(BASE_URL + "/dlc", settings);
+  }
+
+}
+/*-----------------------POST MAPPING-------------------------*/
+
+function submitCards(userId, collectionId) {
+  const submitCreateCardsBtn = document.querySelector(".createCard-sideBar-btn");
+
+  submitCreateCardsBtn.addEventListener("click", (e) => {
+    addCardList.forEach(async (card) => {
+      console.log(card);
+      console.log(currentPage)
+      await postCardToCollection(card);
+    });
+
+    addCardList = [];
+    const clearContainer = document.querySelector(
+      ".createCard-sideBar-card-nested"
+    );
+    clearContainer.innerHTML = "";
+    showCollections(contentContainer, displayAllElementsInModal, currentPage.type)
   });
 
-  addCardList = [];
-  const clearContainer = document.querySelector(
-    ".createCard-sideBar-card-nested"
-  );
-  clearContainer.innerHTML = "";
-  showCollections(contentContainer, displayAllElementsInModal, currentPage.type)
-});
+}
 
 //Lukker Modal når der klikkes udenfor
 /*
@@ -213,10 +231,9 @@ async function getDataFromExternalApi(searchWord) {
   return await makeRequest(API_URL + searchWord, setting);
 }
 
-function createCardModal(name) {
-  const collectionName = document.getElementById.innerHTML = "";
-  collectionName.innerHTML = name;
-  open_createCardModal();
+function createCardModal(collection) {
+
+  open_createCardModal(collection);
   close_createCardModal();
 
   const createCardModal = document.querySelector(".createCard-modal");
@@ -231,6 +248,7 @@ function createCardModal(name) {
 
 function open_createCardModal() {
   document.querySelector(".createCard-modal").style.display = "block";
+  submitCards(collection.userId, collection.id);
 }
 
 function close_createCardModal() {

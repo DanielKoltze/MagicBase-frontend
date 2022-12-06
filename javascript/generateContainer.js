@@ -62,7 +62,7 @@ function displayAllElementsInModal(container, items, type) {
     });
 
     const goToElementBtn = document.getElementsByClassName('showAll-display-elements')
-
+    clearAddToCollectionButton()
 
     /*GO TO "DISPLAY COLLECTIONS"*/
     if (type === "collection") {
@@ -89,17 +89,28 @@ function displayAllElementsInModal(container, items, type) {
 
 
 /*------------------------------ADD CARD TO ELEMENT------------------------------*/
-function addCardToCollectionById(container, collectionName, collectionId) {
+function addCardToCollectionById(container, collection) {
     container.innerHTML += `
-    <button class="createCardButton" id="${collectionId}">Add Card</button>
+    <button class="createCardButton" id="${collection.id}">Add Card</button>
     `
     const addCardBtn = document.querySelector('.createCardButton')
     console.log("addCardtoCollection modal kører")
-    console.log(collectionId)
+    console.log(collection.id)
 
     addCardBtn.addEventListener('click', async e => {
-        createCardModal(collectionName);
+        console.log("addCardtoCollection modal kører")
+        console.log(currentPage)
+        createCardModal(collection);
     })
+}
+function clearAddToCollectionButton() {
+    contentContainerParent = document.querySelector('showAllCollections-title')
+    if (currentPage.type === "collection") {
+        document.getElementById('showAllCollections-title').innerHTML = "MY COLLECTIONS"
+    }
+    if (currentPage.type === "deck") {
+        document.getElementById('showAllCollections-title').innerHTML = "MY DECKS"
+    }
 }
 /*------------------------------ADD CARD TO ELEMENT------------------------------*/
 
@@ -143,7 +154,7 @@ function displayCollectionById(container, collection) {
     }
     )
     contentContainerParent = document.getElementById('showAllCollections-title')
-    addCardToCollectionById(contentContainerParent, collection.name, collection.id)
+    addCardToCollectionById(contentContainerParent, collection)
     console.log("displayCollectionById kører")
 }
 /*------------------------------DISPLAY COLLECTIONS------------------------------*/
@@ -186,7 +197,7 @@ function displayDeckById(container, deck) {
     }
     )
     contentContainerParent = document.getElementById('showAllCollections-title')
-    addCardToCollectionById(contentContainerParent, deck.name, deck.id)
+    addCardToCollectionById(contentContainerParent, deck)
     console.log("displayDeckById kører")
 }
 /*------------------------------DISPLAY DECKS------------------------------*/

@@ -1,4 +1,3 @@
-let selectedCollectionId = "";
 /*------------------------------------------------------------------------------------
 async function getCollectionsByUserId(userId) {
   const settings = {
