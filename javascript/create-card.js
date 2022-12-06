@@ -206,7 +206,16 @@ function submitCards() {
     clearContainer.innerHTML = "";
     const createCardModal = document.querySelector(".createCard-modal");
     createCardModal.style.display = "none";
-    showCollectionById(contentContainer, displayCollectionById)
+    console.log("------------------------------------------------------")
+    console.log(currentPage.type)
+    if (currentPage.type === "collection") {
+      console.log(currentPage.type + " has been loaded with ID: " + currentPage.id)
+      showCollectionById(contentContainer, displayCollectionById)
+    }
+    if (currentPage.type === "deck") {
+      console.log(currentPage.type + " has been loaded with ID: " + currentPage.id)
+      showDeckById(contentContainer, displayDeckById)
+    }
   });
 }
 
