@@ -96,16 +96,56 @@ function displayCollectionById(container, collection) {
     container.innerHTML += ` 
       <div class="showCollectionById-displayCollections-elements">
       <img class="cardImg" src="${clc.card.imageUrl}">
-      <div class="cardQuantityContainer">
-        <h1 class="cardQuantity"><span class="plus-minus-quantity">➖</span>${clc.quantity}<span class="plus-minus-quantity">➕</span></h1>
+      <div class="cardQuantityContainer" id="card-quantity-container-${clc.card.id}">
       </div>
       </div>
-       `
+       `;
+    const cardQuantityContainer = document.getElementById('card-quantity-container-' + clc.card.id);
+    const cardQuantity = document.createElement('h1');
+    cardQuantity.classList.add('cardQuantity');
+    const minusQuantity = document.createElement('span');
+    minusQuantity.classList.add('plus-minus-quantity')
+    minusQuantity.textContent = "➖"
+    const plusQuantity = document.createElement('span');
+    plusQuantity.classList.add('plus-minus-quantity')
+    plusQuantity.textContent = "➕"
+
+
+
+    cardQuantityContainer.appendChild(cardQuantity);
+    cardQuantity.appendChild(minusQuantity);
+    cardQuantity.innerHTML = clc.quantity;
+    cardQuantity.appendChild(plusQuantity)
+
+    addEventListenerToMinusQuantity(clc, minusQuantity, cardQuantity)
+    addEventListenerToPlusQuantity(clc, plusQuantity, cardQuantity)
+
   }
   )
-
   contentContainerParent = document.getElementById('showAllCollections-title')
   addCardToCollectionById(contentContainerParent, collection)
   console.log("displayCollectionById kører")
 }
 /*------------------------------DISPLAY COLLECTIONS------------------------------*/
+
+
+function addEventListenerToPlusQuantity(lineCard, element, cardQuantityElement) {
+  element.addEventListener('click', async e => {
+    let count = lineCard.quantity;
+    count++;
+
+    cardQuantityElement.textContent = count;
+    console.log(count);
+  }
+  )
+}
+
+function addEventListenerToMinusQuantity(lineCard, element, cardQuantityElement) {
+  element.addEventListener('click', async e => {
+    let count = lineCard.quantity;
+    count--;
+    cardQuantityElement.textContent = count;
+    console.log(count);
+  }
+  )
+}
