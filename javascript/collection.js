@@ -122,14 +122,15 @@ function displayCollectionById(container, collection) {
     plusQuantity.textContent = "➕"
     minusQuantity.textContent = "➖"
 
-
-    addEventListenerToMinusQuantity(clc, minusQuantity, cardQuantityValue)
-    addEventListenerToPlusQuantity(clc, plusQuantity, cardQuantityValue)
-
     cardQuantityContainer.appendChild(cardQuantity);
     cardQuantity.appendChild(minusQuantity);
     cardQuantity.appendChild(cardQuantityValue);
     cardQuantity.appendChild(plusQuantity)
+
+
+    addCardAmountEventlisteners(plusQuantity, minusQuantity, clc, cardQuantityValue);
+
+    
   }
   )
   contentContainerParent = document.getElementById('showAllCollections-title')
@@ -141,30 +142,28 @@ function displayCollectionById(container, collection) {
 }
 /*------------------------------DISPLAY COLLECTIONS------------------------------*/
 
-
-function addEventListenerToPlusQuantity(lineCard, element, cardQuantityElement) {
-
-  element.addEventListener('click', async e => {
+function addCardAmountEventlisteners(plusQuantityElement, minusQuantityElement, lineCard, cardQuantityValueElement) {
     let count = lineCard.quantity;
+
+    plusQuantityElement.addEventListener('click', async e => {
     count++;
-    cardQuantityElement.textContent = count;
+    cardQuantityValueElement.textContent = count;
     console.log("plus")
     console.log(count);
   }
   )
-}
-
-
-
-function addEventListenerToMinusQuantity(lineCard, element, cardQuantityElement) {
-  element.addEventListener('click', async e => {
-    let count = lineCard.quantity;
+  minusQuantityElement.addEventListener('click', async e => {
     count--;
-    cardQuantityElement.textContent = count;
+    if(count < 0) {
+      count = 0;
+    }
+    cardQuantityValueElement.textContent = count;
     console.log(count);
   }
   )
+
 }
+
 
 function addEventListenerToCardImage(cardImageElements, cards) {
   let color = ""
