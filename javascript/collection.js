@@ -91,22 +91,19 @@ const addEventListener_goToCollectionBtn = (element, collectionId) => {
    
 function displayCollectionById(container, collection) {
 
-  const cards = []
   container.innerHTML = ""
   document.getElementById('showAllCollections-title').innerHTML = "";
   
   collection.collectionLineCards.forEach(clc => {
  
        const clcElement = createClcElement(clc);
-       container.appendChild(clcElement)
-       cards.push(clc)
+       container.appendChild(clcElement)  
+       addEventListenersToQuantityElements(clc);
+       addEventListenerToCardImage(clc);
   }
   )
   contentContainerParent = document.getElementById('showAllCollections-title')
   addCardToCollectionById(contentContainerParent, collection)
-
-  const cardImageElements = document.querySelectorAll('.cardImgShowSpecifikCard')
-  addEventListenerToCardImage(cardImageElements, cards)
 }
 
 
@@ -114,105 +111,74 @@ const createClcElement = clc => {
   const clcElement = document.createElement('div');
   clcElement.classList.add('showCollectionById-displayCollections-elements')
   clcElement.innerHTML = 
-    `<img class="cardImg cardImgShowSpecifikCard"
+    `<img class="cardImg" 
+     id="clc-image-${clc.id}"
      src="${clc.card.imageUrl}"
      data-toggle="modal"
-     data-target="#showSpecificCard"
-     id="showCardDeckId${clc.id}AndCard${clc.card.apiId}">
-
+     data-target="#showSpecificCard">
      <div class="cardQuantityContainer" id="card-quantity-container-${clc.card.id}">
       <span id="clc-minus-btn-${clc.id}" class="plus-minus-quantity">➖</span>
       <span id="clc-value-${clc.id}">${clc.quantity}</span>
       <span id="clc-plus-btn-${clc.id}" class="plus-minus-quantity">➕</span>
     </div>`
 
-    const minusBtn = clcElement.querySelector(`#clc-minus-btn-${clc.id}`);
-    const plusBtn = clcElement.querySelector(`#clc-plus-btn-${clc.id}`);
-    const value = clcElement.querySelector(`#clc-value-${clc.id}`);
-    addEventListenersToQuantityElements(minusBtn, plusBtn, value, clc);
-
     return clcElement;
 }
 
-const addEventListenersToQuantityElements = (minusBtn, plusBtn, value, clc) => {
+const addEventListenersToQuantityElements = (clc) => {
   let count = clc.quantity;
 
-  plusBtn.addEventListener('click', () => {
+  $(`#clc-plus-btn-${clc.id}`).click(function() { 
     count++;
-    value.textContent = count;
-    console.log("plus")
-    console.log(count);
-  }
-)
-  minusBtn.addEventListener('click', () => {
+    $(`#clc-value-${clc.id}`).text(count)
+    
+  })
+    
+  $(`#clc-minus-btn-${clc.id}`).click(function() {
     count--;
     if(count < 0) {
       count = 0;
     }
-    value.textContent = count;
-    console.log(count);
-  }
-)
+    $(`#clc-value-${clc.id}`).text(count);
+  })
+  
 }
 
 
 /*------------------------------DISPLAY COLLECTIONS------------------------------*/
 
 
+const addEventListenerToCardImage = (clc) => {
 
+  let color = "";
 
-/*
-function addCardAmountEventlisteners(plusQuantityElement, minusQuantityElement, lineCard, cardQuantityValueElement) {
-    let count = lineCard.quantity;
-
-    plusQuantityElement.addEventListener('click', async e => {
-    count++;
-    cardQuantityValueElement.textContent = count;
-    console.log("plus")
-    console.log(count);
-  }
-  )
-  minusQuantityElement.addEventListener('click', async e => {
-    count--;
-    if(count < 0) {
-      count = 0;
+  $(`#clc-image-${clc.id}`).click(() => {
+    if (clc.card.rarity === "common") {
+      color = "grey"
+    } else if (clc.card.rarity === "uncommon") {
+      color = "green"
+    } else if (clc.card.rarity === "rare") {
+      color = "blue"
+    } else if (clc.card.rarity === "mythic") {
+      color = "#FFB300"
     }
-    cardQuantityValueElement.textContent = count;
-    console.log(count);
-  }
-  )
 
-}
-*/
+    showCardPopup(color, clc)
 
-
-function addEventListenerToCardImage(cardImageElements, cards) {
-  let color = ""
-  cardImageElements.forEach((cardImg, i) => {
-    cardImg.addEventListener('click', e => {
-      //color
-      if (cards[i].card.rarity === "common") {
-        color = "grey"
-      } else if (cards[i].card.rarity === "uncommon") {
-        color = "green"
-      } else if (cards[i].card.rarity === "rare") {
-        color = "blue"
-      } else if (cards[i].card.rarity === "mythic") {
-        color = "#FFB300"
-      }
-
-      const specificCardContainer = document.getElementById('specificCardContainer')
-      specificCardContainer.innerHTML = `
-    <div class="specifikCardImgContainer">
-    <img id="specificCardImg" src="${cards[i].card.imageUrl}" alt="">
-      </div>
-    <div style="box-shadow: inset 0 0 0 2px ${color};" class="specfikCardTextContainer">
-    <h1>${cards[i].card.name}</h1>
-    <div style="background:${color} ;" class="diamondSpecificCard"></div>
-    </div>
-    `
-    })
   })
+}
+
+const showCardPopup = (color, clc) => {
+  $('#specificCardContainer').html(
+    
+    `<div class="specifikCardImgContainer">
+        <img id="specificCardImg" src="${clc.card.imageUrl}" alt="">
+     </div>
+     <div style="box-shadow: inset 0 0 0 2px ${color};" class="specfikCardTextContainer">
+        <h1>${clc.card.name}</h1>
+        <div style="background:${color} ;" class="diamondSpecificCard"></div>
+     </div>`
+     ) 
 }
 
 
