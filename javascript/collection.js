@@ -88,60 +88,63 @@ const addEventListener_goToCollectionBtn = (element, collectionId) => {
     showCollectionById(contentContainer, displayCollectionById)
   })
 }
+   /*
+    container.innerHTML += ` 
+      <div class="showCollectionById-displayCollections-elements">
+      <img class="cardImg cardImgShowSpecifikCard" src="${clc.card.imageUrl}" data-toggle="modal" data-target="#showSpecificCard" id="showCardDeckId${clc.id}AndCard${clc.card.apiId}">
+      <div class="cardQuantityContainer" id="card-quantity-container-${clc.card.id}">
+      <span>➖</span>
+      <span>${clc.quantity}</span>
+      <span>➕</span>
+      </div>
+      </div>
+       `;
+       */
 
 function displayCollectionById(container, collection) {
   const cards = []
   container.innerHTML = ""
   document.getElementById('showAllCollections-title').innerHTML = "";
   collection.collectionLineCards.forEach(clc => {
-    container.innerHTML += ` 
-      <div class="showCollectionById-displayCollections-elements">
-      <img class="cardImg cardImgShowSpecifikCard" src="${clc.card.imageUrl}" data-toggle="modal" data-target="#showSpecificCard" id="showCardDeckId${clc.id}AndCard${clc.card.apiId}">
-      <div class="cardQuantityContainer" id="card-quantity-container-${clc.card.id}">
-      </div>
-      </div>
-       `;
+ 
+       const clcElement = createClcElement(clc);
 
 
 
     cards.push(clc)
-
-    const cardQuantityContainer = document.getElementById('card-quantity-container-' + clc.card.id);
-    const cardQuantity = document.createElement('h1');
-    const cardQuantityValue = document.createElement('span');
-    const plusQuantity = document.createElement('span');
-    const minusQuantity = document.createElement('span');
-
-    cardQuantity.classList.add('cardQuantity');
-    cardQuantityValue.classList.add('cardQuantity');
-    plusQuantity.classList.add('plus-minus-quantity')
-    minusQuantity.classList.add('plus-minus-quantity')
-
-
-    cardQuantityValue.textContent = `${clc.quantity}`;
-    plusQuantity.textContent = "➕"
-    minusQuantity.textContent = "➖"
-
-    cardQuantityContainer.appendChild(cardQuantity);
-    cardQuantity.appendChild(minusQuantity);
-    cardQuantity.appendChild(cardQuantityValue);
-    cardQuantity.appendChild(plusQuantity)
-
-
-    addCardAmountEventlisteners(plusQuantity, minusQuantity, clc, cardQuantityValue);
-
-    
+   
   }
   )
   contentContainerParent = document.getElementById('showAllCollections-title')
   addCardToCollectionById(contentContainerParent, collection)
-  console.log("displayCollectionById kører")
 
   const cardImageElements = document.querySelectorAll('.cardImgShowSpecifikCard')
   addEventListenerToCardImage(cardImageElements, cards)
 }
+
+
+const createClcElement = clc => {
+  const cardContainer = document.createElement('div');
+  cardContainer.classList.add('showCollectionById-displayCollections-elements')
+  cardContainer.innerHTML = 
+    `<img class="cardImg cardImgShowSpecifikCard" src="${clc.card.imageUrl}" data-toggle="modal" data-target="#showSpecificCard" id="showCardDeckId${clc.id}AndCard${clc.card.apiId}">
+     <div class="cardQuantityContainer" id="card-quantity-container-${clc.card.id}">
+      <span class=>➖</span>
+      <span>${clc.quantity}</span>
+      <span>➕</span>
+    </div>`
+    cardContainer.querySelector()
+    
+    return cardContainer;
+}
+
+
 /*------------------------------DISPLAY COLLECTIONS------------------------------*/
 
+
+
+
+/*
 function addCardAmountEventlisteners(plusQuantityElement, minusQuantityElement, lineCard, cardQuantityValueElement) {
     let count = lineCard.quantity;
 
@@ -163,6 +166,7 @@ function addCardAmountEventlisteners(plusQuantityElement, minusQuantityElement, 
   )
 
 }
+*/
 
 
 function addEventListenerToCardImage(cardImageElements, cards) {
