@@ -24,8 +24,7 @@
   padding: 4px;
   border-bottom-right-radius: 100%;
   border-bottom-left-radius: 100%;
-  margin: 0px;
-  transform: translate(10, -50%);
+  font-size: 10px;
 }
 
 .cardQuantity {

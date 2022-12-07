@@ -90,41 +90,82 @@ const addEventListener_goToCollectionBtn = (element, collectionId) => {
 }
 
 function displayCollectionById(container, collection) {
+  const list = []
   container.innerHTML = ""
   document.getElementById('showAllCollections-title').innerHTML = "";
   collection.collectionLineCards.forEach(clc => {
     container.innerHTML += ` 
       <div class="showCollectionById-displayCollections-elements">
-      <img class="cardImg" src="${clc.card.imageUrl}">
+      <img class="cardImg cardImgShowSpecifikCard" src="${clc.card.imageUrl}" data-toggle="modal" data-target="#showSpecificCard" id="showCardDeckId${clc.id}AndCard${clc.card.apiId}">
       <div class="cardQuantityContainer" id="card-quantity-container-${clc.card.id}">
       </div>
       </div>
        `;
+
+
+
+    list.push(clc)
+
     const cardQuantityContainer = document.getElementById('card-quantity-container-' + clc.card.id);
     const cardQuantity = document.createElement('h1');
     cardQuantity.classList.add('cardQuantity');
+
+    const cardQuantityValue = document.createElement('span');
+    cardQuantityValue.classList.add('cardQuantity');
+    cardQuantityValue.textContent = `${clc.quantity}`;
+
     const minusQuantity = document.createElement('span');
     minusQuantity.classList.add('plus-minus-quantity')
     minusQuantity.textContent = "➖"
+
     const plusQuantity = document.createElement('span');
     plusQuantity.classList.add('plus-minus-quantity')
     plusQuantity.textContent = "➕"
 
-
-
     cardQuantityContainer.appendChild(cardQuantity);
+
+    addEventListenerToMinusQuantity(clc, minusQuantity, cardQuantityValue)
+    addEventListenerToPlusQuantity(clc, plusQuantity, cardQuantityValue)
+
     cardQuantity.appendChild(minusQuantity);
-    cardQuantity.innerHTML = clc.quantity;
+    cardQuantity.appendChild(cardQuantityValue);
     cardQuantity.appendChild(plusQuantity)
 
-    addEventListenerToMinusQuantity(clc, minusQuantity, cardQuantity)
-    addEventListenerToPlusQuantity(clc, plusQuantity, cardQuantity)
+
 
   }
   )
   contentContainerParent = document.getElementById('showAllCollections-title')
   addCardToCollectionById(contentContainerParent, collection)
   console.log("displayCollectionById kører")
+
+  const cards = document.querySelectorAll('.cardImgShowSpecifikCard')
+  let color = ""
+  cards.forEach((cardImg, i) => {
+    cardImg.addEventListener('click', e => {
+      //color
+      if (list[i].card.rarity === "common") {
+        color = "grey"
+      } else if (list[i].card.rarity === "uncommon") {
+        color = "green"
+      } else if (list[i].card.rarity === "rare") {
+        color = "blue"
+      } else if (list[i].card.rarity === "mythic") {
+        color = "#FFB300"
+      }
+
+      const specificCardContainer = document.getElementById('specificCardContainer')
+      specificCardContainer.innerHTML = `
+    <div class="specifikCardImgContainer">
+    <img id="specificCardImg" src="${list[i].card.imageUrl}" alt="">
+      </div>
+    <div style="box-shadow: inset 0 0 0 2px ${color};" class="specfikCardTextContainer">
+    <h1>${list[i].card.name}</h1>
+    <div style="background:${color} ;" class="diamondSpecificCard"></div>
+    </div>
+    `
+    })
+  })
 }
 /*------------------------------DISPLAY COLLECTIONS------------------------------*/
 
@@ -133,12 +174,14 @@ function addEventListenerToPlusQuantity(lineCard, element, cardQuantityElement) 
   element.addEventListener('click', async e => {
     let count = lineCard.quantity;
     count++;
-
     cardQuantityElement.textContent = count;
+    console.log("plus")
     console.log(count);
   }
   )
 }
+
+
 
 function addEventListenerToMinusQuantity(lineCard, element, cardQuantityElement) {
   element.addEventListener('click', async e => {
@@ -149,3 +192,5 @@ function addEventListenerToMinusQuantity(lineCard, element, cardQuantityElement)
   }
   )
 }
+
+
