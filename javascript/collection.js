@@ -101,24 +101,69 @@ async function showCollectionById(container, displayMode) {
   const data = await getCollectionById(selectedCollectionId)
   displayMode(container, data)
 }
-
+let currentCard = null;
 function displayCollectionById(container, collection) {
+  const list = []
   container.innerHTML = ""
   document.getElementById('showAllCollections-title').innerHTML = collection.name
   collection.collectionLineCards.forEach(clc => {
+
     container.innerHTML += ` 
       <div class="showCollectionById-displayCollections-elements">
-      <img class="cardImg" src="${clc.card.imageUrl}">
+      <img class="cardImg cardImgShowSpecifikCard" src="${clc.card.imageUrl}" data-toggle="modal" data-target="#showSpecificCard" id="showCardDeckId${clc.id}AndCard${clc.card.apiId}">
       <div class="cardQuantityContainer">
         <h1 class="cardQuantity"><span class="plus-minus-quantity">➖</span>${clc.quantity}<span class="plus-minus-quantity">➕</span></h1>
       </div>
       </div>
        `
-  }
-  )
+    list.push(clc)
+
+  })
+  const cards = document.querySelectorAll('.cardImgShowSpecifikCard')
+  let color = ""
+  cards.forEach((cardImg, i) => {
+    cardImg.addEventListener('click', e => {
+      //color
+      if (list[i].card.rarity === "common") {
+        color = "grey"
+      } else if (list[i].card.rarity === "uncommon") {
+        color = "green"
+      } else if (list[i].card.rarity === "rare") {
+        color = "blue"
+      } else if (list[i].card.rarity === "mythic") {
+        color = "#FFB300"
+      }
+
+      const specificCardContainer = document.getElementById('specificCardContainer')
+      specificCardContainer.innerHTML = `
+      <div class="specifikCardImgContainer">
+      <img id="specificCardImg" src="${list[i].card.imageUrl}" alt="">
+        </div>
+      <div style="box-shadow: inset 0 0 0 2px ${color};" class="specfikCardTextContainer">
+      <h1>${list[i].card.name}</h1>
+      <div style="background:${color} ;" class="diamondSpecificCard"></div>
+      </div>
+      `
+    })
+  })
+
+
+
+
   contentContainerParent = document.getElementById('showAllCollections-title')
   addCardToCollectionById(contentContainerParent, collection.name, collection.id)
-  console.log("displayCollectionById kører")
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

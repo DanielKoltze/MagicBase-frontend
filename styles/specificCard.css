@@ -1,0 +1,38 @@
+#specificCardImg{
+    width: 400px;
+}
+#specificCardContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 700px; 
+    width: 1500px;
+    transition: 1s;
+}
+.specfikCardTextContainer{
+    background-color: #1e1e1e;
+    width: 45%;
+    height: 10%;
+    border: 6px solid #1e1e1e;
+    border-radius: 20px;
+    text-align: center;
+    border-radius: 20px;
+}
+.diamondSpecificCard{
+    position: relative;
+    width: 25px;
+    height: 25px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    left: 50%;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+    box-shadow: #1e1e1e 0 0 0 2px;
+}
+
+.showCollectionById-displayCollections-elements:hover{
+    transform: scale(1.03);
+    cursor: pointer;
+}
+
