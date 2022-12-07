@@ -1,5 +1,4 @@
-
-
+/*------------------------------GETMAPPINGS------------------------------*/
 async function getDecksByUserId(userId) {
     const settings = {
         method: "GET",
@@ -8,73 +7,54 @@ async function getDecksByUserId(userId) {
     return decks;
 }
 
-
 async function getDeckById(deckId) {
     const settings = {
         method: "GET",
     };
     return await makeRequest(BASE_URL + '/deck/' + deckId, settings);
 }
+/*------------------------------GETMAPPINGS------------------------------*/
 
-async function showDecks(container, displayMode) {
-    const data = await getDecksByUserId(loggedInUser.id)
-    console.log(data)
-    displayMode(container, data)
 
+/*------------------------------DISPLAY DECKS------------------------------*/
+async function showDecks(container, displayMode, type) {
+    const decks = await getDecksByUserId(loggedInUser.id)
+    displayMode(container, decks, type)
 }
-
-function displayAllDecksInModal(container, items) {
-    container.innerHTML = ""
-    items.forEach(deck => {
-        container.innerHTML += `
-        <div class="showAll-display-elements" deck-id="${deck.id}">
-        <h1 class="showAll-display-elements-name">${deck.name}</h1>
-        <h5 class="showAll-display-elements-description">${deck.description}</h5>
-      </div>`
-        console.log(deck)
-        console.log("Deck id: " + deck.id)
-    });
-
-    const goToDeckBtn = document.getElementsByClassName('showAll-display-elements')
-
-    for (let i = 0; i < goToDeckBtn.length; i++) {
-        addEventListener_goToDeckBtn(
-            goToDeckBtn[i],
-            goToDeckBtn[i].getAttribute('deck-id'),
-        )
-    }
-}
-
-const addEventListener_goToDeckBtn = (element, deckId) => {
-    element.addEventListener('click', async e => {
-        currentPage.id = deckId;
-        currentPage.type = "deck";
-        await getDeckById(deckId)
-        console.log("ID på hvad jeg trykker på: " + deckId)
-        selectedDeckId = deckId
-
-
-        showDeckById(contentContainer, displayDeckById)
-    })
-}
-
-/*Show Deck by ID*/
+/*Show Decks by ID*/
 async function showDeckById(container, displayMode) {
     const data = await getDeckById(selectedDeckId)
     displayMode(container, data)
 }
+const addEventListener_goToDeckBtn = (element, deckId) => {
+    element.addEventListener('click', async e => {
 
+        await getDeckById(deckId)
+
+        selectedDeckId = deckId
+        currentPage.id = deckId;
+        console.log("ID på DECK: " + deckId)
+        console.log("ID på CurrentPage: " + currentPage.id)
+        showDeckById(contentContainer, displayDeckById)
+    })
+}
 
 function displayDeckById(container, deck) {
     container.innerHTML = ""
+    document.getElementById('showAllCollections-title').innerHTML = "";
     deck.deckLineCards.forEach(dlc => {
         container.innerHTML += ` 
-        <div class="showdeckById-displayDecks-elements">
-        <img class="cardImg"src="${dlc.card.imageUrl}">
-      <p>${dlc.quantity}</p>
-        </div> `
+        <div class="showCollectionById-displayCollections-elements">
+        <img class="cardImg" src="${dlc.card.imageUrl}">
+        <div class="cardQuantityContainer">
+          <h1 class="cardQuantity"><span class="plus-minus-quantity">➖</span>${dlc.quantity}<span class="plus-minus-quantity">➕</span></h1>
+        </div>
+        </div>
+         `
     }
     )
+    contentContainerParent = document.getElementById('showAllCollections-title')
+    addCardToCollectionById(contentContainerParent, deck)
     console.log("displayDeckById kører")
 }
-  /*Show Deck by ID*/
+/*------------------------------DISPLAY DECKS------------------------------*/

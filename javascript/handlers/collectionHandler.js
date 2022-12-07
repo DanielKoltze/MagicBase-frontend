@@ -5,9 +5,7 @@ const currentPage = {
     id: null
 }
 
-
 function collection() {
-    console.log("Har routet til collection")
     if (loggedInUser == null) {
         window.location.href = DEFAULT_ROUTE;
     }
@@ -24,14 +22,16 @@ function collection() {
     showDecks(deckContainer, displayDecksInSidebar2)
     // Sidebar 
 
-    // displayMyCollection();
+
 
     contentContainer = document.getElementById('showAllCollections-modal')
     addEventListenerToSidebarMyCollections()
     addEventListenerToSidebarMyDecks()
+    addEventListenerToNavbarMyCollections()
+    currentPage.type = "collection";
 
     // Det som bliver vist som default ude i højre container (ikke sidebar)
-    showCollections(contentContainer, displayAllCollectionsInModal)
+    showCollections(contentContainer, displayAllElementsInModal, currentPage.type)
 }
 
 
@@ -39,7 +39,8 @@ function addEventListenerToSidebarMyCollections() {
     const myCollections = document.getElementById("display-my-collections")
 
     myCollections.addEventListener('click', e => {
-        showCollections(contentContainer, displayAllCollectionsInModal)
+        currentPage.type = "collection";
+        showCollections(contentContainer, displayAllElementsInModal, currentPage.type)
     })
 }
 
@@ -48,7 +49,16 @@ function addEventListenerToSidebarMyDecks() {
 
     myDecks.addEventListener('click', () => {
         console.log('ny eventlistener klik')
-        showDecks(contentContainer, displayAllDecksInModal);
+        currentPage.type = "deck";
+        showDecks(contentContainer, displayAllElementsInModal, currentPage.type);
     })
 
+}
+function addEventListenerToNavbarMyCollections() {
+    const navbarMyCollections = document.getElementById("navbar-display-my-collections")
+
+    navbarMyCollections.addEventListener('click', e => {
+        currentPage.type = "collection";
+        showCollections(contentContainer, displayAllElementsInModal, currentPage.type)
+    })
 }

@@ -1,44 +1,25 @@
 const API_URL = "https://api.scryfall.com/cards/search?q=";
 const API_SPACE = "%22";
-
+/*
 let searchCardButton = document.querySelector(".searchbar-btn");
 
 searchCardButton.addEventListener("click", searchbarInput);
-
+*/
 function searchbarInput() {
   let searchWord = document.getElementById("searchbar-input").value;
   displayCardsInCreateCard(searchWord);
+  console.log("clicklcock")
 }
 let addCardList = [];
-
-/*
-const cardTest = {
-    apiId: "",
-    name: "",
-    oracleText: "",
-    rarity: "",
-    power: "",
-    typeline: "",
-    toughness: "",
-    convertedManaCost: "",
-    setName: "",
-    euroPrice: "",
-    image: "",
-    collectionId: "",
-    quantity: "1"
-    colors : "mangler"
-}
-*/
-
 
 
 //Indsætter billeder i "cardpage"
 async function displayCardsInCreateCard(searchWord) {
+
   const object = await getDataFromExternalApi(searchWord);
   const cardpageContainer = document.querySelector(".createCard-page-cardpage");
-  const sidebarContainer = document.querySelector(
-    ".createCard-sideBar-card-nested"
-  );
+  const sidebarContainer = document.querySelector(".createCard-sideBar-card-nested");
+  cardpageContainer.innerHTML = "";
   //clear container
   object.data.forEach((card) => {
     const cardImageDiv = document.createElement("div");
@@ -49,25 +30,6 @@ async function displayCardsInCreateCard(searchWord) {
         </div>`;
 
     let cardObject;
-
-    /* ORIGINAL
-    cardObject = {
-      apiId: card.id,
-      name: card.name,
-      oracleText: card.oracle_text,
-      rarity: card.rarity,
-      typeLine: card.type_line,
-      power: null,
-      toughness: null,
-      convertedManaCost: card.cmc,
-      setName: card.set_name,
-      euroPrice: card.prices.eur,
-      imageUrl: card.image_uris.png,
-      quantity: 1, //1 indtil videre da den funktionalitet ikke er lavet endnnu
-      collectionId: 1, //senere lave en dropdown hvor mna kan adde kort til en specifik
-
-    };
-*/
 
     cardObject = {
       apiId: card.id,
@@ -198,36 +160,64 @@ async function displayCardsInCreateCard(searchWord) {
 }
 
 //ENTER KEY klikker på søge knappen
+/*
 const searchbarEnterBtn = document.getElementById("searchbar-input");
 searchbarEnterBtn.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     searchbarInput();
   }
 });
+*/
+/*-----------------------POST MAPPING-------------------------*/
+async function postCardToCollection(card) {
+  const settings = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(card),
+  };
+  console.log(settings);
 
-const submitCreateCardsBtn = document.querySelector(".createCard-sideBar-btn");
-
-submitCreateCardsBtn.addEventListener("click", (e) => {
-  addCardList.forEach(async (card) => {
-    console.log(card);
-    const settings = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(card),
-    };
-    console.log(settings);
+  if (currentPage.type === "collection") {
     await makeRequest(BASE_URL + "/clc", settings);
-  });
+  }
 
-  addCardList = [];
-  const clearContainer = document.querySelector(
-    ".createCard-sideBar-card-nested"
-  );
-  clearContainer.innerHTML = "";
-  showCollections(contentContainer, displayAllCollectionsInModal)
-});
+  if (currentPage.type === "deck") {
+    await makeRequest(BASE_URL + "/dlc", settings);
+  }
+
+}
+/*-----------------------POST MAPPING-------------------------*/
+
+function submitCards() {
+  const submitCreateCardsBtn = document.querySelector(".createCard-sideBar-btn");
+
+  submitCreateCardsBtn.addEventListener("click", (e) => {
+    addCardList.forEach(async (card) => {
+      console.log(card);
+      await postCardToCollection(card);
+    });
+
+    addCardList = [];
+    const clearContainer = document.querySelector(
+      ".createCard-sideBar-card-nested"
+    );
+    clearContainer.innerHTML = "";
+    const createCardModal = document.querySelector(".createCard-modal");
+
+
+    if (currentPage.type === "collection") {
+      console.log(currentPage.type + " has been loaded with ID: " + currentPage.id)
+      showCollectionById(contentContainer, displayCollectionById)
+    }
+    if (currentPage.type === "deck") {
+      console.log(currentPage.type + " has been loaded with ID: " + currentPage.id)
+      showDeckById(contentContainer, displayDeckById)
+    }
+    createCardModal.style.display = "none";
+  });
+}
 
 //Lukker Modal når der klikkes udenfor
 /*
@@ -253,9 +243,7 @@ async function getDataFromExternalApi(searchWord) {
 }
 
 function createCardModal(name) {
-  const collectionName = document.getElementById.innerHTML = "";
-  collectionName.innerHTML = name;
-  open_createCardModal();
+  open_createCardModal(name);
   close_createCardModal();
 
   const createCardModal = document.querySelector(".createCard-modal");
@@ -268,6 +256,76 @@ function createCardModal(name) {
   };
 }
 
+function open_createCardModal(name) {
+  const createCard_modal = document.querySelector(".createCard-modal");
+  createCard_modal.style.display = "block";
+  createCard_modal.innerHTML = "";
+  createCard_modal.innerHTML = `
+  <div class="createCard-container">
+        <div class="createCard-sideBar">
+          <div class="createCard-sideBar-nested">
+            <div
+              id="createCard-collection-id"
+              class="createCard-sideBar-card-nested-title"
+            >
+              ${name}
+            </div>
+            <div class="createCard-sideBar-card-nested"></div>
+            <button class="createCard-sideBar-btn">
+              <span>ADD TO COLLECTION</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="createCard-page">
+          <div class="searchbar-container">
+            <input
+              type="text"
+              id="searchbar-input"
+              class="createCard-page-searchbar"
+              placeholder=" Search for any Magic: The Gathering Card"
+            />
+            <button type="button" class="searchbar-btn" id="createCard-searchbar-btn">
+              <span class="material-symbols-outlined"> search </span>
+            </button>
+          </div>
+          <button type="button" class="createCard-closeBtn">
+            <span class="material-symbols-outlined"> close </span>
+          </button>
+          <div class="createCard-page-cardpage"></div>
+        </div>
+      </div>
+  `
+  let searchCardButton = document.getElementById('createCard-searchbar-btn');
+  searchCardButton.addEventListener("click", searchbarInput);
+
+  const searchbarEnterBtn = document.getElementById("searchbar-input");
+  searchbarEnterBtn.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+      searchbarInput();
+    }
+  });
+
+}
+
+function close_createCardModal() {
+  const createCardModal = document.querySelector(".createCard-modal");
+  const createCard_closeButton = document.querySelector(".createCard-closeBtn");
+  createCard_closeButton.addEventListener("click", (e) => {
+    createCardModal.innerHTML = "";
+  });
+  document.onkeydown = function (e) {
+    if (e.key === "Escape") {
+      createCardModal.innerHTML = "";
+    }
+  }
+}
+
+
+
+
+
+/*
 function open_createCardModal() {
   document.querySelector(".createCard-modal").style.display = "block";
 }
@@ -284,3 +342,4 @@ function close_createCardModal() {
     }
   }
 }
+*/

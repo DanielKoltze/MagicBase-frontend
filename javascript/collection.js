@@ -1,5 +1,4 @@
-let selectedCollectionId = "";
-
+/*------------------------------GETMAPPINGS------------------------------*/
 async function getCollectionsByUserId(userId) {
   const settings = {
     method: "GET",
@@ -14,15 +13,18 @@ async function getCollectionById(collectionId) {
   };
   return await makeRequest(BASE_URL + '/collection/' + collectionId, settings);
 }
+/*------------------------------GETMAPPINGS------------------------------*/
 
-
-
-
-async function showCollections(container, displayMode) {
-  const collections = await getCollectionsByUserId(loggedInUser.id)
-  displayMode(container, collections)
+/*------------------------------DELETEMAPPING------------------------------*/
+async function deleteCollectionOrDeck(type, id) {
+  const settings = {
+    method: "DELETE",
+  }
+  await makeRequest(BASE_URL + "/" + type + "/" + id + "/user/" + loggedInUser.id, settings)
 }
+/*------------------------------DELETEMAPPING------------------------------*/
 
+/*------------------------------SIDEBAR------------------------------*/
 function displayCollectionsInSidebar(container, items) {
   //const container = document.getElementById('deck-collection-container')
   container.innerHTML = ""
@@ -59,39 +61,30 @@ const addEventListenerToCollectionElement = (element, collectionId, collectionNa
     }
   })
 }
+/*------------------------------SIDEBAR------------------------------*/
 
-function displayAllCollectionsInModal(container, items) {
-  container.innerHTML = ""
-  items.forEach(collection => {
-    container.innerHTML += `
-    <div class="showAll-display-elements" collection-id="${collection.id}">
-      <h1 class="showAll-display-elements-name">${collection.name}</h1>
-      <h5 class="showAll-display-elements-description">${collection.description}</h5>
-      </div>`
-    console.log(collection)
-    console.log("Collection id: " + collection.id)
-  });
 
-  const goToCollectionBtn = document.getElementsByClassName('showAll-display-elements')
 
-  for (let i = 0; i < goToCollectionBtn.length; i++) {
-    addEventListener_goToCollectionBtn(
-      goToCollectionBtn[i],
-      goToCollectionBtn[i].getAttribute('collection-id'),
-    )
-  }
+/*------------------------------DISPLAY COLLECTIONS------------------------------*/
+async function showCollections(container, displayMode, type) {
+  const collections = await getCollectionsByUserId(loggedInUser.id)
+  displayMode(container, collections, type)
 }
-
+/*Show Collection by ID*/
+async function showCollectionById(container, displayMode) {
+  const data = await getCollectionById(selectedCollectionId)
+  displayMode(container, data)
+}
 const addEventListener_goToCollectionBtn = (element, collectionId) => {
   element.addEventListener('click', async e => {
-    currentPage.id = collectionId;
-    currentPage.type = "collection";
-    console.log(currentPage);
+
     await getCollectionById(collectionId)
 
-    console.log("ID på hvad jeg trykker på: " + collectionId)
-    selectedCollectionId = collectionId
 
+    selectedCollectionId = collectionId
+    currentPage.id = collectionId;
+    console.log("ID på COLLECTION: " + collectionId)
+    console.log("ID på CurrentPage: " + currentPage.id)
     showCollectionById(contentContainer, displayCollectionById)
   })
 }
@@ -105,7 +98,7 @@ let currentCard = null;
 function displayCollectionById(container, collection) {
   const list = []
   container.innerHTML = ""
-  document.getElementById('showAllCollections-title').innerHTML = collection.name
+  document.getElementById('showAllCollections-title').innerHTML = "";
   collection.collectionLineCards.forEach(clc => {
 
     container.innerHTML += ` 
@@ -151,57 +144,7 @@ function displayCollectionById(container, collection) {
 
 
   contentContainerParent = document.getElementById('showAllCollections-title')
-  addCardToCollectionById(contentContainerParent, collection.name, collection.id)
-
-
-
-
-
-
-
-
-
-
-
-
+  addCardToCollectionById(contentContainerParent, collection)
+  console.log("displayCollectionById kører")
 }
-
-
-function addCardToCollectionById(container, collectionName, collectionId) {
-  container.innerHTML += `
-  <button class="createCardButton" id="${collectionId}">Add Card</button>
-  `
-  const addCardBtn = document.querySelector('.createCardButton')
-  console.log("addCardtoCollection modal kører")
-  console.log(collectionId)
-
-  addCardBtn.addEventListener('click', async e => {
-    createCardModal(collectionName);
-  })
-}
-
-
-
-/*
-<div class="cardElements">
-            <img class="cardImg"
-                src="https://cards.scryfall.io/large/front/6/6/66e2d723-3fa0-4411-8f98-e4e6b3a5e6df.jpg?1627705997"
-                alt="">
-            <div class="cardQuantityContainer">
-                <h1 class="cardQuantity">x1</h1>
-            </div>
-        </div>
-*/
-
-/*Show Collection by ID*/
-async function deleteCollectionOrDeck(type, id) {
-  const settings = {
-    method: "DELETE",
-  }
-
-  await makeRequest(BASE_URL + "/" + type + "/" + id + "/user/" + loggedInUser.id, settings)
-
-}
-
-
-
+/*------------------------------DISPLAY COLLECTIONS------------------------------*/

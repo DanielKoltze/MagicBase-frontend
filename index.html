@@ -50,7 +50,7 @@
       </div>
       <ul class="rightNav">
         <li>Inspiration</li>
-        <li>Collection</li>
+        <li id="navbar-display-my-collections">Collection</li>
 
         <div class="dropdown">
           <div class="dropdown-btn">
@@ -139,9 +139,7 @@
       <!--Modal Show All Collections-->
       <div id="collections-showAll-parent" class="showAll-parent">
         <div class="showAll-title-grid">
-          <div id="showAllCollections-title" class="showAll-title">
-            MY COLLECTIONS
-          </div>
+          <div id="showAllCollections-title" class="showAll-title"></div>
           <!--Searchbar - Bruger css fra createCard.css-->
           <div class="showAll-searchbar">
             <input
@@ -474,7 +472,7 @@
 
     <!-- Modal Create Card-->
     <div class="createCard-modal" style="display: none">
-      <div class="createCard-container">
+      <!--- <div class="createCard-container">
         <div class="createCard-sideBar">
           <div class="createCard-sideBar-nested">
             <div
@@ -507,7 +505,7 @@
           </button>
           <div class="createCard-page-cardpage"></div>
         </div>
-      </div>
+      </div> -->
     </div>
     <!-- Modal Create Card-->
 
@@ -742,6 +740,7 @@
     <script src="javascript/create-card.js"></script>
     <script src="javascript/create-deck.js"></script>
     <script src="javascript/create-collection.js"></script>
+    <script src="javascript/generateContainer.js"></script>
 
     <!-- JavaScript Bundle with Popper -->
     <script

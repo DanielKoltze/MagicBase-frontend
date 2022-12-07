@@ -1,19 +1,16 @@
-let container = document.getElementById("decks-item")
-
+/*------------------------------GETMAPPINGS------------------------------*/
 async function getDecks(userId) {
   const settings = {
     method: "GET",
   };
 
+
+  /*------------------------------GETMAPPINGS------------------------------*/
+
+  /*------------------------------SIDEBAR------------------------------*/
   const decks = await makeRequest(`${BASE_URL}/deck/user/${userId}`, settings);
   return decks;
 }
-
-/*
-myDeckLink.addEventListener("click", () => {
-    console.log("show deck to danni")
-});
-*/
 async function showDecks(container, displayMode) {
   const decks = await getDecks(loggedInUser.id)
   displayMode(container, decks)
@@ -30,8 +27,8 @@ function displayDecksInSidebar2(container, items) {
           <span class="delete-deck-button" deck-id="${deck.id}" deck-name="${deck.name}">❌</span>
       </div>`
 
-    
-    
+
+
   });
 
   const deleteBtnElements = document.getElementsByClassName(
@@ -43,7 +40,6 @@ function displayDecksInSidebar2(container, items) {
       deleteBtnElements[i].getAttribute('deck-name')
     )
   }
-
 
 }
 const addEventListenerToDeckElement = (element, deckId, deckName) => {
@@ -57,20 +53,6 @@ const addEventListenerToDeckElement = (element, deckId, deckName) => {
     }
   })
 }
+/*------------------------------SIDEBAR------------------------------*/
 
-
-/*
-function displayMyDecks() {
-  const myDecks = document.getElementById('display-my-decks')
-  myDecks.addEventListener('click', e => {
-    const showAllDecksModal = document.getElementById('showAllDecks-modal')
-    showDecks(showAllDecksModal, displayAllDecksInModal)
-   /*  const decks_showAll_parent = document.getElementById('decks-showAll-parent')
-    decks_showAll_parent.style.display = "grid"
-
-    const collections_showAll_parent = document.getElementById('collections-showAll-parent')
-    collections_showAll_parent.style.display = "none" 
-  })
-}
-*/
-
+//Decks bliver kaldt i "collection()"
