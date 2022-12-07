@@ -205,9 +205,8 @@ function submitCards() {
     );
     clearContainer.innerHTML = "";
     const createCardModal = document.querySelector(".createCard-modal");
-    createCardModal.style.display = "none";
-    console.log("------------------------------------------------------")
-    console.log(currentPage.type)
+
+
     if (currentPage.type === "collection") {
       console.log(currentPage.type + " has been loaded with ID: " + currentPage.id)
       showCollectionById(contentContainer, displayCollectionById)
@@ -216,6 +215,7 @@ function submitCards() {
       console.log(currentPage.type + " has been loaded with ID: " + currentPage.id)
       showDeckById(contentContainer, displayDeckById)
     }
+    createCardModal.style.display = "none";
   });
 }
 
@@ -246,8 +246,6 @@ function createCardModal(name) {
   open_createCardModal(name);
   close_createCardModal();
 
-  let searchCardButton = document.querySelector(".searchbar-btn");
-  searchCardButton.addEventListener("click", searchbarInput);
   const createCardModal = document.querySelector(".createCard-modal");
 
   document.onclick = function (e) {
@@ -287,7 +285,7 @@ function open_createCardModal(name) {
               class="createCard-page-searchbar"
               placeholder=" Search for any Magic: The Gathering Card"
             />
-            <button type="button" class="searchbar-btn">
+            <button type="button" class="searchbar-btn" id="createCard-searchbar-btn">
               <span class="material-symbols-outlined"> search </span>
             </button>
           </div>
@@ -298,6 +296,9 @@ function open_createCardModal(name) {
         </div>
       </div>
   `
+  let searchCardButton = document.getElementById('createCard-searchbar-btn');
+  searchCardButton.addEventListener("click", searchbarInput);
+
   const searchbarEnterBtn = document.getElementById("searchbar-input");
   searchbarEnterBtn.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
