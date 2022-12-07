@@ -108,31 +108,52 @@ function displayCollectionById(container, collection) {
 
     const cardQuantityContainer = document.getElementById('card-quantity-container-' + clc.card.id);
     const cardQuantity = document.createElement('h1');
-    cardQuantity.classList.add('cardQuantity');
-
     const cardQuantityValue = document.createElement('span');
-    cardQuantityValue.classList.add('cardQuantity');
-    cardQuantityValue.textContent = `${clc.quantity}`;
-
+    const plusQuantity = document.createElement('span');
     const minusQuantity = document.createElement('span');
+
+    cardQuantity.classList.add('cardQuantity');
+    cardQuantityValue.classList.add('cardQuantity');
+    plusQuantity.classList.add('plus-minus-quantity')
     minusQuantity.classList.add('plus-minus-quantity')
+
+
+    cardQuantityValue.textContent = `${clc.quantity}`;
+    plusQuantity.textContent = "➕"
     minusQuantity.textContent = "➖"
 
-    const plusQuantity = document.createElement('span');
-    plusQuantity.classList.add('plus-minus-quantity')
-    plusQuantity.textContent = "➕"
+
+    //addEventListenerToMinusQuantity(clc, minusQuantity, cardQuantityValue)
+    //addEventListenerToPlusQuantity(clc, plusQuantity, cardQuantityValue)
+
+    let count = clc.quantity;
+    plusQuantity.addEventListener('click', async e => {
+
+      count++;
+      cardQuantityValue.textContent = count;
+      console.log(count);
+    }
+    )
+
+
+
+
+
+
+    minusQuantity.addEventListener('click', async e => {
+      count--;
+      cardQuantityValue.textContent = count;
+      console.log(count);
+    }
+    )
+
+
+
 
     cardQuantityContainer.appendChild(cardQuantity);
-
-    addEventListenerToMinusQuantity(clc, minusQuantity, cardQuantityValue)
-    addEventListenerToPlusQuantity(clc, plusQuantity, cardQuantityValue)
-
     cardQuantity.appendChild(minusQuantity);
     cardQuantity.appendChild(cardQuantityValue);
     cardQuantity.appendChild(plusQuantity)
-
-
-
   }
   )
   contentContainerParent = document.getElementById('showAllCollections-title')
@@ -171,6 +192,7 @@ function displayCollectionById(container, collection) {
 
 
 function addEventListenerToPlusQuantity(lineCard, element, cardQuantityElement) {
+
   element.addEventListener('click', async e => {
     let count = lineCard.quantity;
     count++;
