@@ -90,7 +90,7 @@ const addEventListener_goToCollectionBtn = (element, collectionId) => {
 }
 
 function displayCollectionById(container, collection) {
-  const list = []
+  const cards = []
   container.innerHTML = ""
   document.getElementById('showAllCollections-title').innerHTML = "";
   collection.collectionLineCards.forEach(clc => {
@@ -104,7 +104,7 @@ function displayCollectionById(container, collection) {
 
 
 
-    list.push(clc)
+    cards.push(clc)
 
     const cardQuantityContainer = document.getElementById('card-quantity-container-' + clc.card.id);
     const cardQuantity = document.createElement('h1');
@@ -123,32 +123,8 @@ function displayCollectionById(container, collection) {
     minusQuantity.textContent = "➖"
 
 
-    //addEventListenerToMinusQuantity(clc, minusQuantity, cardQuantityValue)
-    //addEventListenerToPlusQuantity(clc, plusQuantity, cardQuantityValue)
-
-    let count = clc.quantity;
-    plusQuantity.addEventListener('click', async e => {
-
-      count++;
-      cardQuantityValue.textContent = count;
-      console.log(count);
-    }
-    )
-
-
-
-
-
-
-    minusQuantity.addEventListener('click', async e => {
-      count--;
-      cardQuantityValue.textContent = count;
-      console.log(count);
-    }
-    )
-
-
-
+    addEventListenerToMinusQuantity(clc, minusQuantity, cardQuantityValue)
+    addEventListenerToPlusQuantity(clc, plusQuantity, cardQuantityValue)
 
     cardQuantityContainer.appendChild(cardQuantity);
     cardQuantity.appendChild(minusQuantity);
@@ -160,33 +136,8 @@ function displayCollectionById(container, collection) {
   addCardToCollectionById(contentContainerParent, collection)
   console.log("displayCollectionById kører")
 
-  const cards = document.querySelectorAll('.cardImgShowSpecifikCard')
-  let color = ""
-  cards.forEach((cardImg, i) => {
-    cardImg.addEventListener('click', e => {
-      //color
-      if (list[i].card.rarity === "common") {
-        color = "grey"
-      } else if (list[i].card.rarity === "uncommon") {
-        color = "green"
-      } else if (list[i].card.rarity === "rare") {
-        color = "blue"
-      } else if (list[i].card.rarity === "mythic") {
-        color = "#FFB300"
-      }
-
-      const specificCardContainer = document.getElementById('specificCardContainer')
-      specificCardContainer.innerHTML = `
-    <div class="specifikCardImgContainer">
-    <img id="specificCardImg" src="${list[i].card.imageUrl}" alt="">
-      </div>
-    <div style="box-shadow: inset 0 0 0 2px ${color};" class="specfikCardTextContainer">
-    <h1>${list[i].card.name}</h1>
-    <div style="background:${color} ;" class="diamondSpecificCard"></div>
-    </div>
-    `
-    })
-  })
+  const cardImageElements = document.querySelectorAll('.cardImgShowSpecifikCard')
+  addEventListenerToCardImage(cardImageElements, cards)
 }
 /*------------------------------DISPLAY COLLECTIONS------------------------------*/
 
@@ -213,6 +164,35 @@ function addEventListenerToMinusQuantity(lineCard, element, cardQuantityElement)
     console.log(count);
   }
   )
+}
+
+function addEventListenerToCardImage(cardImageElements, cards) {
+  let color = ""
+  cardImageElements.forEach((cardImg, i) => {
+    cardImg.addEventListener('click', e => {
+      //color
+      if (cards[i].card.rarity === "common") {
+        color = "grey"
+      } else if (cards[i].card.rarity === "uncommon") {
+        color = "green"
+      } else if (cards[i].card.rarity === "rare") {
+        color = "blue"
+      } else if (cards[i].card.rarity === "mythic") {
+        color = "#FFB300"
+      }
+
+      const specificCardContainer = document.getElementById('specificCardContainer')
+      specificCardContainer.innerHTML = `
+    <div class="specifikCardImgContainer">
+    <img id="specificCardImg" src="${cards[i].card.imageUrl}" alt="">
+      </div>
+    <div style="box-shadow: inset 0 0 0 2px ${color};" class="specfikCardTextContainer">
+    <h1>${cards[i].card.name}</h1>
+    <div style="background:${color} ;" class="diamondSpecificCard"></div>
+    </div>
+    `
+    })
+  })
 }
 
 
