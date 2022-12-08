@@ -1,3 +1,8 @@
+let clcHandler = null;
+
+
+
+
 /*------------------------------GETMAPPINGS------------------------------*/
 async function getCollectionsByUserId(userId) {
   const settings = {
@@ -72,7 +77,7 @@ async function showCollections(container, displayMode, type) {
 }
 /*Show Collection by ID*/
 async function showCollectionById(container, displayMode) {
-  const data = await getCollectionById(selectedCollectionId)
+  const data = await getCollectionById(currentPage.id)
   displayMode(container, data)
 }
 const addEventListener_goToCollectionBtn = (element, collectionId) => {
@@ -80,8 +85,7 @@ const addEventListener_goToCollectionBtn = (element, collectionId) => {
 
     await getCollectionById(collectionId)
 
-
-    selectedCollectionId = collectionId
+    currentPage.type = 'collection';
     currentPage.id = collectionId;
     console.log("ID på COLLECTION: " + collectionId)
     console.log("ID på CurrentPage: " + currentPage.id)
@@ -103,7 +107,9 @@ function displayCollectionById(container, collection) {
   }
   )
   contentContainerParent = document.getElementById('showAllCollections-title')
+  clcHandler = new ClcHandler();
   addCardToCollectionById(contentContainerParent, collection)
+  
 }
 
 
@@ -131,6 +137,7 @@ const addEventListenersToQuantityElements = (clc) => {
   $(`#clc-plus-btn-${clc.id}`).click(function() { 
     count++;
     $(`#clc-value-${clc.id}`).text(count)
+    clcHandler.add(clc.id, clc.quantity, count);
     
   })
     
@@ -140,6 +147,7 @@ const addEventListenersToQuantityElements = (clc) => {
       count = 0;
     }
     $(`#clc-value-${clc.id}`).text(count);
+    clcHandler.add(clc.id, clc.quantity, clc.quantity - 1);
   })
   
 }

@@ -42,11 +42,15 @@ function displayAllElementsInModal(container, items, type) {
 function addCardToCollectionById(container, collection) {
     container.innerHTML += `
     <h3 class="addCardToCollectionById">${collection.name}</h3>
+    <button id="save-changes-${collection.id}">Save</button>
     <button class="createCardButton" id="${collection.id}">
     <span class="material-symbols-outlined createCardButtonFont">add</span></button>
-    
     `
+    $(`#save-changes-${collection.id}`).click(async () => {
+        await clcHandler.saveChanges();
+        showCollectionById(contentContainer, displayCollectionById);
 
+    })
     const addCardBtn = document.querySelector('.createCardButton')
     console.log("addCardtoCollection modal kører")
     console.log(collection.id)
