@@ -147,7 +147,7 @@ const addEventListenersToQuantityElements = (clc) => {
       count = 0;
     }
     $(`#clc-value-${clc.id}`).text(count);
-    clcHandler.add(clc.id, clc.quantity, clc.quantity - 1);
+    clcHandler.add(clc.id, clc.quantity, count);
   })
   
 }

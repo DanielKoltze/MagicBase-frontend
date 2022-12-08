@@ -49,7 +49,7 @@ function addCardToCollectionById(container, collection) {
     $(`#save-changes-${collection.id}`).click(async () => {
         await clcHandler.saveChanges();
         showCollectionById(contentContainer, displayCollectionById);
-
+        
     })
     const addCardBtn = document.querySelector('.createCardButton')
     console.log("addCardtoCollection modal kører")
