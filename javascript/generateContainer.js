@@ -77,7 +77,10 @@ function shareDeckToUsername(collection, type) {
     const submit_ShareDeckBtn = document.getElementById('submit-shareDeckButton')
     const submit_ShareDeckUsername = document.getElementById('share-deck-username')
     submit_ShareDeckBtn.addEventListener('click', async e => {
-        postShareDeckToUser(submit_ShareDeckUsername.value, collection.id, type)
+        console.log("---------------------- -------------------------------------------")
+        console.log(collection)
+        console.log(type)
+        postShareDeckToUser(submit_ShareDeckUsername.value, collection, type)
     })
 }
 
