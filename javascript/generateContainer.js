@@ -44,7 +44,9 @@ function addCardToCollectionById(container, collection) {
     <h3 class="addCardToCollectionById">${collection.name}</h3>
     <button class="createCardButton" id="${collection.id}">
     <span class="material-symbols-outlined createCardButtonFont">add</span></button>
-    
+    <button class="shareDeckButton" data-toggle="modal" data-target="#shareDeckmodal" id="shareDeck-${collection.id}">
+    <span class="material-symbols-outlined createCardButtonFont">send</span>
+    </button>
     `
 
     const addCardBtn = document.querySelector('.createCardButton')
@@ -52,8 +54,8 @@ function addCardToCollectionById(container, collection) {
     console.log(collection.id)
 
     addCardBtn.addEventListener('click', async e => {
+        console.log("createCardModal kører")
         createCardModal(collection.name);
-
         submitCards();
     })
 }
@@ -67,3 +69,16 @@ function clearAddToCollectionButton() {
     }
 }
 /*------------------------------ADD CARD TO ELEMENT------------------------------*/
+
+/*------------------------------SHARE DECK ELLER COLLECTION------------------------------*/
+
+function shareDeckToUsername(collection, type) {
+    shareDeckToUserModal();
+    const submit_ShareDeckBtn = document.getElementById('submit-shareDeckButton')
+    const submit_ShareDeckUsername = document.getElementById('share-deck-username')
+    submit_ShareDeckBtn.addEventListener('click', async e => {
+        postShareDeckToUser(submit_ShareDeckUsername.value, collection.id, type)
+    })
+}
+
+/*------------------------------SHARE DECK ELLER COLLECTION------------------------------*/
