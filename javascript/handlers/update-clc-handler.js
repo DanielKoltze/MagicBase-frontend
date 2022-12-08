@@ -35,8 +35,8 @@ clear = () => {
     this.updatedClcs = []
 }
 saveChanges = async () => {
-     this.updatedClcs.forEach(async clc =>{
-        console.log(clc);
+
+    for (const clc of this.updatedClcs) {
         if (clc.startValue != clc.endValue) {
             const updatedClc = {
                 id: clc.id,
@@ -44,11 +44,7 @@ saveChanges = async () => {
             }
             await this.#post(updatedClc)
         }
-        
-    })
-
-    //display function
-    
+    }  
 }
 #post = async (clc) => {
     console.log('poster')

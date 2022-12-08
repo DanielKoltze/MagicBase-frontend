@@ -193,11 +193,11 @@ async function postCardToCollection(card) {
 function submitCards() {
   const submitCreateCardsBtn = document.querySelector(".createCard-sideBar-btn");
 
-  submitCreateCardsBtn.addEventListener("click", (e) => {
-    addCardList.forEach(async (card) => {
+  submitCreateCardsBtn.addEventListener("click", async (e) => {
+    for (const card of addCardList) {
       console.log(card);
       await postCardToCollection(card);
-    });
+    }
 
     addCardList = [];
     const clearContainer = document.querySelector(
