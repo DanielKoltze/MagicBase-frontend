@@ -3,14 +3,15 @@ async function getDecks(userId) {
   const settings = {
     method: "GET",
   };
-
-
-  /*------------------------------GETMAPPINGS------------------------------*/
-
-  /*------------------------------SIDEBAR------------------------------*/
   const decks = await makeRequest(`${BASE_URL}/deck/user/${userId}`, settings);
   return decks;
 }
+
+
+/*------------------------------GETMAPPINGS------------------------------*/
+
+/*------------------------------SIDEBAR------------------------------*/
+
 
 
 function displayDecksInSidebar2(container, items) {
@@ -19,7 +20,7 @@ function displayDecksInSidebar2(container, items) {
   for (const deck of items) {
     container.innerHTML +=
       `<div class="deck-collection-element-container">
-    <div class="deck-name-container sidebar-name-container">
+    <div class="sidebar-deck-name-container sidebar-name-container">
         <p>${deck.name}</p>
         </div>
         <p class="sidebar-button-container">
@@ -44,8 +45,10 @@ function displayDecksInSidebar2(container, items) {
     });
     */
 
-  const deckNameContainerElements = document.getElementsByClassName('deck-name-container')
+  const deckNameContainerElements = document.getElementsByClassName('sidebar-deck-name-container')
+  console.log(deckNameContainerElements.length)
   const deleteBtnElements = document.getElementsByClassName('delete-deck-button');
+  console.log(deleteBtnElements.length)
 
   const elementListSize = deckNameContainerElements.length;
   for (let i = 0; i < elementListSize; i++) {

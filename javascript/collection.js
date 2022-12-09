@@ -71,7 +71,7 @@ const addEventListenerToCollectionElement = (element, collectionId, collectionNa
     if (window.confirm(`Are you sure want to delete this collection: ${collectionName}?`)) {
       await deleteCollectionOrDeck("collection", collectionId)
       const collectionContainer = document.getElementById('deck-collection-container')
-      showCollections(collectionContainer, displayCollectionsInSidebar)
+      showCollections(collectionContainer, displayCollectionsInSidebar, "collection")
 
     }
   })

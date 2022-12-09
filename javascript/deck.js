@@ -28,7 +28,7 @@ async function showDecks(container, displayMode, type) {
 }
 /*Show Decks by ID*/
 async function showDeckById(container, displayMode) {
-    const data = await getDeckById(selectedDeckId)
+    const data = await getDeckById(currentPage.id)
     displayMode(container, data)
 }
 const addEventListener_goToDeckBtn = (element, deckId) => {
@@ -36,7 +36,7 @@ const addEventListener_goToDeckBtn = (element, deckId) => {
 
         await getDeckById(deckId)
 
-        selectedDeckId = deckId
+        currentPage.type = "deck"
         currentPage.id = deckId;
         console.log("ID på DECK: " + deckId)
         console.log("ID på CurrentPage: " + currentPage.id)
