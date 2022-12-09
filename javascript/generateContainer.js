@@ -1,3 +1,4 @@
+let lcHandler = null;
 /*------------------------------DISPLAY ELEMENTS------------------------------*/
 function displayAllElementsInModal(container, items, type) {
     container.innerHTML = ""
@@ -52,12 +53,12 @@ function addCardToCollectionById(container, item) {
 
     if (currentPage.type === "collection") {
         $(`#save-changes-${item.id}`).click(async () => {
-            await clcHandler.saveChanges();
+            await lcHandler.saveChanges();
             showCollectionById(contentContainer, displayCollectionById);
         })
     } else {
         $(`#save-changes-${item.id}`).click(async () => {
-            await clcHandler.saveChanges();
+            await lcHandler.saveChanges();
             showDeckById(contentContainer, displayDeckById);
         })
     }
@@ -99,3 +100,88 @@ function shareDeckToUsername(collection, type) {
 }
 
 /*------------------------------SHARE DECK ELLER COLLECTION------------------------------*/
+
+
+
+
+
+
+/*------------------------------CREATE LINECARDS ELEMENTS------------------------------*/
+
+const createLcElement = lc => {
+    const lcElement = document.createElement('div');
+    lcElement.classList.add('showCollectionById-displayCollections-elements')
+    lcElement.innerHTML =
+        `<img class="cardImg" 
+       id="lc-image-${lc.id}"
+       src="${lc.card.imageUrl}"
+       data-toggle="modal"
+       data-target="#showSpecificCard">
+       <div class="cardQuantityContainer" id="card-quantity-container-${lc.card.id}">
+        <span id="lc-minus-btn-${lc.id}" class="plus-minus-quantity">➖</span>
+        <span id="lc-value-${lc.id}">${lc.quantity}</span>
+        <span id="lc-plus-btn-${lc.id}" class="plus-minus-quantity">➕</span>
+      </div>`
+
+    return lcElement;
+}
+
+const addEventListenersToQuantityElements = (lc) => {
+    let count = lc.quantity;
+
+    $(`#lc-plus-btn-${lc.id}`).click(function () {
+        count++;
+        $(`#lc-value-${lc.id}`).text(count)
+        lcHandler.add(lc.id, lc.quantity, count);
+
+    })
+
+    $(`#lc-minus-btn-${lc.id}`).click(function () {
+        count--;
+        if (count < 0) {
+            count = 0;
+        }
+        $(`#lc-value-${lc.id}`).text(count);
+        lcHandler.add(lc.id, lc.quantity, count);
+    })
+
+}
+
+
+/*------------------------------DISPLAY COLLECTIONS------------------------------*/
+
+
+const addEventListenerToCardImage = (lc) => {
+
+    let color = "";
+
+    $(`#lc-image-${lc.id}`).click(() => {
+        if (lc.card.rarity === "common") {
+            color = "grey"
+        } else if (lc.card.rarity === "uncommon") {
+            color = "green"
+        } else if (lc.card.rarity === "rare") {
+            color = "blue"
+        } else if (lc.card.rarity === "mythic") {
+            color = "#FFB300"
+        }
+
+        showCardPopup(color, lc)
+
+    })
+}
+
+const showCardPopup = (color, lc) => {
+    $('#specificCardContainer').html(
+
+        `<div class="specifikCardImgContainer" style="box-shadow: 0 0 10px ${color}; border-radius: 20px;">
+          <img id="specificCardImg" src="${lc.card.imageUrl}" alt="">
+       </div>
+       <div style="box-shadow: inset 0 0 0 2px ${color};" class="specfikCardTextContainer">
+          <h1>${lc.card.name}</h1>
+          <div style="background:${color} ;" class="diamondSpecificCard"></div>
+       </div>`
+    )
+}
+
+

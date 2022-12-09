@@ -45,24 +45,28 @@ const addEventListener_goToDeckBtn = (element, deckId) => {
 }
 
 function displayDeckById(container, deck) {
+
     container.innerHTML = ""
     document.getElementById('showAllCollections-title').innerHTML = "";
+
     deck.deckLineCards.forEach(dlc => {
-        container.innerHTML += ` 
-        <div class="showCollectionById-displayCollections-elements">
-        <img class="cardImg" src="${dlc.card.imageUrl}">
-        <div class="cardQuantityContainer">
-          <h1 class="cardQuantity"><span class="plus-minus-quantity">➖</span>${dlc.quantity}<span class="plus-minus-quantity">➕</span></h1>
-        </div>
-        </div>
-         `
-    }
-    )
+
+        const dlcElement = createLcElement(dlc);
+        container.appendChild(dlcElement)
+        addEventListenersToQuantityElements(dlc);
+        addEventListenerToCardImage(dlc);
+    })
+
+
+
     contentContainerParent = document.getElementById('showAllCollections-title')
     addCardToCollectionById(contentContainerParent, deck)
-    shareDeckToUsername(deck.id, currentPage.type) //SHARE DECK
-    console.log("displayDeckById kører")
+    lcHandler = new LcHandler('dlc');
+    shareDeckToUsername(deck.id, currentPage.type)
 }
+
+
+
 /*------------------------------DISPLAY DECKS------------------------------*/
 
 /*------------------------------SHARE DECK------------------------------*/
