@@ -1,4 +1,4 @@
-let clcHandler = null;
+
 
 
 
@@ -100,94 +100,15 @@ function displayCollectionById(container, collection) {
 
   collection.collectionLineCards.forEach(clc => {
 
-    const clcElement = createClcElement(clc);
+    const clcElement = createLcElement(clc);
     container.appendChild(clcElement)
     addEventListenersToQuantityElements(clc);
     addEventListenerToCardImage(clc);
   }
   )
   contentContainerParent = document.getElementById('showAllCollections-title')
-  clcHandler = new LcHandler('clc');
+  lcHandler = new LcHandler('clc');
   addCardToCollectionById(contentContainerParent, collection)
 
   shareDeckToUsername(collection.id, currentPage.type) //SHARE COLLECTION TO USERNAME
 }
-
-
-const createClcElement = clc => {
-  const clcElement = document.createElement('div');
-  clcElement.classList.add('showCollectionById-displayCollections-elements')
-  clcElement.innerHTML =
-    `<img class="cardImg" 
-     id="clc-image-${clc.id}"
-     src="${clc.card.imageUrl}"
-     data-toggle="modal"
-     data-target="#showSpecificCard">
-     <div class="cardQuantityContainer" id="card-quantity-container-${clc.card.id}">
-      <span id="clc-minus-btn-${clc.id}" class="plus-minus-quantity">➖</span>
-      <span id="clc-value-${clc.id}">${clc.quantity}</span>
-      <span id="clc-plus-btn-${clc.id}" class="plus-minus-quantity">➕</span>
-    </div>`
-
-  return clcElement;
-}
-
-const addEventListenersToQuantityElements = (clc) => {
-  let count = clc.quantity;
-
-  $(`#clc-plus-btn-${clc.id}`).click(function () {
-    count++;
-    $(`#clc-value-${clc.id}`).text(count)
-    clcHandler.add(clc.id, clc.quantity, count);
-
-  })
-
-  $(`#clc-minus-btn-${clc.id}`).click(function () {
-    count--;
-    if (count < 0) {
-      count = 0;
-    }
-    $(`#clc-value-${clc.id}`).text(count);
-    clcHandler.add(clc.id, clc.quantity, count);
-  })
-
-}
-
-
-/*------------------------------DISPLAY COLLECTIONS------------------------------*/
-
-
-const addEventListenerToCardImage = (clc) => {
-
-  let color = "";
-
-  $(`#clc-image-${clc.id}`).click(() => {
-    if (clc.card.rarity === "common") {
-      color = "grey"
-    } else if (clc.card.rarity === "uncommon") {
-      color = "green"
-    } else if (clc.card.rarity === "rare") {
-      color = "blue"
-    } else if (clc.card.rarity === "mythic") {
-      color = "#FFB300"
-    }
-
-    showCardPopup(color, clc)
-
-  })
-}
-
-const showCardPopup = (color, clc) => {
-  $('#specificCardContainer').html(
-
-    `<div class="specifikCardImgContainer" style="box-shadow: 0 0 10px ${color}; border-radius: 20px;">
-        <img id="specificCardImg" src="${clc.card.imageUrl}" alt="">
-     </div>
-     <div style="box-shadow: inset 0 0 0 2px ${color};" class="specfikCardTextContainer">
-        <h1>${clc.card.name}</h1>
-        <div style="background:${color} ;" class="diamondSpecificCard"></div>
-     </div>`
-  )
-}
-
-
