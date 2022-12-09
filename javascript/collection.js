@@ -107,9 +107,9 @@ function displayCollectionById(container, collection) {
   }
   )
   contentContainerParent = document.getElementById('showAllCollections-title')
-  clcHandler = new ClcHandler();
+  clcHandler = new LcHandler('clc');
   addCardToCollectionById(contentContainerParent, collection)
-  
+
   shareDeckToUsername(collection.id, currentPage.type) //SHARE COLLECTION TO USERNAME
 }
 

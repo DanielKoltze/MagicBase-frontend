@@ -25,13 +25,6 @@ async function postShareDeckToUser(username, deckId, type) {
         body: JSON.stringify(body),
     };
 
-    console.log(settings);
-    console.log("posted")
-    console.log(username)
-    console.log(deckId)
-    console.log(type)
-    console.log(shareURL)
-    console.log(body)
     await makeRequest(BASE_URL + shareURL, settings);
 }
 
