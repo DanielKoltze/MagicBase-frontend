@@ -16,7 +16,7 @@
 }
 
 .sidebar-open {
-  width: 18%;
+  width: 280px;
 }
 
 .sidebar-close {
@@ -107,8 +107,6 @@
 .my-collection-input-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   border-top: 1px solid;
 }
 .my-collection-input-container {
@@ -125,4 +123,11 @@
 .deck-name-element-container p,
 .deck-collection-element-container p {
   font-family: "Poppins", sans-serif;
+}
+
+.deck-collection-name-container {
+  width: 75%;
+}
+.sidebar-button-container {
+  width: 25%;
 }

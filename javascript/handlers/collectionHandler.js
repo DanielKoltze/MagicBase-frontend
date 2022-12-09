@@ -51,6 +51,7 @@ function addEventListenerToSidebarMyDecks() {
         console.log('ny eventlistener klik')
         currentPage.type = "deck";
         showDecks(contentContainer, displayAllElementsInModal, currentPage.type);
+
     })
 
 }

@@ -37,22 +37,32 @@ function displayCollectionsInSidebar(container, items) {
   items.forEach(collection => {
     container.innerHTML += `
       <div class="deck-collection-element-container">
+      <div class="deck-collection-name-container">
           <p>${collection.name}</p>
-          <p id="removeCollectionBtn${collection.id + "_" + collection.name}">
+          </div>
+          <p class="sidebar-button-container">
           <span class="lock-symbol">🔒</span>
           <span class="delete-collection-button" collection-id="${collection.id}" collection-name="${collection.name}">❌</span>
+          </p>
       </div>
       `
   });
 
   const deleteBtnElements = document.getElementsByClassName('delete-collection-button')
+  const deckCollectionNameContainerElements = document.getElementsByClassName('deck-collection-name-container')
 
-  for (let i = 0; i < deleteBtnElements.length; i++) {
+  const elementListSize = deleteBtnElements.length;
+
+  for (let i = 0; i < elementListSize; i++) {
     addEventListenerToCollectionElement(
       deleteBtnElements[i],
       deleteBtnElements[i].getAttribute('collection-id'),
       deleteBtnElements[i].getAttribute('collection-name')
-    )
+    );
+    addEventListener_goToCollectionBtn(
+      deckCollectionNameContainerElements[i],
+      deleteBtnElements[i].getAttribute('collection-id')
+    );
   }
 }
 
@@ -66,6 +76,8 @@ const addEventListenerToCollectionElement = (element, collectionId, collectionNa
     }
   })
 }
+
+
 /*------------------------------SIDEBAR------------------------------*/
 
 
@@ -82,7 +94,7 @@ async function showCollectionById(container, displayMode) {
 }
 const addEventListener_goToCollectionBtn = (element, collectionId) => {
   element.addEventListener('click', async e => {
-
+    console.log("clickclciksdasoiklfdjasiopdjsaipdjmsaiop")
     await getCollectionById(collectionId)
 
     currentPage.type = 'collection';
