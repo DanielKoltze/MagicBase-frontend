@@ -45,6 +45,9 @@ function addCardToCollectionById(container, collection) {
     <button id="save-changes-${collection.id}">Save</button>
     <button class="createCardButton" id="${collection.id}">
     <span class="material-symbols-outlined createCardButtonFont">add</span></button>
+    <button class="shareDeckButton" data-toggle="modal" data-target="#shareDeckmodal" id="shareDeck-${collection.id}">
+    <span class="material-symbols-outlined createCardButtonFont">send</span>
+    </button>
     `
     $(`#save-changes-${collection.id}`).click(async () => {
         await clcHandler.saveChanges();
@@ -56,8 +59,8 @@ function addCardToCollectionById(container, collection) {
     console.log(collection.id)
 
     addCardBtn.addEventListener('click', async e => {
+        console.log("createCardModal kører")
         createCardModal(collection.name);
-
         submitCards();
     })
 }
@@ -71,3 +74,19 @@ function clearAddToCollectionButton() {
     }
 }
 /*------------------------------ADD CARD TO ELEMENT------------------------------*/
+
+/*------------------------------SHARE DECK ELLER COLLECTION------------------------------*/
+
+function shareDeckToUsername(collection, type) {
+    shareDeckToUserModal();
+    const submit_ShareDeckBtn = document.getElementById('submit-shareDeckButton')
+    const submit_ShareDeckUsername = document.getElementById('share-deck-username')
+    submit_ShareDeckBtn.addEventListener('click', async e => {
+        console.log("---------------------- -------------------------------------------")
+        console.log(collection)
+        console.log(type)
+        postShareDeckToUser(submit_ShareDeckUsername.value, collection, type)
+    })
+}
+
+/*------------------------------SHARE DECK ELLER COLLECTION------------------------------*/

@@ -92,31 +92,32 @@ const addEventListener_goToCollectionBtn = (element, collectionId) => {
     showCollectionById(contentContainer, displayCollectionById)
   })
 }
-   
+
 function displayCollectionById(container, collection) {
 
   container.innerHTML = ""
   document.getElementById('showAllCollections-title').innerHTML = "";
-  
+
   collection.collectionLineCards.forEach(clc => {
- 
-       const clcElement = createClcElement(clc);
-       container.appendChild(clcElement)  
-       addEventListenersToQuantityElements(clc);
-       addEventListenerToCardImage(clc);
+
+    const clcElement = createClcElement(clc);
+    container.appendChild(clcElement)
+    addEventListenersToQuantityElements(clc);
+    addEventListenerToCardImage(clc);
   }
   )
   contentContainerParent = document.getElementById('showAllCollections-title')
   clcHandler = new ClcHandler();
   addCardToCollectionById(contentContainerParent, collection)
   
+  shareDeckToUsername(collection.id, currentPage.type) //SHARE COLLECTION TO USERNAME
 }
 
 
 const createClcElement = clc => {
   const clcElement = document.createElement('div');
   clcElement.classList.add('showCollectionById-displayCollections-elements')
-  clcElement.innerHTML = 
+  clcElement.innerHTML =
     `<img class="cardImg" 
      id="clc-image-${clc.id}"
      src="${clc.card.imageUrl}"
@@ -128,28 +129,28 @@ const createClcElement = clc => {
       <span id="clc-plus-btn-${clc.id}" class="plus-minus-quantity">➕</span>
     </div>`
 
-    return clcElement;
+  return clcElement;
 }
 
 const addEventListenersToQuantityElements = (clc) => {
   let count = clc.quantity;
 
-  $(`#clc-plus-btn-${clc.id}`).click(function() { 
+  $(`#clc-plus-btn-${clc.id}`).click(function () {
     count++;
     $(`#clc-value-${clc.id}`).text(count)
     clcHandler.add(clc.id, clc.quantity, count);
-    
+
   })
-    
-  $(`#clc-minus-btn-${clc.id}`).click(function() {
+
+  $(`#clc-minus-btn-${clc.id}`).click(function () {
     count--;
-    if(count < 0) {
+    if (count < 0) {
       count = 0;
     }
     $(`#clc-value-${clc.id}`).text(count);
     clcHandler.add(clc.id, clc.quantity, count);
   })
-  
+
 }
 
 
@@ -178,15 +179,15 @@ const addEventListenerToCardImage = (clc) => {
 
 const showCardPopup = (color, clc) => {
   $('#specificCardContainer').html(
-    
-    `<div class="specifikCardImgContainer">
+
+    `<div class="specifikCardImgContainer" style="box-shadow: 0 0 10px ${color};">
         <img id="specificCardImg" src="${clc.card.imageUrl}" alt="">
      </div>
      <div style="box-shadow: inset 0 0 0 2px ${color};" class="specfikCardTextContainer">
         <h1>${clc.card.name}</h1>
         <div style="background:${color} ;" class="diamondSpecificCard"></div>
      </div>`
-     ) 
+  )
 }
 
 

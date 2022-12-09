@@ -63,7 +63,6 @@
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-
   /*grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;*/
   /*grid-template-rows: 1fr 1fr;*/
   /*grid-template-rows: repeat(auto-fill, minmax(13%, 1fr));*/
@@ -166,6 +165,30 @@
   border-color: #121212;
 }
 .createCardButton:active {
+  background-color: #e1e1e1a6;
+  color: #12121295;
+  border-color: #12121295;
+  scale: 0.9;
+}
+
+.shareDeckButton {
+  position: absolute;
+  right: 55%;
+  background-color: transparent;
+  border-radius: 10px;
+  color: #e1e1e1;
+  border: 3px solid #e1e1e1;
+  height: 5%;
+  text-align: center;
+  line-height: 90%;
+}
+
+.shareDeckButton:hover {
+  background-color: #e1e1e1;
+  color: #121212;
+  border-color: #121212;
+}
+.shareDeckButton:active {
   background-color: #e1e1e1a6;
   color: #12121295;
   border-color: #12121295;

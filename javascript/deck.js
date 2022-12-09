@@ -15,6 +15,11 @@ async function getDeckById(deckId) {
 }
 /*------------------------------GETMAPPINGS------------------------------*/
 
+/*------------------------------POST MAPPINGS------------------------------*/
+
+
+/*------------------------------POST MAPPINGS------------------------------*/
+
 
 /*------------------------------DISPLAY DECKS------------------------------*/
 async function showDecks(container, displayMode, type) {
@@ -55,6 +60,13 @@ function displayDeckById(container, deck) {
     )
     contentContainerParent = document.getElementById('showAllCollections-title')
     addCardToCollectionById(contentContainerParent, deck)
+    shareDeckToUsername(deck.id, currentPage.type) //SHARE DECK
     console.log("displayDeckById kører")
 }
 /*------------------------------DISPLAY DECKS------------------------------*/
+
+/*------------------------------SHARE DECK------------------------------*/
+
+
+
+/*------------------------------SHARE DECK------------------------------*/
