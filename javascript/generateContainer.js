@@ -39,28 +39,37 @@ function displayAllElementsInModal(container, items, type) {
 
 
 /*------------------------------ADD CARD TO ELEMENT------------------------------*/
-function addCardToCollectionById(container, collection) {
+function addCardToCollectionById(container, item) {
     container.innerHTML += `
-    <h3 class="addCardToCollectionById">${collection.name}</h3>
-    <button id="save-changes-${collection.id}">Save</button>
-    <button class="createCardButton" id="${collection.id}">
+    <h3 class="addCardToCollectionById">${item.name}</h3>
+    <button id="save-changes-${item.id}">Save</button>
+    <button class="createCardButton" id="${item.id}">
     <span class="material-symbols-outlined createCardButtonFont">add</span></button>
-    <button class="shareDeckButton" data-toggle="modal" data-target="#shareDeckmodal" id="shareDeck-${collection.id}">
+    <button class="shareDeckButton" data-toggle="modal" data-target="#shareDeckmodal" id="shareDeck-${item.id}">
     <span class="material-symbols-outlined createCardButtonFont">send</span>
     </button>
     `
-    $(`#save-changes-${collection.id}`).click(async () => {
-        await clcHandler.saveChanges();
-        showCollectionById(contentContainer, displayCollectionById);
-        
-    })
+
+    if (currentPage.type === "collection") {
+        $(`#save-changes-${item.id}`).click(async () => {
+            await clcHandler.saveChanges();
+            showCollectionById(contentContainer, displayCollectionById);
+        })
+    } else {
+        $(`#save-changes-${item.id}`).click(async () => {
+            await clcHandler.saveChanges();
+            showDeckById(contentContainer, displayDeckById);
+        })
+    }
+
+
     const addCardBtn = document.querySelector('.createCardButton')
     console.log("addCardtoCollection modal kører")
-    console.log(collection.id)
+    console.log(item.id)
 
     addCardBtn.addEventListener('click', async e => {
         console.log("createCardModal kører")
-        createCardModal(collection.name);
+        createCardModal(item.name);
         submitCards();
     })
 }

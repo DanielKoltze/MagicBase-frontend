@@ -180,7 +180,7 @@ const addEventListenerToCardImage = (clc) => {
 const showCardPopup = (color, clc) => {
   $('#specificCardContainer').html(
 
-    `<div class="specifikCardImgContainer" style="box-shadow: 0 0 10px ${color};">
+    `<div class="specifikCardImgContainer" style="box-shadow: 0 0 10px ${color}; border-radius: 20px;">
         <img id="specificCardImg" src="${clc.card.imageUrl}" alt="">
      </div>
      <div style="box-shadow: inset 0 0 0 2px ${color};" class="specfikCardTextContainer">

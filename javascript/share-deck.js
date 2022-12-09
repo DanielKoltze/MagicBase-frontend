@@ -1,39 +1,26 @@
-async function postShareDeckToUser(username, deckId, type) {
-    let body = {};
-    let shareURL = "";
+async function postShareDeckToUser(username, containerId, type) {
+  let body = {
+    username: username,
+    containerId: containerId
+  };
 
-    if (type === "deck") {
-        body = {
-            username: username,
-            deckId: deckId
-        }
-        shareURL = "/deck/share"
-    }
-    if (type === "collection") {
-        body = {
-            username: username,
-            collectionId: deckId
-        }
-        shareURL = "/collection/share"
-    }
+  const settings = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  };
 
-    const settings = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-    };
-
-    await makeRequest(BASE_URL + shareURL, settings);
+  await makeRequest(BASE_URL + "/" + type + "/share", settings);
 }
 
 
 
 function shareDeckToUserModal() {
-    const container = document.querySelector(".shareDeckToUser-modal");
-    container.innerHTML = "";
-    container.innerHTML = `
+  const container = document.querySelector(".shareDeckToUser-modal");
+  container.innerHTML = "";
+  container.innerHTML = `
     <div
       class="modal fade shareDeck-modal"
       id="shareDeckmodal"

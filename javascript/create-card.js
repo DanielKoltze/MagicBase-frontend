@@ -17,21 +17,14 @@ let addCardList = [];
 async function displayCardsInCreateCard(searchWord) {
 
   const object = await getDataFromExternalApi(searchWord);
+  console.log(object)
+  console.log("-----------------------------------------------------------------------------------------------------")
   const cardpageContainer = document.querySelector(".createCard-page-cardpage");
   const sidebarContainer = document.querySelector(".createCard-sideBar-card-nested");
   cardpageContainer.innerHTML = "";
   //clear container
   object.data.forEach((card) => {
-    const cardImageDiv = document.createElement("div");
-    cardImageDiv.classList.add("createCard-page-cardpage-card");
-    cardImageDiv.innerHTML += `
-        <div class="cardElements">
-          <img class="cardImg" src="${card.image_uris.png}" alt="magic card">
-        </div>`;
-
-    let cardObject;
-
-    cardObject = {
+    const cardObject = {
       apiId: card.id,
       name: card.name,
       oracleText: card.oracle_text,
@@ -42,7 +35,8 @@ async function displayCardsInCreateCard(searchWord) {
       convertedManaCost: card.cmc,
       setName: card.set_name,
       euroPrice: card.prices.eur,
-      imageUrl: card.image_uris.png,
+      imageUrl: null,
+      imageUrlTransform: null,
       quantity: 1,
       containerId: currentPage.id,
     };
@@ -51,6 +45,26 @@ async function displayCardsInCreateCard(searchWord) {
       cardObject.power = card.power;
       cardObject.toughness = card.toughness;
     }
+
+    if (card.layout === "transform") {
+      cardObject.imageUrl = card.card_faces[0].image_uris.png
+      cardObject.imageUrlTransform = card.card_faces[1].image_uris.png
+      cardObject.oracleText = card.card_faces[0].oracle_text
+      cardObject.power = card.card_faces[0].power
+      cardObject.toughness = card.card_faces[0].toughness
+    } else {
+      cardObject.imageUrl = card.image_uris.png;
+
+    }
+
+    const cardImageDiv = document.createElement("div");
+    cardImageDiv.classList.add("createCard-page-cardpage-card");
+    cardImageDiv.innerHTML += `
+        <div class="cardElements">
+          <img class="cardImg" src="${cardObject.imageUrl}" alt="magic card"/>
+        </div>`;
+
+
 
     cardImageDiv.addEventListener("click", (e) => {
       //lav færdig med de elementer vi skal bruge
@@ -70,10 +84,6 @@ async function displayCardsInCreateCard(searchWord) {
         const pTag = document.getElementById(cardObject.apiId + "_quantity")
         pTag.innerHTML = value
       } else {
-
-
-
-
 
         const sideBarCardsContainer = document.createElement("div");
         const sideBarDiv = document.createElement("div");
@@ -95,12 +105,8 @@ async function displayCardsInCreateCard(searchWord) {
         const imageElement = document.createElement("img");
         const imageElementShadow = document.createElement("div");
 
-
-
         imageElementShadow.classList.add("createCard-sideBar-card-image-shadow");
         imageElement.src = cardObject.imageUrl;
-
-
 
         imageElement.classList.add("createCard-sideBar-card-background-image");
 
@@ -147,12 +153,9 @@ async function displayCardsInCreateCard(searchWord) {
         sideBarCardsContainerInfo.appendChild(sideBarBtn);
 
 
-
         addCardList.push(cardObject);
 
       }
-
-
 
     });
     cardpageContainer.appendChild(cardImageDiv);
