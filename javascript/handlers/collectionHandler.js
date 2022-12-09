@@ -19,7 +19,7 @@ function collection() {
     showCollections(collectionContainer, displayCollectionsInSidebar)
 
     const deckContainer = document.getElementById('deck-container')
-    showDecks(deckContainer, displayDecksInSidebar2)
+    showDecks(deckContainer, displayDecksInSidebar2, "deck")
     // Sidebar 
 
 

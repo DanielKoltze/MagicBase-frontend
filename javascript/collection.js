@@ -37,7 +37,7 @@ function displayCollectionsInSidebar(container, items) {
   items.forEach(collection => {
     container.innerHTML += `
       <div class="deck-collection-element-container">
-      <div class="deck-collection-name-container">
+      <div class="collection-name-container sidebar-name-container">
           <p>${collection.name}</p>
           </div>
           <p class="sidebar-button-container">
@@ -49,7 +49,7 @@ function displayCollectionsInSidebar(container, items) {
   });
 
   const deleteBtnElements = document.getElementsByClassName('delete-collection-button')
-  const deckCollectionNameContainerElements = document.getElementsByClassName('deck-collection-name-container')
+  const collectionNameContainerElements = document.getElementsByClassName('collection-name-container')
 
   const elementListSize = deleteBtnElements.length;
 
@@ -60,7 +60,7 @@ function displayCollectionsInSidebar(container, items) {
       deleteBtnElements[i].getAttribute('collection-name')
     );
     addEventListener_goToCollectionBtn(
-      deckCollectionNameContainerElements[i],
+      collectionNameContainerElements[i],
       deleteBtnElements[i].getAttribute('collection-id')
     );
   }
