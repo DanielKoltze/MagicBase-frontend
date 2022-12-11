@@ -318,6 +318,7 @@ function close_createCardModal() {
   const createCard_closeButton = document.querySelector(".createCard-closeBtn");
   createCard_closeButton.addEventListener("click", (e) => {
     createCardModal.innerHTML = "";
+    createCardModal.style.display = "none";
   });
   document.onkeydown = function (e) {
     if (e.key === "Escape") {

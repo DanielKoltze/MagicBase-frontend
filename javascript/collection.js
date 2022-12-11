@@ -109,7 +109,7 @@ function displayCollectionById(container, collection) {
 
   container.innerHTML = ""
   document.getElementById('showAllCollections-title').innerHTML = "";
-
+  document.getElementById('showAllCollections-modal').className = "showAll-modal-byId";
   collection.collectionLineCards.forEach(clc => {
 
     const clcElement = createLcElement(clc);

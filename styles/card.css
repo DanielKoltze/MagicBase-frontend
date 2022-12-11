@@ -15,9 +15,10 @@
 }
 
 .cardQuantityContainer {
-  width: fit-content;
+  width: 50%;
+  height: 11%;
   margin: auto !important;
-  background-color: #442549;
+  background-color: #c7863d;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,4 +31,60 @@
 .cardQuantity {
   color: white;
   font-size: 1.6em;
+}
+
+.cardQuantityText {
+  color: white;
+  font-size: 3em;
+}
+
+/*CARDS BY ID*/
+.cardImgShowSpecifikCard:hover {
+  border-color: gold;
+  cursor: pointer;
+  box-shadow: 0 0 10px gold;
+}
+
+.cardImgShowSpecifikCard:active {
+  scale: 0.9;
+}
+
+.plus-minus-quantity {
+  background: none;
+  border: none;
+}
+.plus-quantity-symbol .minus-quantity-symbol {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.plus-quantity {
+  border-bottom-right-radius: 100%;
+}
+
+.minus-quantity {
+  border-bottom-left-radius: 100%;
+}
+
+.plus-quantity:hover {
+  scale: 1.1;
+}
+
+.minus-quantity:hover {
+  scale: 1.1;
+}
+.plus-quantity-symbol:hover {
+  font-weight: 600;
+}
+
+.minus-quantity-symbol:hover {
+  font-weight: 600;
+}
+
+.plus-quantity:active {
+  scale: 0.9;
+}
+
+.minus-quantity:active {
+  scale: 0.9;
 }

@@ -2,12 +2,34 @@ let lcHandler = null;
 /*------------------------------DISPLAY ELEMENTS------------------------------*/
 function displayAllElementsInModal(container, items, type) {
     container.innerHTML = ""
+    document.getElementById('showAllCollections-modal').className = "showAll-modal";
+    let color = "";
     items.forEach(element => {
-        container.innerHTML += `
-      <div class="showAll-display-elements" element-id="${element.id}">
+        if (type === "collection") {
+            if (element.type === "ALL_CARDS") {
+                color = "#fab565"
+            } else if (element.type === "WISH") {
+                color = "#00C4DD"
+            } else if (element.type === "TRADE") {
+                color = "#FD7AC6"
+            }
+
+            container.innerHTML += `
+            <div style="border-color:${color};" class="showAll-display-elements" element-id="${element.id}">
+            <h1 style="background:${color};border-color:${color};" class="showAll-display-elements-name">${element.name}</h1>
+            <h5 class="showAll-display-elements-description">${element.description}</h5>
+            <h5 style="background:${color};border-color:${color};" class="showAll-display-elements-type">${element.type}</h5>
+            </div>
+            `;
+        }
+        if (type === "deck") {
+            container.innerHTML += `
+            <div class="showAll-display-elements" element-id="${element.id}">
         <h1 class="showAll-display-elements-name">${element.name}</h1>
         <h5 class="showAll-display-elements-description">${element.description}</h5>
-        </div>`
+        <h5 class="showAll-display-elements-type">${element.formatType}</h5>
+        </div>
+            `}
         console.log(element)
         console.log("Element id: " + element.id)
     });
@@ -118,9 +140,13 @@ const createLcElement = lc => {
        data-toggle="modal"
        data-target="#showSpecificCard">
        <div class="cardQuantityContainer" id="card-quantity-container-${lc.card.id}">
-        <span id="lc-minus-btn-${lc.id}" class="plus-minus-quantity">➖</span>
-        <span id="lc-value-${lc.id}">${lc.quantity}</span>
-        <span id="lc-plus-btn-${lc.id}" class="plus-minus-quantity">➕</span>
+        <span id="lc-minus-btn-${lc.id}" class="plus-minus-quantity minus-quantity"><span class="material-symbols-outlined minus-quantity-symbol">
+        remove
+        </span></span>
+        <span class="cardQuantity" id="lc-value-${lc.id}">${lc.quantity}</span>
+        <span id="lc-plus-btn-${lc.id}" class="plus-minus-quantity plus-quantity"><span class="material-symbols-outlined plus-quantity-symbol">
+        add
+        </span></span>
       </div>`
 
     return lcElement;

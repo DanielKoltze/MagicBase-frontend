@@ -48,6 +48,7 @@ function displayDeckById(container, deck) {
 
     container.innerHTML = ""
     document.getElementById('showAllCollections-title').innerHTML = "";
+    document.getElementById('showAllCollections-modal').className = "showAll-modal-byId";
 
     deck.deckLineCards.forEach(dlc => {
 

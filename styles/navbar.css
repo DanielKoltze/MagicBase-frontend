@@ -43,7 +43,10 @@ body {
   color: #e1e1e1;
   padding: 0 30px 0 30px;
 }
-
+.rightNav li:hover {
+  color: #fab565;
+  cursor: pointer;
+}
 .leftNav {
   width: 800px;
   display: flex;
@@ -75,8 +78,9 @@ body {
   padding: 0px 30px;
 }
 
-.sidebarButton {
+.sidebarButton:hover {
   cursor: pointer;
+  color: #fab565;
 }
 
 /*----- Dropdown Menu -----*/
@@ -89,6 +93,9 @@ body {
   color: #e1e1e1;
   font-size: 50px;
   /*Størrelse på ikonet*/
+}
+.dropdown-btn span:hover {
+  color: #fab565;
 }
 
 .dropdown-menu-class {
@@ -117,33 +124,33 @@ body {
   border: none;
   border-radius: 5px;
   text-align: center;
-
   margin: 5px 0;
+  background-color: #fab565;
 }
 .dropdown-content-btn-login {
-  background-color: #4f3c4c;
+  background-color: #fab565;
   height: 50px;
   position: relative;
 }
 .dropdown-content-btn-signUp {
-  background-color: #4f3c4c;
+  background-color: #fab565;
   height: 50px;
   position: relative;
 }
 
 .dropdown-content-btn-logout {
-  background-color: #4f3c4c;
+  background-color: #fab565;
   height: 50px;
   position: relative;
 }
 
 .dropdown-content-btn:hover {
-  background-color: #271c29;
+  background-color: #fab465a3;
   cursor: pointer;
 }
 
 .dropdown-content-btn:active {
-  background-color: #161117;
+  background-color: #fab465;
 }
 
 /*----- Dropdown Menu -----*/
