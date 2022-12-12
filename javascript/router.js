@@ -30,9 +30,13 @@ template('home', () => {
 template('collection', () => {
     collection();
 })
+template('inspiration', () => {
+    inspiration();
+})
 
 route('/', 'home');
 route('/collection', 'collection');
+route('/inspiration', 'inspiration')
 
 function resolveRoute(route) {
     try {

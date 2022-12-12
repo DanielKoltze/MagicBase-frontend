@@ -7,6 +7,13 @@ async function getDecks(userId) {
   return decks;
 }
 
+async function getPublicDecks() {
+  const settings = {
+    method: "GET",
+  };
+  const decks = await makeRequest(`${BASE_URL}/deck/all-public`, settings);
+  return decks;
+}
 
 /*------------------------------GETMAPPINGS------------------------------*/
 
@@ -29,21 +36,6 @@ function displayDecksInSidebar2(container, items) {
         </p>
       </div>`
   }
-  /*
-    items.forEach(deck => {
-      console.log(deck);
-      container.innerHTML +=
-        `<div class="deck-collection-element-container">
-      <div class="deck-name-container sidebar-name-container">
-          <p>${deck.name}</p>
-          </div>
-          <p class="sidebar-button-container">
-            <span class="lock-symbol">🔒</span>
-            <span class="delete-deck-button" deck-id="${deck.id}" deck-name="${deck.name}">❌</span>
-          </p>
-        </div>`
-    });
-    */
 
   const deckNameContainerElements = document.getElementsByClassName('sidebar-deck-name-container')
   console.log(deckNameContainerElements.length)
