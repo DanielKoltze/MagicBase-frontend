@@ -94,13 +94,13 @@ async function showCollectionById(container, displayMode) {
 }
 const addEventListener_goToCollectionBtn = (element, collectionId) => {
   element.addEventListener('click', async e => {
-    console.log("clickclciksdasoiklfdjasiopdjsaipdjmsaiop")
     await getCollectionById(collectionId)
 
     currentPage.type = 'collection';
     currentPage.id = collectionId;
-    console.log("ID på COLLECTION: " + collectionId)
-    console.log("ID på CurrentPage: " + currentPage.id)
+    if (window.location.href !== COLLECTION_ROUTE) {
+      window.location.href = COLLECTION_ROUTE;
+    }
     showCollectionById(contentContainer, displayCollectionById)
   })
 }

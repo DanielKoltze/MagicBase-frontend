@@ -30,6 +30,7 @@ template('home', () => {
 template('collection', () => {
     collection();
 })
+
 template('inspiration', () => {
     inspiration();
 })

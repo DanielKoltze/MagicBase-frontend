@@ -72,13 +72,20 @@ function addCardToCollectionById(container, item) {
     <span class="material-symbols-outlined createCardButtonFont">send</span>
     </button>
     `
-
     if (currentPage.type === "collection") {
         $(`#save-changes-${item.id}`).click(async () => {
             await lcHandler.saveChanges();
             showCollectionById(contentContainer, displayCollectionById);
         })
     } else {
+        container.innerHTML += `
+        <button class="shiftStatusButton" id="shiftToPublicButton-${item.id}">
+        <span class="material-symbols-outlined createCardButtonFont">public</span>
+        </button> `
+        $(`#shiftToPublicButton-${item.id}`).click(async () => {
+            await shiftToPublic(item.id)
+            showDeckById(contentContainer, displayDeckById);
+        })
         $(`#save-changes-${item.id}`).click(async () => {
             await lcHandler.saveChanges();
             showDeckById(contentContainer, displayDeckById);

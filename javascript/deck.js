@@ -15,10 +15,15 @@ async function getDeckById(deckId) {
 }
 /*------------------------------GETMAPPINGS------------------------------*/
 
-/*------------------------------POST MAPPINGS------------------------------*/
+/*------------------------------PATCH MAPPINGS------------------------------*/
+async function shiftToPublic(deckId) {
+    const settings = {
+        method: "PATCH",
+    };
+    return await makeRequest(BASE_URL + '/deck/shift-public/' + deckId, settings);
+}
 
-
-/*------------------------------POST MAPPINGS------------------------------*/
+/*------------------------------PATCH MAPPINGS------------------------------*/
 
 
 /*------------------------------DISPLAY DECKS------------------------------*/
@@ -33,9 +38,11 @@ async function showDeckById(container, displayMode) {
 }
 const addEventListener_goToDeckBtn = (element, deckId) => {
     element.addEventListener('click', async e => {
-
+        if (window.location.href !== COLLECTION_ROUTE) {
+            currentPage.type = "deck";
+            window.location.href = COLLECTION_ROUTE;
+        }
         await getDeckById(deckId)
-
         currentPage.type = "deck"
         currentPage.id = deckId;
         console.log("ID på DECK: " + deckId)

@@ -9,7 +9,6 @@ function collection() {
     if (loggedInUser == null) {
         window.location.href = DEFAULT_ROUTE;
     }
-
     const template = document.getElementById('collection');
     const clone = template.content.cloneNode(true);
     pageContainer.replaceChildren(clone);
@@ -28,10 +27,14 @@ function collection() {
     addEventListenerToSidebarMyCollections()
     addEventListenerToSidebarMyDecks()
     addEventListenerToNavbarMyCollections()
-    currentPage.type = "collection";
 
-    // Det som bliver vist som default ude i højre container (ikke sidebar)
-    showCollections(contentContainer, displayAllElementsInModal, currentPage.type)
+    if (currentPage.type == "deck") {
+        showDecks(contentContainer, displayAllElementsInModal, currentPage.type);
+    } else {
+        currentPage.type = "collection";
+        // Det som bliver vist som default ude i højre container (ikke sidebar)
+        showCollections(contentContainer, displayAllElementsInModal, currentPage.type)
+    }
 }
 
 
@@ -39,6 +42,9 @@ function addEventListenerToSidebarMyCollections() {
     const myCollections = document.getElementById("display-my-collections")
 
     myCollections.addEventListener('click', e => {
+        if (window.location.href !== COLLECTION_ROUTE) {
+            window.location.href = COLLECTION_ROUTE;
+        }
         currentPage.type = "collection";
         showCollections(contentContainer, displayAllElementsInModal, currentPage.type)
     })
@@ -46,9 +52,11 @@ function addEventListenerToSidebarMyCollections() {
 
 function addEventListenerToSidebarMyDecks() {
     const myDecks = document.getElementById('display-my-decks');
-
     myDecks.addEventListener('click', () => {
-        console.log('ny eventlistener klik')
+        if (window.location.href !== COLLECTION_ROUTE) {
+            currentPage.type = "deck";
+            window.location.href = COLLECTION_ROUTE;
+        }
         currentPage.type = "deck";
         showDecks(contentContainer, displayAllElementsInModal, currentPage.type);
 
@@ -60,6 +68,9 @@ function addEventListenerToNavbarMyCollections() {
 
     navbarMyCollections.addEventListener('click', e => {
         currentPage.type = "collection";
+        if (window.location.href !== COLLECTION_ROUTE) {
+            window.location.href = COLLECTION_ROUTE;
+        }
         showCollections(contentContainer, displayAllElementsInModal, currentPage.type)
     })
 }
