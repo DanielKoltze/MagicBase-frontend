@@ -65,12 +65,15 @@ function displayAllElementsInModal(container, items, type) {
 function addCardToCollectionById(container, item) {
     container.innerHTML += `
     <h3 class="addCardToCollectionById">${item.name}</h3>
-    <button id="save-changes-${item.id}">Save</button>
+    <div class="titleAndButtonsGrid">
+    <button class="saveCardButton" id="save-changes-${item.id}">
+    <span class="material-symbols-outlined createCardButtonFont">save</span></button>
     <button class="createCardButton" id="${item.id}">
     <span class="material-symbols-outlined createCardButtonFont">add</span></button>
     <button class="shareDeckButton" data-toggle="modal" data-target="#shareDeckmodal" id="shareDeck-${item.id}">
     <span class="material-symbols-outlined createCardButtonFont">send</span>
     </button>
+    </div>
     `
     if (currentPage.type === "collection") {
         $(`#save-changes-${item.id}`).click(async () => {
@@ -78,10 +81,20 @@ function addCardToCollectionById(container, item) {
             showCollectionById(contentContainer, displayCollectionById);
         })
     } else {
-        container.innerHTML += `
-        <button class="shiftStatusButton" id="shiftToPublicButton-${item.id}">
-        <span class="material-symbols-outlined createCardButtonFont">public</span>
-        </button> `
+        const titleAndButtonsGrid = document.querySelector('.titleAndButtonsGrid');
+        if (item.hasBeenSetToPublic === true) {
+            titleAndButtonsGrid.innerHTML += `
+            <button class="shiftStatusButton" id="shiftToPublicButton-${item.id}">
+            <span class="material-symbols-outlined createCardButtonFont">public</span>
+            </button> `
+        } else {
+            titleAndButtonsGrid.innerHTML += `
+            <button class="shiftStatusButtonPrivate" id="shiftToPublicButton-${item.id}">
+            <span class="material-symbols-outlined createCardButtonFont">public_off</span>
+            </button> `
+        }
+
+
         $(`#shiftToPublicButton-${item.id}`).click(async () => {
             await shiftToPublic(item.id)
             showDeckById(contentContainer, displayDeckById);

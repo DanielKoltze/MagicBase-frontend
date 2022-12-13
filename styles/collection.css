@@ -31,11 +31,9 @@
 }
 
 .showAll-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: clamp(16px, 5vw, 32px);
-  font-weight: 700;
+  display: grid;
+  grid-template-columns: 1fr 0.7fr;
+  grid-template-rows: 1fr;
 }
 
 /*-----SEARCHBAR-----*/
@@ -57,6 +55,10 @@
 }
 
 /*-----SEARCHBAR-----*/
+
+.addCardToCollectionById {
+  padding-left: 50%;
+}
 
 .showAll-modal-byId {
   padding: 30px 0px;
@@ -183,16 +185,29 @@
   color: #e1e1e1b9;
 }
 
-.createCardButton {
-  position: absolute;
-  right: 50%;
+.titleAndButtonsGrid {
+  position: relative;
+  float: right;
+}
+
+.deckByIdButtons {
+  position: relative;
+  float: right;
   background-color: transparent;
   border-radius: 10px;
   color: #e1e1e1;
   border: 3px solid #e1e1e1;
-  height: 5%;
   text-align: center;
-  line-height: 90%;
+}
+
+.createCardButton {
+  position: relative;
+  float: right;
+  background-color: transparent;
+  border-radius: 10px;
+  color: #e1e1e1;
+  border: 3px solid #e1e1e1;
+  text-align: center;
 }
 
 .createCardButtonFont {
@@ -213,15 +228,12 @@
 }
 
 .shareDeckButton {
-  position: absolute;
-  right: 55%;
+  position: relative;
+  float: right;
   background-color: transparent;
   border-radius: 10px;
   color: #e1e1e1;
   border: 3px solid #e1e1e1;
-  height: 5%;
-  text-align: center;
-  line-height: 90%;
 }
 
 .shareDeckButton:hover {
@@ -230,6 +242,69 @@
   border-color: #121212;
 }
 .shareDeckButton:active {
+  background-color: #e1e1e1a6;
+  color: #12121295;
+  border-color: #12121295;
+  scale: 0.9;
+}
+
+.shiftStatusButton {
+  position: relative;
+  float: right;
+  background-color: transparent;
+  border-radius: 10px;
+  color: #8bbcee;
+  border: 3px solid #e1e1e1;
+}
+
+.shiftStatusButton:hover {
+  background-color: #e1e1e1;
+  color: #121212;
+  border-color: #121212;
+}
+.shiftStatusButton:active {
+  background-color: #e1e1e1a6;
+  color: #12121295;
+  border-color: #12121295;
+  scale: 0.9;
+}
+
+.shiftStatusButtonPrivate {
+  position: relative;
+  float: right;
+  background-color: transparent;
+  border-radius: 10px;
+  color: #ee8ba2;
+  border: 3px solid #e1e1e1;
+}
+
+.shiftStatusButtonPrivate:hover {
+  background-color: #e1e1e1;
+  color: #121212;
+  border-color: #121212;
+}
+.shiftStatusButtonPrivate:active {
+  background-color: #e1e1e1a6;
+  color: #12121295;
+  border-color: #12121295;
+  scale: 0.9;
+}
+
+.saveCardButton {
+  position: relative;
+  float: right;
+  background-color: transparent;
+  border-radius: 10px;
+  color: #e1e1e1;
+  border: 3px solid #e1e1e1;
+}
+
+.saveCardButton:hover {
+  background-color: #e1e1e1;
+  color: #121212;
+  border-color: #121212;
+}
+.saveCardButton:active {
   background-color: #e1e1e1a6;
   color: #12121295;
   border-color: #12121295;
