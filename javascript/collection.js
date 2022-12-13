@@ -111,7 +111,6 @@ function displayCollectionById(container, collection) {
   document.getElementById('showAllCollections-title').innerHTML = "";
   document.getElementById('showAllCollections-modal').className = "showAll-modal-byId";
   collection.collectionLineCards.forEach(clc => {
-
     const clcElement = createLcElement(clc);
     container.appendChild(clcElement)
     addEventListenersToQuantityElements(clc);
@@ -121,6 +120,24 @@ function displayCollectionById(container, collection) {
   contentContainerParent = document.getElementById('showAllCollections-title')
   lcHandler = new LcHandler('clc');
   addCardToCollectionById(contentContainerParent, collection)
+  shareDeckToUsername(collection.id, currentPage.type) //SHARE COLLECTION TO USERNAME
+  addEventListenerToSpecificCollectionSearch(collection);
+}
 
+function displayCollectionByIdByList(container, collection, clcList) {
+
+  container.innerHTML = ""
+  document.getElementById('showAllCollections-title').innerHTML = "";
+  document.getElementById('showAllCollections-modal').className = "showAll-modal-byId";
+  clcList.forEach(clc => {
+    const clcElement = createLcElement(clc);
+    container.appendChild(clcElement)
+    addEventListenersToQuantityElements(clc);
+    addEventListenerToCardImage(clc);
+  }
+  )
+  contentContainerParent = document.getElementById('showAllCollections-title')
+  lcHandler = new LcHandler('clc');
+  addCardToCollectionById(contentContainerParent, collection)
   shareDeckToUsername(collection.id, currentPage.type) //SHARE COLLECTION TO USERNAME
 }
