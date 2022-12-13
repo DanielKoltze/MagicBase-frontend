@@ -52,7 +52,6 @@ const addEventListener_goToDeckBtn = (element, deckId) => {
 }
 
 function displayDeckById(container, deck) {
-
     container.innerHTML = ""
     document.getElementById('showAllCollections-title').innerHTML = "";
     document.getElementById('showAllCollections-modal').className = "showAll-modal-byId";

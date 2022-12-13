@@ -64,15 +64,17 @@ function displayAllElementsInModal(container, items, type) {
 /*------------------------------ADD CARD TO ELEMENT------------------------------*/
 function addCardToCollectionById(container, item) {
     container.innerHTML += `
+    <div class="addCardToCollectionById-title">
     <h3 class="addCardToCollectionById">${item.name}</h3>
     <div class="titleAndButtonsGrid">
-    <button class="saveCardButton" id="save-changes-${item.id}">
-    <span class="material-symbols-outlined createCardButtonFont">save</span></button>
     <button class="createCardButton" id="${item.id}">
     <span class="material-symbols-outlined createCardButtonFont">add</span></button>
+    <button class="saveCardButton" id="save-changes-${item.id}">
+    <span class="material-symbols-outlined createCardButtonFont">save</span></button>
     <button class="shareDeckButton" data-toggle="modal" data-target="#shareDeckmodal" id="shareDeck-${item.id}">
     <span class="material-symbols-outlined createCardButtonFont">send</span>
     </button>
+    </div>
     </div>
     `
     if (currentPage.type === "collection") {
@@ -119,10 +121,18 @@ function addCardToCollectionById(container, item) {
 function clearAddToCollectionButton() {
     contentContainerParent = document.querySelector('showAllCollections-title')
     if (currentPage.type === "collection") {
-        document.getElementById('showAllCollections-title').innerHTML = "MY COLLECTIONS"
+        document.getElementById('showAllCollections-title').innerHTML = `
+        <h3
+        id="showAllCollectionsById-title"
+        class="addCardToCollectionTitle"
+      >MY COLLECTIONS</h3>`
     }
     if (currentPage.type === "deck") {
-        document.getElementById('showAllCollections-title').innerHTML = "MY DECKS"
+        document.getElementById('showAllCollections-title').innerHTML = `
+        <h3
+        id="showAllCollectionsById-title"
+        class="addCardToCollectionTitle"
+      >MY DECKS</h3>`
     }
 }
 /*------------------------------ADD CARD TO ELEMENT------------------------------*/

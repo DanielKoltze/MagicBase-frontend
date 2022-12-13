@@ -94,6 +94,7 @@ async function showCollectionById(container, displayMode) {
 }
 const addEventListener_goToCollectionBtn = (element, collectionId) => {
   element.addEventListener('click', async e => {
+
     await getCollectionById(collectionId)
 
     currentPage.type = 'collection';
@@ -106,7 +107,6 @@ const addEventListener_goToCollectionBtn = (element, collectionId) => {
 }
 
 function displayCollectionById(container, collection) {
-
   container.innerHTML = ""
   document.getElementById('showAllCollections-title').innerHTML = "";
   document.getElementById('showAllCollections-modal').className = "showAll-modal-byId";

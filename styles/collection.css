@@ -31,9 +31,33 @@
 }
 
 .showAll-title {
+}
+
+.addCardToCollectionTitle {
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.addCardToCollectionById-title {
   display: grid;
   grid-template-columns: 1fr 0.7fr;
   grid-template-rows: 1fr;
+  font-size: clamp(16px, 5vw, 32px);
+  font-weight: 700;
+  justify-content: center;
+  align-items: center;
+}
+
+.addCardToCollectionById {
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(16px, 5vw, 32px);
+  font-weight: 700;
+  padding-left: 50%;
 }
 
 /*-----SEARCHBAR-----*/
@@ -55,10 +79,6 @@
 }
 
 /*-----SEARCHBAR-----*/
-
-.addCardToCollectionById {
-  padding-left: 50%;
-}
 
 .showAll-modal-byId {
   padding: 30px 0px;
@@ -188,16 +208,7 @@
 .titleAndButtonsGrid {
   position: relative;
   float: right;
-}
-
-.deckByIdButtons {
-  position: relative;
-  float: right;
-  background-color: transparent;
-  border-radius: 10px;
-  color: #e1e1e1;
-  border: 3px solid #e1e1e1;
-  text-align: center;
+  justify-content: space-around;
 }
 
 .createCardButton {
@@ -208,6 +219,7 @@
   color: #e1e1e1;
   border: 3px solid #e1e1e1;
   text-align: center;
+  margin-left: 8px;
 }
 
 .createCardButtonFont {
@@ -234,6 +246,7 @@
   border-radius: 10px;
   color: #e1e1e1;
   border: 3px solid #e1e1e1;
+  margin-left: 8px;
 }
 
 .shareDeckButton:hover {
@@ -253,8 +266,9 @@
   float: right;
   background-color: transparent;
   border-radius: 10px;
-  color: #8bbcee;
+  color: #e1e1e1;
   border: 3px solid #e1e1e1;
+  margin-left: 8px;
 }
 
 .shiftStatusButton:hover {
@@ -274,8 +288,9 @@
   float: right;
   background-color: transparent;
   border-radius: 10px;
-  color: #ee8ba2;
+  color: #e1e1e1;
   border: 3px solid #e1e1e1;
+  margin-left: 8px;
 }
 
 .shiftStatusButtonPrivate:hover {
@@ -297,6 +312,7 @@
   border-radius: 10px;
   color: #e1e1e1;
   border: 3px solid #e1e1e1;
+  margin-left: 8px;
 }
 
 .saveCardButton:hover {
