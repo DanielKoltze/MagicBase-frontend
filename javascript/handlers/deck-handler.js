@@ -18,9 +18,6 @@ async function getPublicDecks() {
 /*------------------------------GETMAPPINGS------------------------------*/
 
 /*------------------------------SIDEBAR------------------------------*/
-
-
-
 function displayDecksInSidebar2(container, items) {
   container.innerHTML = ""
 

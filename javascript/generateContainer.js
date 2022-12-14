@@ -153,11 +153,6 @@ function shareDeckToUsername(collection, type) {
 
 /*------------------------------SHARE DECK ELLER COLLECTION------------------------------*/
 
-
-
-
-
-
 /*------------------------------CREATE LINECARDS ELEMENTS------------------------------*/
 
 const createLcElement = lc => {
