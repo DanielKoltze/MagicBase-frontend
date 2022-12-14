@@ -47,6 +47,16 @@ body {
   color: #fab565;
   cursor: pointer;
 }
+
+.rightNav li a {
+  text-decoration: none;
+  color: #e1e1e1;
+}
+
+.rightNav li a:hover {
+  color: #fab565;
+}
+
 .leftNav {
   width: 800px;
   display: flex;
