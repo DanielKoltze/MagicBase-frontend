@@ -1,8 +1,3 @@
-
-
-
-
-
 /*------------------------------GETMAPPINGS------------------------------*/
 async function getCollectionsByUserId(userId) {
   const settings = {

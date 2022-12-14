@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="styles/sidebar.css" />
     <link rel="stylesheet" href="styles/createUser.css" />
     <link rel="stylesheet" href="styles/card.css" />
-    <link rel="stylesheet" href="styles/form.css" />
     <link rel="stylesheet" href="styles/createCard.css" />
     <link rel="stylesheet" href="styles/collection.css" />
     <link rel="stylesheet" href="styles/specificCard.css" />
@@ -174,17 +173,6 @@
           <div class="rightArrowSlide">→</div>
         </div>
         <!--Modal Show All Collections-->
-        <!--Modal Show Collection by ID--
-        <div
-          id="showCollectionById-modal"
-          class="showAll-modal"
-          style="display: block"
-        >
-          <div class="showCollectionById-displayCollections">
-            <div class="showCollectionById-displayCollections-elements"></div>
-          </div>
-        </div>
-        --Modal Show Collection by ID-->
       </div>
 
       <!--Modal Show All Decks-->
@@ -264,27 +252,6 @@
       </div>
     </template>
 
-    <!-- create-user-container
-    <div class="create-user-container">
-        <form action="">
-            <div class="create-user-container-form">
-                <h1>Register</h1>
-
-                <label for="username"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" required>
-
-                <label for="email">Email</label>
-                <input type="text" placeholder="Email (Optional)">
-
-                <label for="password">Enter Password</label>
-                <input type="password" placeholder="Enter Password" required>
-
-                <button type="submit" class="register-btn">Register</button>
-            </div>
-        </form>
-    </div>
- -->
-
     <!-- Modal Sign Up-->
     <div
       class="modal fade"
@@ -357,15 +324,7 @@
                 >
               </div>
               <div class="error-message-container">
-                <p
-                  id="error-message"
-                  style="
-                    color: red;
-                    position: absolute;
-                    bottom: -30px;
-                    left: 10px;
-                  "
-                ></p>
+                <p id="error-message"></p>
               </div>
             </form>
           </div>
@@ -624,54 +583,6 @@
     <!--Share Deck Modal-->
     <div class="shareDeckToUser-modal"></div>
 
-    <!-- Placeholder
-    <div class="cardContainer" style="width: 100%; height: 100vh;">
-        <div class="cardElements">
-            <img class="cardImg"
-                src="https://cards.scryfall.io/large/front/6/6/66e2d723-3fa0-4411-8f98-e4e6b3a5e6df.jpg?1627705997"
-                alt="">
-            <div class="cardQuantityContainer">
-                <h1 class="cardQuantity">x1</h1>
-            </div>
-        </div>
-
-        <div class="cardElements">
-            <img class="cardImg"
-                src="https://cards.scryfall.io/large/front/6/6/66e2d723-3fa0-4411-8f98-e4e6b3a5e6df.jpg?1627705997"
-                alt="">
-            <div class="cardQuantityContainer">
-                <h1 class="cardQuantity">x1</h1>
-            </div>
-        </div>
-
-        <div class="cardElements">
-            <img class="cardImg"
-                src="https://cards.scryfall.io/large/front/6/6/66e2d723-3fa0-4411-8f98-e4e6b3a5e6df.jpg?1627705997"
-                alt="">
-            <div class="cardQuantityContainer">
-                <h1 class="cardQuantity">x1</h1>
-            </div>
-        </div>
-
-        <div class="cardElements">
-            <img class="cardImg"
-                src="https://cards.scryfall.io/large/front/6/6/66e2d723-3fa0-4411-8f98-e4e6b3a5e6df.jpg?1627705997"
-                alt="">
-            <div class="cardQuantityContainer">
-                <h1 class="cardQuantity">x1</h1>
-            </div>
-        </div>
-
-        <div class="cardElements">
-            <img class="cardImg"
-                src="https://cards.scryfall.io/large/front/6/6/66e2d723-3fa0-4411-8f98-e4e6b3a5e6df.jpg?1627705997"
-                alt="">
-            <div class="cardQuantityContainer">
-                <h1 class="cardQuantity">x1</h1>
-            </div>
-        </div>
-    </div>
--->
     <!-- Js -->
     <script src="javascript/router.js"></script>
     <script src="javascript/fetch.js"></script>

@@ -1,3 +1,6 @@
 .create-user-container {
   z-index: 2;
 }
+.error-message-container p {
+  color: red;
+}

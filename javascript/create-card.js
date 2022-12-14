@@ -1,10 +1,6 @@
 const API_URL = "https://api.scryfall.com/cards/search?q=";
 const API_SPACE = "%22";
-/*
-let searchCardButton = document.querySelector(".searchbar-btn");
 
-searchCardButton.addEventListener("click", searchbarInput);
-*/
 function searchbarInput() {
   let searchWord = document.getElementById("searchbar-input").value;
   displayCardsInCreateCard(searchWord);
@@ -162,15 +158,6 @@ async function displayCardsInCreateCard(searchWord) {
   });
 }
 
-//ENTER KEY klikker på søge knappen
-/*
-const searchbarEnterBtn = document.getElementById("searchbar-input");
-searchbarEnterBtn.addEventListener("keypress", function (event) {
-  if (event.key === "Enter") {
-    searchbarInput();
-  }
-});
-*/
 /*-----------------------POST MAPPING-------------------------*/
 async function postCardToCollection(card) {
   const settings = {
@@ -224,20 +211,6 @@ function submitCards() {
   });
 }
 
-//Lukker Modal når der klikkes udenfor
-/*
-const createCardModalTest = document.querySelector(".createCard-modal");
-document.onclick = function (e) {
-  if (e.target == createCardModalTest) {
-    createCardModalTest.style.display = "none";
-    cardpageContainer.style.display = "none";
-  }
-  //Hvis der bliver klikket i modalen, så forbliver den åben
-  if (e.target == cardpageContainer) {
-    cardpageContainer.style.display = "block";
-  }
-};
-*/
 async function getDataFromExternalApi(searchWord) {
   const setting = {
     method: "GET",
@@ -326,26 +299,3 @@ function close_createCardModal() {
     }
   }
 }
-
-
-
-
-
-/*
-function open_createCardModal() {
-  document.querySelector(".createCard-modal").style.display = "block";
-}
-
-function close_createCardModal() {
-  const createCardModal = document.querySelector(".createCard-modal");
-  const createCard_closeButton = document.querySelector(".createCard-closeBtn");
-  createCard_closeButton.addEventListener("click", (e) => {
-    createCardModal.style.display = "none";
-  });
-  document.onkeydown = function (e) {
-    if (e.key === "Escape") {
-      createCardModal.style.display = "none";
-    }
-  }
-}
-*/
