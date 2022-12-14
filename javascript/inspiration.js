@@ -17,21 +17,38 @@ const inspiration = async () => {
 
 
 const renderDecks = (container, decks) => {
+    document.getElementById('showAllCollections-modal').className = "showAll-modal";
+
+
+
     decks.forEach(deck => {
-        document.getElementById('showAllCollections-title').innerHTML = "INSPIRATION";
-        let color = "";
-        container.innerHTML += `
-        <div style="border-color:${color};" class="showAll-display-elements" id="deck-${deck.id}">
-        <h1 style="background:${color};border-color:${color};" class="showAll-display-elements-name">${deck.name}</h1>
-        <h5 class="showAll-display-elements-description">${deck.description}</h5>
-        <h5 style="background:${color};border-color:${color};" class="showAll-display-elements-type">${deck.formatType}</h5>
-        </div>
-        `;
+
+        container.appendChild(createInspirationDeckElement(deck));
+        document.getElementById('showAllCollections-title').innerHTML = `
+        <h3
+        id="showAllCollectionsById-title"
+        class="addCardToCollectionTitle"
+        >INSPIRATION</h3>`
 
         addEventListenerDeckInspiration(deck);
 
-
     })
+}
+
+const createInspirationDeckElement = deck => {
+    let color = "";
+    const element = document.createElement('div');
+    element.className = "showAll-display-elements"
+    element.id = `deck-${deck.id}`
+    element.style = `border-color:${color};`
+    element.innerHTML =
+        `
+        <h1 style="background:${color};border-color:${color};" class="showAll-display-elements-name">${deck.name}</h1>
+        <h5 class="showAll-display-elements-description">${deck.description}</h5>
+        <h5 style="background:${color};border-color:${color};" class="showAll-display-elements-type">${deck.formatType}</h5>
+    
+    `;
+    return element;
 
 
 }
