@@ -21,7 +21,7 @@
   padding: 1rem;
 
   height: 80vh;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .showAll-title-grid {

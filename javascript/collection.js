@@ -36,7 +36,7 @@ function displayCollectionsInSidebar(container, items) {
           <p>${collection.name}</p>
           </div>
           <p class="sidebar-button-container">
-          <span class="lock-symbol">🔒</span>
+          <span class="lock-symbol"></span>
           <span class="delete-collection-button" collection-id="${collection.id}" collection-name="${collection.name}">❌</span>
           </p>
       </div>

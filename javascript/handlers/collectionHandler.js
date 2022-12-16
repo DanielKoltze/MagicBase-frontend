@@ -64,13 +64,17 @@ function addEventListenerToSidebarMyDecks() {
 
 }
 function addEventListenerToNavbarMyCollections() {
-    const navbarMyCollections = document.getElementById("navbar-display-my-collections")
+    const navigationElements = document.getElementsByClassName("navbar-display-my-collections")
+    console.log(navigationElements);
 
-    navbarMyCollections.addEventListener('click', e => {
-        currentPage.type = "collection";
-        if (window.location.href !== COLLECTION_ROUTE) {
-            window.location.href = COLLECTION_ROUTE;
-        }
-        showCollections(contentContainer, displayAllElementsInModal, currentPage.type)
+    Array.from(navigationElements).forEach(element => {
+        element.addEventListener('click', e => {
+            currentPage.type = "collection";
+            if (window.location.href !== COLLECTION_ROUTE) {
+                window.location.href = COLLECTION_ROUTE;
+            }
+            showCollections(contentContainer, displayAllElementsInModal, currentPage.type)
+        })
     })
 }
+

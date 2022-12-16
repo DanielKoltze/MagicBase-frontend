@@ -28,7 +28,7 @@ function displayDecksInSidebar2(container, items) {
         <p>${deck.name}</p>
         </div>
         <p class="sidebar-button-container">
-          <span class="lock-symbol">🔒</span>
+          <span class="lock-symbol"></span>
           <span class="delete-deck-button" deck-id="${deck.id}" deck-name="${deck.name}">❌</span>
         </p>
       </div>`
